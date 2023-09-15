@@ -40,6 +40,9 @@ Doel is om via Hallo Strandeiland goede ideeën en voorstellen te verzamelen, te
 ## Data
 Er is een REST API endpoint voor de user generated content (voorstellen en reacties)
 
+[CMD PROTOTYPE Ine & Pip](https://hallo-strandeiland.adaptable.app/)
+
+
 
 
 
