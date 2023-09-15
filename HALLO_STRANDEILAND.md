@@ -1,4 +1,4 @@
-## Hallo Strandeiland (jaar 2)
+## Hallo Strandeiland
 
 {Visual}
 
