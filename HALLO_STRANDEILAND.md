@@ -42,7 +42,10 @@ Er is een REST API endpoint voor de user generated content (voorstellen en react
 
 [CMD PROTOTYPE Ine & Pip](https://hallo-strandeiland.adaptable.app/)
 
+## Preferred tech stack
 
+Framework: [SvelteKit](https://kit.svelte.dev/)   
+Headless CMS: [Hygraph](https://hygraph.com/)
 
 
 
