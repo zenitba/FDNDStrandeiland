@@ -30,7 +30,7 @@ Alle medewerkers van het bedrijf moeten suggesties kunnen doen om de handprint t
 
 ### Resources
 
-[Backlog](https://github.com/orgs/fdnd-agency/projects/25/views/2)
+[Backlog](https://github.com/orgs/fdnd-agency/projects/26)
 
 [Huisstijl]()  
 
