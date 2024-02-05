@@ -8,3 +8,4 @@ export const hygraph = new GraphQLClient(HYGRAPH_URL, {
 	}
 });
 
+
