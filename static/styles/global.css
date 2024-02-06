@@ -3,7 +3,7 @@
     --animation-default: 0.2s;
 
     /* Eenheden */
-    color: red;
+    color: rgb(0, 0, 0);
     --unit-deca: 10rem;
     --unit-large: 2rem;
     --unit-default: 1rem;
