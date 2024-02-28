@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	export let data;
 	// console.log(load.status);
 	import { onMount } from 'svelte';
@@ -36,9 +36,9 @@
 
 		return () => {};
 	});
-</script>
+</script> -->
 
-<section class="filter-sort-section service-items">
+<!-- <section class="filter-sort-section service-items">
 	<div class="filter-block">
 		<h3 class="filter-title">Filteren</h3>
 		<div class="filter-sub-block">
@@ -248,11 +248,11 @@
 			<button class="btn popup-close-btn">Pas filter toe</button>
 		</div>
 	</div>
-</div>
+</div> -->
 
-<h1 class="title-wensen">Alle Wensen<span class="filsort-result">4</span></h1>
-<div class="test123"></div>
-
+<!-- <h1 class="title-wensen">Alle Wensen<span class="filsort-result">4</span></h1>
+<div class="test123"></div> -->
+<!-- 
 <style>
 	img {
 		max-width: 40px;
@@ -516,4 +516,4 @@
 			width: calc(100% - 30px);
 		}
 	}
-</style>
+</style> -->

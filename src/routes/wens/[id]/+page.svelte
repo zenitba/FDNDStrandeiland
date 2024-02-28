@@ -1,9 +1,11 @@
 <script>
-	import Navbar from '$lib/molecules/navigation.svelte';
-	import Reactie from '$lib/components/reacties/reactie.svelte';
-	import Rollen from '$lib/components/detailpagina/rollen.svelte';
-	import Status from '$lib/molecules/status.svelte';
-	import Sdg from '$lib/molecules/sdg.svelte';
+    import Navbar from '$lib/components/Navbar.svelte';
+	import Reactie from '$lib/components/Reactie.svelte';
+	import Rollen from '$lib/components/Rollen.svelte';
+	import Status from '$lib/components/Status.svelte';
+	import Sdg from '$lib/components/SDG.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+
 	import { writable } from 'svelte/store';
 
 	export let data;
@@ -11,7 +13,7 @@
 
 	// console.log(data);
 </script>
-
+<!-- Wensen layout -->
 <Navbar />
 
 <main>
@@ -60,6 +62,7 @@
 	</section>
 	<Reactie />
 </main>
+<Footer />
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;800&display=swap');
@@ -96,14 +99,17 @@
 	}
 
 	.btn-back{
-		margin-left: 15px;
+	margin-left: 70px;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	/* width: 100vw; */
 	}
 
 	time {
 		display: flex;
 		align-items: center;
 		gap: var(--unit-small);
-		margin-bottom: var(--unit-default);
 		padding: 1em 0em 1em 2em;
 	}
 
@@ -139,6 +145,7 @@
 
 	main > span {
 		font-size: 14px;
+		width: 80vw;
 	}
 	#rollen {
 		margin-left: 18%;

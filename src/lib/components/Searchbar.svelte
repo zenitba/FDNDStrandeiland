@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     export let data
 </script>
 
@@ -70,4 +70,4 @@
 		background-color: var(--color-blue);
 		color: var(--color-secundary);
 	}
-</style>
+</style> -->

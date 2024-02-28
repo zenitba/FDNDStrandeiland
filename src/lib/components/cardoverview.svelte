@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     import { onMount } from 'svelte';
     import LayoutView from '$lib/molecules/layoutview.svelte';
     import WishOverview from '$lib/molecules/wishoverview.svelte';
@@ -21,4 +21,4 @@
         margin: 0 auto;
         padding: var(--unit-default);
     }
-</style>
+</style> -->
