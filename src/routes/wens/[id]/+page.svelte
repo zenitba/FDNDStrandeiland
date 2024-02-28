@@ -59,6 +59,9 @@
 		<Sdg {data} />
 		<Rollen />
 		<Status {data} />
+	<div class="social">
+		
+	</div>
 	</section>
 	<Reactie />
 </main>
@@ -99,7 +102,7 @@
 	}
 
 	.btn-back{
-	margin-left: 70px;
+    margin: 20px 100px;
 	display: flex;
 	flex-direction: row;
 	justify-content: start;

@@ -77,7 +77,7 @@
 
 .carousel-image {
     width: 50%;
-    height: 100%;
+    height: 20em;
 
 }
 

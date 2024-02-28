@@ -86,12 +86,12 @@
 	  </ul>
 	</article>
   
-	<article>
+	<!-- <article>
 	  <p>
 		Deel dit: <a href=""><i style="font-size:24px" class="fa">&#xf08c;</i></a>
 		<a href=""><i style="font-size:24px" class="fa">&#xf09a;</i></a>
 	  </p>
-	</article>
+	</article> -->
   </section>
   
   <style>

@@ -6,7 +6,6 @@
     import Hero from '$lib/components/Hero.svelte';
     import Carousel from '$lib/components/Carousel.svelte';
 	import Wensenoverview from "../lib/components/Wensenoverview.svelte";
-    import Detail from'$lib/components/Detail.svelte' ;
     import Filter from '$lib/components/Filter.svelte';
     import Footer from '$lib/components/Footer.svelte';
     
@@ -17,7 +16,6 @@
 <Hero  />
 <Carousel {data}/>
 <Wensenoverview />
-<Detail  />
 <Filter  />
 <Footer />
 

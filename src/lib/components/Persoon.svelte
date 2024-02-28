@@ -17,7 +17,7 @@
 		</p>
 	</article>
 </section>
-<!-- <script>
+ <script>
     import { onMount } from 'svelte';
         onMount(() => {
             const enhancedDescription = document.querySelector("#enhancedDescription");
