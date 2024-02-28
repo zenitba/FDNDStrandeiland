@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
      export let searchInput
   </script>
   
@@ -16,7 +16,7 @@
 	  	<input id="search-wishes" type="search" name="q" />
 		<label hidden for="search">Zoeken</label>
 	</form>
-
+zoekbalk
   <style>
  /* Zoekbalk */
  form {
@@ -62,4 +62,4 @@
         color: var(--color-secundary);
         fill: var(--color-secundary);
     }
-  </style>
+  </style> -->
