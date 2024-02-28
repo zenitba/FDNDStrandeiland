@@ -7,3 +7,5 @@ export const hygraph = new GraphQLClient(HYGRAPH_URL, {
 		Authorization: `Bearer ${HYGRAPH_KEY}`
 	}
 });
+
+

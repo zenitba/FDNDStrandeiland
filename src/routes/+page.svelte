@@ -1,5 +1,28 @@
 <script>
+    export let data;
+    import { onMount } from "svelte";
+
+    import Navbar from '$lib/components/Navbar.svelte';
+    import Hero from '$lib/components/Hero.svelte';
+    import Carousel from '$lib/components/Carousel.svelte';
+	import Wensenoverview from "../lib/components/Wensenoverview.svelte";
+    import Filter from '$lib/components/Filter.svelte';
+    import Footer from '$lib/components/Footer.svelte';
+    
+    onMount(() => {});
+</script>
+
+<Navbar />
+<Hero  />
+<Carousel {data}/>
+<Wensenoverview />
+<Filter  />
+<Footer />
+
+
+<!-- <script>
     import Navbar from '$lib/molecules/navigation.svelte';
+	import Hero from '$lib/molecules/hero.svelte';
     import SearchBar from '$lib/molecules/searchbar.svelte';
     import WishOverview from '$lib/molecules/wishoverview.svelte';
     import LayoutView from '$lib/molecules/layoutview.svelte';
@@ -34,8 +57,8 @@
     });
 </script>
 
-<Navbar />
-
+<Navbar /> -->
+<!-- 
 <main>
     <LayoutView {filteredWishes} {searchInput} {searchWishes} />
 
@@ -48,9 +71,9 @@
             {/each}
         </article>
     </section>
-</main>
+</main> -->
 
-<style>
+<!-- <style>
 	main {
 		width: fit-content;
 		height: 100%;
@@ -111,4 +134,4 @@
 			transform: translateY(0);
 		}
 	}
-</style>
+</style> -->

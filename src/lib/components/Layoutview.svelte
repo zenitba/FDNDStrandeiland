@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import { onMount } from 'svelte';
 	import SearchBar from '$lib/molecules/searchbar.svelte';
 
@@ -31,10 +31,9 @@
 	});
 
 	export let data;
-</script>
+</script> -->
 
-<nav id="nav">
-	<!-- Weergave van layout voor wensen -->
+<!-- <nav id="nav">
 	<div class="layout-view">
 		<button id="gridSwitch">
 			<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none"
@@ -72,9 +71,9 @@
 		</button>
 	</div>
 	<SearchBar {data} />
-</nav>
+</nav> -->
 
-<style>
+<!-- <style>
 	nav {
 		/* display: none; */
 		flex-direction: row;
@@ -132,4 +131,4 @@
 	.javascriptEnabled nav {
 		display: flex;
 	}
-</style>
+</style> -->
