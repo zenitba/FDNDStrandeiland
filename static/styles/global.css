@@ -212,20 +212,7 @@ mark {
         justify-content: space-around;
     }
 }
-/* Footer */
-@media (max-width: 768px) {
-    .footer-content {
-        grid-template-columns: repeat(1, 1fr);
-        row-gap: 20px;
-    }
-    .footer-menu {
-        text-align: left;
-    }
-    .footer-menu li {
-        display: block;
-        margin-bottom: 10px;
-    }
-}
+
 
 
 

@@ -69,7 +69,6 @@
     </div>
   </footer>
 <style>
-    /* Footer */
 .container-footer {
     width: 100%;
 }
@@ -84,8 +83,8 @@
 .footer-content {
     display: grid;
     grid-template-columns: 15% 70% 15%;
+    align-items: center; 
 }
-
 .footer-menu {
     list-style: none;
     padding: 0;
@@ -122,6 +121,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    text-align: center; /* Center icons horizontally */
 }
   
 .social-icons li {
@@ -137,5 +137,22 @@
     color: var(--white);
     text-decoration: none;
     font-size: 20px;
+}
+/* Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 20px;
+    }
+    .footer-menu {
+        text-align: left;
+    }
+    .footer-menu li {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .social-icons {
+        text-align: center;
+    }
 }
 </style>
