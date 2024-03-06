@@ -2,36 +2,39 @@
   export let data;
   import { onMount } from 'svelte';
 
-  // Voeg hier je JavaScript-functie toe
+  // Functie om naar links of rechts te scrollen
   function scrollLeftOrRight(uiEvent) {
     const carouselElement = document.querySelector('.carousel');
     const scrollWidth = carouselElement.scrollWidth;
     const offsetWidth = carouselElement.offsetWidth;
     const scrollLeft = carouselElement.scrollLeft;
     const scrollXBy = (uiEvent.target.classList.contains('left-arrow') ? -1 : 1) * offsetWidth;
-    
+
+    // Als we naar links gaan en bij de eerste afbeelding zijn, scroll dan naar de laatste
     if (scrollXBy < 0 && scrollLeft == 0) {
-      // Als we bij de eerste afbeelding zijn, ga dan naar de laatste
       carouselElement.scrollTo({
         left: scrollWidth - offsetWidth,
         behavior: 'smooth'
       });
-    } else if (scrollXBy > 0 && Math.abs(scrollWidth - (scrollLeft + offsetWidth)) <= 1) {
-      // Als we bij de laatste afbeelding zijn, ga dan naar de eerste
+    } 
+    // Als we naar rechts gaan en bij de laatste afbeelding zijn, scroll dan naar de eerste
+    else if (scrollXBy > 0 && Math.abs(scrollWidth - (scrollLeft + offsetWidth)) <= 1) {
       carouselElement.scrollTo({
         left: 0,
         behavior: 'smooth'
       });
-    } else {
+    } 
+    // Anders, scroll normaal
+    else {
       carouselElement.scrollBy({
         left: scrollXBy,
         behavior: 'smooth'
       });
     }
-    // Volg de <a href=""> niet als we hier zijn gekomen..
+    // Voorkom de standaardgedrag van de link
     uiEvent.preventDefault();
     
-    // Update de actieve indicator
+    // Werk de actieve indicator bij
     updateActiveIndicator();
   }
 
@@ -54,14 +57,24 @@
     // Zet de actieve indicator
     indicators[activeIndex].classList.add('is-active');
   }
+
+  // Controleer of JavaScript is ingeschakeld
+  onMount(() => {
+    // Als JavaScript is ingeschakeld, toon dan de carousel-elementen
+    const carouselElements = document.querySelectorAll('.carousel-link, .carousel-indicator');
+    carouselElements.forEach(function(element) {
+      element.style.display = 'block';
+    });
+  });
 </script>
+
 
 
 <h2>Wensen</h2>
 {#if data}
   <section class="carousel-container">
     <!-- Previous button -->
-    <a href="#" class="carousel-link left-arrow"on:click={scrollLeftOrRight}>
+    <a href="#" class="carousel-link left-arrow"on:click={scrollLeftOrRight} aria-label="Volgende slide">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
@@ -85,7 +98,7 @@
     </div>
     
     <!-- Next button -->
-    <a href="#" class="carousel-link right-arrow"on:click={scrollLeftOrRight}>
+    <a href="#" class="carousel-link right-arrow"on:click={scrollLeftOrRight} aria-label="Volgende slide">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
@@ -105,7 +118,6 @@
 {/if}
 
 <style>
-  /* Voeg hier je CSS toe */
   h2 {
     text-align: center;
     font-size: 2.1em;
@@ -113,12 +125,13 @@
   }
 
   .carousel-container {
-    width: 75%;
+    width: 60%;
     margin: 20px auto;
-    border: 2px solid #b9b9b9;
+    border: 2px solid rgba(0, 0, 0, 0.194);
     border-radius: 5px;
     overflow: hidden;
     position: relative;
+    background-color: white;
 
   }
 
@@ -126,8 +139,8 @@
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    justify-content: center; /* Hiermee wordt de carousel gecentreerd */
-    position: relative; /* Zorgt ervoor dat de indicator correct wordt gepositioneerd */
+    justify-content: center; 
+    position: relative; 
   }
 
   .carousel-inner {
@@ -135,13 +148,14 @@
   }
 
   .carousel-item {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex: 0 0 100%;
-    scroll-snap-align: center;
-  }
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 0 0 100%; 
+  scroll-snap-align: center; 
+ 
+}
 
   .carousel-item:first-child {
     margin-left: 0;
@@ -170,18 +184,18 @@
   .carousel-link {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-20%);
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: var(--blue); /* Verander de kleur van de pijlen naar wit */
+  color: var(--black); 
   font-size: 20px;
   z-index: 2;
-  border-radius: 50%; /* Maak de vorm van de pijlen een cirkel */
-  background-color: rgba(255, 255, 255, 0.468); /* Geef de pijlen een achtergrondkleur */
+  border-radius: 50%; 
+  background-color: rgba(255, 255, 255, 0.468); 
   /* border: 2px solid rgb(255, 255, 0); */
 }
   .carousel-link.left-arrow {
@@ -202,8 +216,8 @@
     --max-indicators: 5;
     position: absolute;
     bottom: 16px;
-    left: 50%; /* Zet de positie naar het midden */
-    transform: translateX(-50%); /* Centreert horizontaal */
+    left: 50%; 
+    transform: translateX(-50%); 
     max-width: calc(var(--max-indicators) * var(--indicator-size) + (var(--max-indicators) - 1) * var(--indicator-size) / 2);
     overflow: hidden;
     overflow: clip;
@@ -229,4 +243,42 @@
   .carousel-indicator-span-span.is-active {
     opacity: 1;
   }
+  .carousel-link,
+  .carousel-indicator {
+    display: none;
+  }
+  .no-js .carousel-link,
+  .no-js .carousel-indicator {
+    display: block;
+  }
+   @media screen and (max-width: 650px) {
+  .carousel {
+    width: fit-content;
+  }
+
+  .carousel-item {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    /* flex: 0 0 100%; */
+  }
+
+  .carousel-image {
+    width: 60%;
+    height: 50%;
+  }
+
+  .carousel-text {
+     width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .carousel-text h3,
+  .carousel-text p {
+    width: 100%;
+  }
+} 
 </style>
