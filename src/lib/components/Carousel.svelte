@@ -1,40 +1,35 @@
 <script>
   export let data;
   import { onMount } from 'svelte';
-
-  // Functie om naar links of rechts te scrollen
-  function scrollLeftOrRight(uiEvent) {
+    function scrollLeftOrRight(uiEvent) {
     const carouselElement = document.querySelector('.carousel');
     const scrollWidth = carouselElement.scrollWidth;
     const offsetWidth = carouselElement.offsetWidth;
     const scrollLeft = carouselElement.scrollLeft;
     const scrollXBy = (uiEvent.target.classList.contains('left-arrow') ? -1 : 1) * offsetWidth;
-
-    // Als we naar links gaan en bij de eerste afbeelding zijn, scroll dan naar de laatste
+    
     if (scrollXBy < 0 && scrollLeft == 0) {
+      // Als we bij de eerste afbeelding zijn, ga dan naar de laatste
       carouselElement.scrollTo({
         left: scrollWidth - offsetWidth,
         behavior: 'smooth'
       });
-    } 
-    // Als we naar rechts gaan en bij de laatste afbeelding zijn, scroll dan naar de eerste
-    else if (scrollXBy > 0 && Math.abs(scrollWidth - (scrollLeft + offsetWidth)) <= 1) {
+    } else if (scrollXBy > 0 && Math.abs(scrollWidth - (scrollLeft + offsetWidth)) <= 1) {
+      // Als we bij de laatste afbeelding zijn, ga dan naar de eerste
       carouselElement.scrollTo({
         left: 0,
         behavior: 'smooth'
       });
-    } 
-    // Anders, scroll normaal
-    else {
+    } else {
       carouselElement.scrollBy({
         left: scrollXBy,
         behavior: 'smooth'
       });
     }
-    // Voorkom de standaardgedrag van de link
+    // Volg de <a href=""> niet als we hier zijn gekomen..
     uiEvent.preventDefault();
     
-    // Werk de actieve indicator bij
+    // Update de actieve indicator
     updateActiveIndicator();
   }
 
@@ -57,7 +52,6 @@
     // Zet de actieve indicator
     indicators[activeIndex].classList.add('is-active');
   }
-
   // Controleer of JavaScript is ingeschakeld
   onMount(() => {
     // Als JavaScript is ingeschakeld, toon dan de carousel-elementen
@@ -67,7 +61,6 @@
     });
   });
 </script>
-
 
 
 <h2>Wensen</h2>
@@ -127,7 +120,7 @@
   .carousel-container {
     width: 60%;
     margin: 20px auto;
-    border: 2px solid rgba(0, 0, 0, 0.194);
+    /* border: 2px solid #b9b9b9; */
     border-radius: 5px;
     overflow: hidden;
     position: relative;
@@ -184,7 +177,7 @@
   .carousel-link {
   position: absolute;
   top: 50%;
-  transform: translateY(-20%);
+  transform: translateY(-50%);
   width: 40px;
   height: 40px;
   display: flex;
@@ -251,7 +244,7 @@
   .no-js .carousel-indicator {
     display: block;
   }
-   @media screen and (max-width: 650px) {
+   @media screen and (max-width: 600px) {
   .carousel {
     width: fit-content;
   }
@@ -261,16 +254,16 @@
     align-items: flex-start;
     margin: 0;
     padding: 0;
-    /* flex: 0 0 100%; */
+    flex: 0 0 50%;
   }
 
   .carousel-image {
-    width: 60%;
+    width: 100%;
     height: 50%;
   }
 
   .carousel-text {
-     width: 60%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
