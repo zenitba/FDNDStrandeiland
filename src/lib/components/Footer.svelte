@@ -117,7 +117,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    text-align: center; /* Center icons horizontally */
+    text-align: center; 
 }
   
 .social-icons li {

@@ -18,12 +18,12 @@
 	.susDevGoal {
 		max-width: 50px;
 		max-height: 50px;
-		margin: 1em;
+		margin: 1em 1em 0  0;
 	}
 
 	.container-susDevGoal {
 		display: flex;
 		flex-direction: row;
-		margin-left: 1em;
+		/* margin-left: 1em; */
 	}
 </style>

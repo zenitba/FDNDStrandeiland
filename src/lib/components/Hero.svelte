@@ -249,7 +249,20 @@
     .hero-info {
         animation: info_reveal_name 1s ease forwards;
     }
+    @media (max-width: 576px) {
+    .hero-content {
+        padding: 0 10px;
+        flex-direction: column;
+    }
     
-     
-    
+
+}
+/* Mobile to tablet */
+@media (max-width: 680px) {
+   
+    .hero-content {
+        padding: 0 10px;
+        flex-direction: column;
+    }
+}
     </style>

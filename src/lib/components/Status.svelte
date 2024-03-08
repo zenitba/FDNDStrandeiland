@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     export let data;
     import { onMount } from 'svelte';
     onMount(() => {
@@ -17,14 +17,12 @@
     });
 </script>
 
-<h2>Status wens</h2>
-<p>Risiconiveau: <img src="https://cdn-icons-png.flaticon.com/512/5318/5318148.png" alt="risicoicoon"> <img src="https://cdn-icons-png.flaticon.com/512/5318/5318148.png" alt="risicoicoon"></p>
-<p class="kosten">Kostenindicatie: <span>€€€</span></p>
+
 
 <section>
     <div class="test-container">
-        <div title="status line container"></div>
-        <!-- <section class="label-container">
+        <div title="status line container"></div> 
+         <section class="label-container">
             {#each data.statusupdates as statusupdate}
             <div>
                 <span id="circle"></span>
@@ -72,7 +70,7 @@
             {/each}
             </section>
             <div class="comment-viewable"></div>
-        </div> -->
+        </div>
 
 
 
@@ -364,4 +362,4 @@
         font-weight: lighter;
         color:var(--color-blue);
     }
-</style>
+</style> -->
