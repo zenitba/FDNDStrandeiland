@@ -1,29 +1,32 @@
 <header>
-  <div class="nav-top">
-      <div class="nav-top-links">
-          <a href="">Iets plaatsen</a>
-          <a href="">Inloggen of registreren</a>
-      </div>
-  </div>
-  <nav>
-    <div class="navbar">
-        <img src="https://hallostrandeiland.nl/blobs/gebiedsplatform/w250h250/98691/2022/50/hseTekengebied_8.png"
-            alt="Logo Strandeiland" width="55px" height="55px" loading="lazy">
-        <input class="menu-btn" type="checkbox" id="menu-btn" />
-        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-        <ul class="menu">
-          <li><a href="https://hallostrandeiland.nl/berichten">Berichten</a></li>
-          <li><a href="https://hallostrandeiland.nl/activiteiten">Activiteiten</a></li>
-          <li><a href="https://hallostrandeiland.nl/algemeen">Over Strandeiland</a></li>
-          <li><a href="https://hallostrandeiland.nl/planning">Planning</a></li>
-          <li><a href="https://hallostrandeiland.nl/overons">Participatieteam</a></li>
-          <li><a href="https://hallostrandeiland.nl/personen">Personen</a></li>
-          <li><a href="https://hallostrandeiland.nl/organisaties">Organisaties</a></li>
-          <li><a href="">Wensen</a></li>
-        </ul>
+    <div class="nav-top">
+        <div class="nav-top-links">
+            <a href="https://hallostrandeiland.nl/plaatsen" tabindex="0">Iets plaatsen</a>
+            <a href="https://hallostrandeiland.nl/aanmelden" tabindex="0">Inloggen of registreren</a>
+        </div>
     </div>
-  </nav>
-</header>
+    <nav aria-label="Hoofdnavigatie">
+      <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+      <div class="navbar" tabindex="0">
+        <img src="https://hallostrandeiland.nl/blobs/gebiedsplatform/w250h250/98691/2022/50/hseTekengebied_8.png"
+        alt="Logo Strandeiland" width="55px" height="55px" loading="lazy">
+       <input class="menu-btn" type="checkbox" id="menu-btn" />
+       <label class="menu-icon" for="menu-btn" aria-label="Menu"><span class="navicon"></span></label>
+          <ul class="menu">
+            <li><a href="https://hallostrandeiland.nl/berichten" tabindex="0">Berichten</a></li>
+            <li><a href="https://hallostrandeiland.nl/activiteiten" tabindex="0">Activiteiten</a></li>
+            <li><a href="https://hallostrandeiland.nl/algemeen" tabindex="0">Over Strandeiland</a></li>
+            <li><a href="https://hallostrandeiland.nl/planning" tabindex="0">Planning</a></li>
+            <li><a href="https://hallostrandeiland.nl/overons" tabindex="0">Participatieteam</a></li>
+            <li><a href="https://hallostrandeiland.nl/personen" tabindex="0">Personen</a></li>
+            <li><a href="https://hallostrandeiland.nl/organisaties" tabindex="0">Organisaties</a></li>
+            <li><a href="/" tabindex="0">Wensen</a></li>
+          </ul>
+      </div>
+    </nav>
+  </header>
+  
+  
 <style>
   .nav-top {
     background-color: var(--dark-grey);
@@ -201,5 +204,11 @@ nav .menu {
     }
    
 }
-
+  /* Style voor tabben */
+  .navbar:focus,
+  .nav-top a:focus,
+  .navbar ul.menu li a:focus {
+    outline: 2px solid darkblue;
+    /* outline-offset: 2px; */
+  }
 </style>
