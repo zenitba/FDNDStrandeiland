@@ -32,6 +32,6 @@ Alle medewerkers van het bedrijf moeten suggesties kunnen doen om de handprint t
 
 [Backlog](https://github.com/orgs/fdnd-agency/projects/26)
 
-[Huisstijl]()  
+[Huisstijl](https://kaankalmi.github.io/look-and-feel-living-styleguide/)
 
 [Content]()  
