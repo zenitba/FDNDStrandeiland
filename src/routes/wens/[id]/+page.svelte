@@ -1,184 +1,170 @@
 <script>
-    import Navbar from '$lib/components/Navbar.svelte';
-	import Reactie from '$lib/components/Reactie.svelte';
-	import Rollen from '$lib/components/Rollen.svelte';
-	import Status from '$lib/components/Status.svelte';
-	import Sdg from '$lib/components/SDG.svelte';
-	import Footer from '$lib/components/Footer.svelte';
+  // Imports van Svelte-componenten
+  import Navbar from '$lib/components/Navbar.svelte';
+  import Rollen from '$lib/components/Rollen.svelte';
+  import Sdg from '$lib/components/SDG.svelte';
+  import Footer from '$lib/components/Footer.svelte';
 
-	import { writable } from 'svelte/store';
 
-	export let data;
-	export const test = writable(1);
-
-	// console.log(data);
+  // Sla de data op in een store
+  import { writable } from 'svelte/store';
+  export let data;
+  export const test = writable(1);
 </script>
-<!-- Wensen layout -->
+
+<!-- Layout voor Wensen -->
 <Navbar />
-
 <main>
-	<span class="btn-back">
-		<a href="/"
-			><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"
-				><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-				<path
-					d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zm28.9-143.6L209.4 288H392c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24H209.4l75.5-72.4c9.7-9.3 9.9-24.8.4-34.3l-11-10.9c-9.4-9.4-24.6-9.4-33.9 0L107.7 239c-9.4 9.4-9.4 24.6 0 33.9l132.7 132.7c9.4 9.4 24.6 9.4 33.9 0l11-10.9c9.5-9.5 9.3-25-.4-34.3z"
-				/></svg
-			>
-			Terug</a
-		>
-	</span>
-
-	<section>
-		<p>Wens</p>
-		<span>
-			<h2>{data.wish.heading}</h2>
-			<mark>{data.wish.label}</mark>
-		</span>
-		<img src={data.wish.image.url} alt="foto van {data.wish.heading}" />
-		<time>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="icon icon-tabler icon-tabler-flag-2"
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				stroke-width="2"
-				stroke="currentColor"
-				fill="none"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-				<path d="M5 14h14v-9h-14v16" />
-			</svg>
-			Geplaatst op: {data.wish.date}</time
-		>
-		<p>{data.wish.description}</p>
-
-		<Sdg {data} />
-		<Rollen />
-		<Status {data} />
-	<div class="social">
-		
-	</div>
-	</section>
-	<Reactie />
+  <!-- Terugknop -->
+  <span class="btn btn-back">
+      <a href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+              <path d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zm28.9-143.6L209.4 288H392c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24H209.4l75.5-72.4c9.7-9.3 9.9-24.8.4-34.3l-11-10.9c-9.4-9.4-24.6-9.4-33.9 0L107.7 239c-9.4 9.4-9.4 24.6 0 33.9l132.7 132.7c9.4 9.4 24.6 9.4 33.9 0l11-10.9c9.5-9.5 9.3-25-.4-34.3z"/></svg>
+          Terug</a>
+  </span>
+  <section id="wensen" class="wensen">
+      <header>
+          <!-- Titel en label van de wens -->
+          <p>Wens</p>
+          <h2>{data.wish.heading}</h2>
+          <mark>{data.wish.label}</mark>
+      </header>
+      <!-- Afbeelding van de wens -->
+      <img src={data.wish.image.url} alt="foto van {data.wish.heading}" />
+      <div class="wrapper">
+          <time>
+              <!-- Pictogram voor datum -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-flag-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M5 14h14v-9h-14v16" />
+              </svg>
+              Geplaatst op: {data.wish.date}
+          </time>
+          <!-- Beschrijving van de wens -->
+          <div class="description">
+              <p>{data.wish.description}</p>
+          </div>
+          <!-- Sdg-component -->
+          <Sdg {data} />
+          <!-- Rollen-component -->
+          <Rollen />
+      </div>
+  </section>
 </main>
 <Footer />
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;800&display=swap');
-	main {
-		padding: var(--unit-default);
-		background-color: var(--color-accent-50);
-	}
+  /* Algemene stijl voor de hoofdinhoud */
+  main {
+      width: 80vw;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+  }
 
-	@media (max-width: 600px) {
-		main {
-			padding: 0;
-			padding-top: 25px;
-		}
-	}
+  /* Stijl voor secties */
+  section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0;
+      margin-bottom: 70px;
+      max-width: 38rem;
+  }
 
-	section {
-		max-width: 38rem;
-		display: flex;
-		flex-flow: column wrap;
-		margin-left: 20%;
-		background-color: white;
-	}
-	@media screen and (width < 600px) {
-		section {
-			margin: auto;
-			margin-top: 1.5em;
-		}
-	}
+  /* Stijl voor de inhoudswrapper */
+  .wrapper {
+      margin: 0 8% 1.3rem;
+  }
 
-	mark {
-		padding: 0em 0em 2em 3em;
-		border: none;
-		margin-bottom: var(--unit-default);
-	}
+  /* Stijl voor de header */
+  header {
+      margin: 5% 8% 2.5rem;
+      display: block;
+  }
 
-	.btn-back{
-    margin: 20px 100px;
-	display: flex;
-	flex-direction: row;
-	justify-content: start;
-	/* width: 100vw; */
-	}
+  /* Stijl voor paragrafen in de header */
+  header p {
+      font-variant-caps: all-small-caps;
+      letter-spacing: 1px;
+      font-size: 92%;
+      margin: 0 0 1.6rem 0;
+  }
 
-	time {
-		display: flex;
-		align-items: center;
-		gap: var(--unit-small);
-		padding: 1em 0em 1em 2em;
-	}
+  /* Stijl voor koppen in de header */
+  header h2 {
+    font-size: 2rem;
+      line-height: 1.17;
+      font-weight: 800;
+      margin-bottom: 1.52rem;
+  }
 
-	section img {
-		width: 100%;
-		height: 20rem;
-		object-fit: cover;
-		margin-bottom: var(--unit-default);
-		background-color: var(--color-primary-50);
-		border-radius: var(--unit-micro);
-	}
-	h2 {
-		font-family: 'Poppins', sans-serif;
-		font-weight: 800;
-		color: #333;
-		font-size: 1.7em;
-		padding: 0em 0em 0em 1.8em;
-	}
-	section p:first-child {
-		padding: 3em 0em 2em 3em;
-		font-variant-caps: all-small-caps;
-	}
-	section p {
-		padding: 1em 0em 1em 2em;
-	}
+  /* Stijl voor markeringen in de header */
+  header mark {
+      font-size: 90%;
+      line-height: 126%;
+      width: 68%;
+  }
 
-	a {
-		text-decoration: none;
-	}
-	a:visited {
-		color: black;
-	}
+  /* Stijl voor afbeeldingen */
+  img {
+      max-width: 100%;
+  }
 
-	main > span {
-		font-size: 14px;
-		width: 80vw;
-	}
-	#rollen {
-		margin-left: 18%;
-	}
+  /* Algemene stijl voor knoppen */
+  span{
+  padding-left: 0;
+  padding-right: 0;
+  display: inline-flex;
+  align-items: center; 
+  margin: 1.5rem 0; 
+  }
+  
+  span a{
+    color: black;
+  }
 
-	/* Sustainable development goals */
-	.susDevGoal {
-		max-width: 50px;
-		max-height: 50px;
-		margin: 1em;
-	}
-	
-	.container-susDevGoal {
-		display: flex;
-		flex-direction: row;
-		margin-left: 2em;
-	}
-	@media screen and (width < 600px) {
-		section {
-			width: 20em;
-		}
-	}
-	@media screen and (width < 665px) {
-		section {
-			width: 25em;
-		}
-	}
-	@media screen and (width < 765px) {
-		section {
-			max-width: 30em;
-		}
-	}
+  .btn {
+      display: inline-block;
+      font-weight: 400;
+      color: #333;
+      text-align: center;
+      vertical-align: middle;
+      user-select: none;
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 0;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  /* Stijl voor terugknop */
+  .btn-back {
+      letter-spacing: .23px;
+  }
+
+  /* Stijl voor tijdselementen */
+  time {
+      display: flex;
+      align-items: center;
+      gap: var(--unit-small);
+      padding: 1em 0em 1em 0em;
+      margin: 2% 0%;
+  }
+
+  /* Stijl voor deelknoppen */
+  .go_share-wrapper a {
+      margin-left: 0.5rem;
+      display: inline-block;
+      font-size: 80%;
+      padding: 0.1rem;
+  }
 </style>
