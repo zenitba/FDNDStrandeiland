@@ -1,7 +1,7 @@
 
 <!-- Hero -->
 <section class="hero">
-    <img class="hero-bg" src="/styles/hero.jpg" alt="Hero Background" loading="eager" width="2000" height="1000">
+    <img class="hero-bg" src="/styles/hero.jpg" alt="Hero Background" loading="eager" width="2000" height="1000"/>
      <div class="container">
         <div class="hero-content">
             <div class="hero-text">
