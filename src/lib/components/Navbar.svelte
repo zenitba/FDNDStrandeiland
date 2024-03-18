@@ -5,7 +5,7 @@
             <a href="https://hallostrandeiland.nl/aanmelden">Inloggen of registreren</a>
         </div>
     </div>
-    <nav>
+    <nav aria-label="Hoofdnavigatie">
         <div class="navbar">
             <img src="/styles/logo 1.jpg" alt="Logo Strandeiland" width="55px" height="55px" loading="eager">
             <input class="menu-btn" type="checkbox" id="menu-btn" />
@@ -179,17 +179,7 @@
       }
   
   }
-  .nav-top a:focus,
-  .navbar li a:focus {
-    outline: 2px solid var(--black); 
-  }
 
-/* Focus-stijlen voor links */
-/* .nav-top a:focus,
-.navbar li a:focus {
-    outline: 2px solid var(--black); 
-    outline-offset: 4px; 
-} */
 
   @media screen and (max-width: 800px) {
       .navbar {
