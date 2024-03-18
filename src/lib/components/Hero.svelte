@@ -1,7 +1,8 @@
+
 <!-- Hero -->
 <section class="hero">
-    <img class="hero-bg" src="https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.webp" alt="Hero Background" loading="lazy" width="2000px" height="1000px">
-    <div class="container">
+    <img class="hero-bg" src="/styles/hero.jpg" alt="Hero Background" loading="eager" width="2000" height="1000">
+     <div class="container">
         <div class="hero-content">
             <div class="hero-text">
                 <span>Welkom</span>
@@ -19,11 +20,12 @@
                 <p>
                 Samen kunnen we ervoor zorgen dat Strandeiland een duurzame en leefbare woonwijk wordt!
                 </p>
-                <a href="https://hallostrandeiland.nl/plaatsen" aria-label="Link naar strandeiland informatie" class="btn btn-primary">Deel jouw Strandeiland-info</a>
+                <a href="https://hallostrandeiland.nl/plaatsen" aria-label="Link naar Strandeiland informatie" role="button" class="btn btn-primary">Deel jouw Strandeiland-info</a>
             </div>
         </div>
     </div>
 </section>
+
 
 <style>
     /* Hero */
@@ -53,19 +55,24 @@
         background-position: 18% 100%;
         padding-bottom: 9rem !important;
     }
-    .hero {
-        background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.webp");
-        background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.png");
-        background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.avif");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        padding: 6rem 0 3rem;
-        display: flex;
-        position: relative;
-        overflow: hidden;
-        align-items: center;
-    }
+   /* Hero */
+   .hero {
+    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.webp");
+    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.png");
+    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 0 3rem;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+
+    /* Containment toegevoegd */
+    contain: layout style;
+}
+
  
     /* Hero layout */
     .hero-content {
@@ -162,6 +169,7 @@
     .btn:not(:disabled):not(.disabled) {
         cursor: pointer;
     }
+ 
     /* Animatie hero text*/
     @keyframes text_reveal_box {
         50% {
@@ -265,4 +273,94 @@
         flex-direction: column;
     }
 }
-    </style>
+/* Animatie alleen activeren als de gebruiker geen voorkeur heeft voor verminderde beweging */
+@media (prefers-reduced-motion: no-preference) {
+    @keyframes text_reveal_box {
+        50% {
+            width: 100%;
+            left: 0;
+        }
+        100% {
+            width: 0;
+            left: 100%;
+        }
+    }
+    
+    @keyframes text_reveal_name {
+        100% {
+        }
+    }
+    
+    .hero-text span {
+        position: relative;
+        overflow: hidden;
+        background-color: inherit; 
+    }
+    
+    .hero-text span::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: inherit; 
+        animation: text_reveal_box 2s ease forwards; 
+    }
+    
+    .hero-text span {
+        animation: text_reveal_name 1s ease forwards; 
+    }
+    
+    /* Animatie hero info*/
+    @keyframes info_reveal_box {
+        0% {
+            width: 0;
+            left: 100%;
+        }
+        100% {
+            width: 100%;
+            left: 0;
+        }
+    }
+    
+    @keyframes info_reveal_box {
+        50% {
+            width: 100%;
+            left: 0;
+        }
+        100% {
+            width: 0;
+            left: 100%;
+        }
+    }
+    
+    @keyframes info_reveal_name {
+        100% {
+        
+        }
+    }
+    
+    .hero-info {
+        position: relative;
+        overflow: hidden;
+        background-color: var(--yellow); 
+    }
+    
+    .hero-info::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: inherit; 
+        animation: info_reveal_box 1.8s ease forwards; 
+    }
+    
+    .hero-info {
+        animation: info_reveal_name 1s ease forwards;
+    }
+}
+
+</style>

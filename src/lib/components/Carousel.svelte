@@ -2,7 +2,6 @@
   export let data;
   import { onMount } from 'svelte';
 
-  // Functie om naar links of rechts te scrollen
   function scrollLeftOrRight(uiEvent) {
     const carouselElement = document.querySelector('.carousel');
     const scrollWidth = carouselElement.scrollWidth;
@@ -10,35 +9,27 @@
     const scrollLeft = carouselElement.scrollLeft;
     const scrollXBy = (uiEvent.target.classList.contains('left-arrow') ? -1 : 1) * offsetWidth;
 
-    // Als we naar links gaan en bij de eerste afbeelding zijn, scroll dan naar de laatste
     if (scrollXBy < 0 && scrollLeft == 0) {
       carouselElement.scrollTo({
         left: scrollWidth - offsetWidth,
         behavior: 'smooth'
       });
-    } 
-    // Als we naar rechts gaan en bij de laatste afbeelding zijn, scroll dan naar de eerste
-    else if (scrollXBy > 0 && Math.abs(scrollWidth - (scrollLeft + offsetWidth)) <= 1) {
+    } else if (scrollXBy > 0 && Math.abs(scrollWidth - (scrollLeft + offsetWidth)) <= 1) {
       carouselElement.scrollTo({
         left: 0,
         behavior: 'smooth'
       });
-    } 
-    // Anders, scroll normaal
-    else {
+    } else {
       carouselElement.scrollBy({
         left: scrollXBy,
         behavior: 'smooth'
       });
     }
-    // Voorkom de standaardgedrag van de link
     uiEvent.preventDefault();
-    
-    // Werk de actieve indicator bij
+
     updateActiveIndicator();
   }
 
-  // Functie om de actieve indicator bij te werken
   function updateActiveIndicator() {
     const carouselElement = document.querySelector('.carousel');
     const scrollLeft = carouselElement.scrollLeft;
@@ -48,25 +39,22 @@
     const activeIndex = Math.round(scrollLeft / scrollWidth * totalItems);
 
     const indicator = document.querySelector('.carousel-indicator-span');
-    // Reset alle indicatoren
     const indicators = indicator.querySelectorAll('.carousel-indicator-span-span');
     indicators.forEach((indicator, index) => {
       indicator.classList.remove('is-active');
     });
 
-    // Zet de actieve indicator
     indicators[activeIndex].classList.add('is-active');
   }
 
-  // Controleer of JavaScript is ingeschakeld
   onMount(() => {
-    // Als JavaScript is ingeschakeld, toon dan de carousel-elementen
     const carouselElements = document.querySelectorAll('.carousel-link, .carousel-indicator');
     carouselElements.forEach(function(element) {
       element.style.display = 'block';
     });
   });
 </script>
+
 
 <h2>Wensen</h2>
 {#if data}
@@ -77,15 +65,15 @@
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
     </a>
-    
+
     <div class="carousel">
       <!-- Carousel items -->
       <div class="carousel-inner">
         {#each data.wishes as wish}
           <div class="carousel-item">
-            <img class="carousel-image" src={wish.image.url} alt={wish.heading} decoding="async" width="150px" height="150px" loading="lazy"/>
+            <img class="carousel-image" src={wish.image.url} alt="{wish.heading}" decoding="async" width="150px" height="150px" loading="lazy"/>
             <div class="carousel-text">
-              <a href={`wens/${wish.id}`}>
+              <a href={`wens/${wish.id}`} aria-label="Links naar beschijving van {wish.heading}" role="button">
                 <h3>{wish.heading}</h3>
               </a>
               <p>{wish.description}</p>
@@ -94,14 +82,14 @@
         {/each}
       </div>
     </div>
-    
+
     <!-- Next button -->
     <a href="#" class="carousel-link right-arrow" on:click={scrollLeftOrRight} aria-label="Volgende slide">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
     </a>
-    
+
     <!-- Carrousel indicator -->
     <div class="carousel-indicator">
       <span class="carousel-indicator-span">
@@ -115,6 +103,7 @@
   <p>Loading...</p>
 {/if}
 
+
 <style>
   h2 {
     text-align: center;
@@ -123,14 +112,13 @@
   }
 
   .carousel-container {
-    width: 60%;
+    width: 70%;
+    height: auto;
     margin: 20px auto;
-    border: 2px solid rgba(0, 0, 0, 0.194);
     border-radius: 5px;
     overflow: hidden;
     position: relative;
     background-color: white;
-
   }
 
   .carousel {
@@ -143,30 +131,22 @@
 
   .carousel-inner {
     display: flex;
+    width: -webkit-fill-available;
   }
 
   .carousel-item {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex: 0 0 100%; 
-  scroll-snap-align: center; 
- 
-}
-  .carousel-item:first-child {
-    margin-left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 0 0 100%; 
+    scroll-snap-align: center; 
   }
-
-  .carousel-item:not(:last-child) {
-    margin-right: 0;
-  }
-
   .carousel-image {
-    width: 50%;
-    height: 99%;
+    width:50%;
+    height: 100%;
   }
-
+  
   .carousel-text {
     flex: 1;
     padding: 20px;
@@ -174,27 +154,28 @@
 
   .carousel-text h3,
   .carousel-text p {
-    margin: 0;
+    margin: 20px 0;
     color: black;
+    word-wrap: break-word;
   }
 
   .carousel-link {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-20%);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: var(--black); 
-  font-size: 20px;
-  z-index: 2;
-  border-radius: 50%; 
-  background-color: rgba(255, 255, 255, 0.468); 
-  /* border: 2px solid rgb(255, 255, 0); */
-}
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--black); 
+    font-size: 20px;
+    z-index: 2;
+    border-radius: 50%; 
+    background-color: rgba(255, 255, 255, 0.468); 
+  }
+
   .carousel-link.left-arrow {
     left: 10px;
   }
@@ -248,34 +229,49 @@
   .no-js .carousel-indicator {
     display: block;
   }
-   @media screen and (max-width: 680px) {
-  .carousel {
-    width: fit-content;
+
+  @media only screen and (max-width: 750px) {
+    h2 {
+      font-size: 1.5em;
+    }
+
+    .carousel-container {
+      width: 90%; 
+    }
+
+    .carousel-item {
+      flex-direction: column; 
+    }
+
+    .carousel-image {
+      width: 100%; 
+      height: 300px; 
+    }
   }
 
-  .carousel-item {
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0;
-    padding: 0;
-    /* flex: 0 0 100%; */
-  }
+  @media only screen and (max-width:320px) {
+    h2 {
+      font-size: 1.2em;
+    }
 
-  .carousel-image {
-    width: 60%;
-    height: 50%;
-  }
+    .carousel-container {
+      width: 90%; 
+      height: fit-content;
+    }
 
-  .carousel-text {
-     width: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+    .carousel-item {
+      flex-direction: column;
+    }
 
-  .carousel-text h3,
-  .carousel-text p {
-    width: 100%;
+    .carousel-image {
+      width: 100%; 
+      height: 300px;
+    }
   }
-} 
+  /* Focus-stijlen voor interactieve elementen binnen de carousel */
+/* .carousel-link:focus{
+  outline: 2px solid var(--black);
+  outline-offset: 4px; 
+
+} */
 </style>

@@ -6,7 +6,6 @@
     import Hero from '$lib/components/Hero.svelte';
     import Carousel from '$lib/components/Carousel.svelte';
 	import Wensenoverview from "../lib/components/Wensenoverview.svelte";
-    import Filter from '$lib/components/Filter.svelte';
     import Footer from '$lib/components/Footer.svelte';
     
     onMount(() => {});
@@ -15,8 +14,7 @@
 <Navbar />
 <Hero  />
 <Carousel {data}/>
-<Wensenoverview  {data} />
-<Filter  />
+<Wensenoverview />
 <Footer />
 
 

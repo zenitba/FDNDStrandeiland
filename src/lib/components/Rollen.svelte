@@ -119,7 +119,7 @@
             <div class="btn" id="mydiv">
                 <button on:click={countClicks} id="wens" class="button" class:active={activeId == 'wens'}>Ik deel deze wens</button>
                 <button on:click={countClicks2} id="helpen" class="button" class:active={activeId == 'helpen'}>Ik wil helpen</button>
-                <button on:click={countClicks3} id="trekken" class="button" class:active={activeId == 'trekken'}>Ik wil trekker zijn</button>
+                <button on:click={countClicks3} id="trekken" class="button" class:active={activeId == 'trekken'}>Ik wil trekker zijn</button>                
             </div>
         </div>
     </article>
@@ -272,4 +272,12 @@
     article ul li {
         margin-bottom: 5px;
     }
+/* Focus-stijlen voor meldingen */
+/* #wens:focus,
+#helpen:focus,
+#trekken:focus {
+  outline: 2px solid var(--black);
+  outline-offset: 4px; 
+} */
+
 </style>

@@ -2,16 +2,23 @@
   import { onMount } from 'svelte';
 
   onMount(() => {
-    document.querySelector('body').classList.add('loaded');
+    // Wacht een korte tijd voordat u de 'loaded'-class toevoegt
+    setTimeout(() => {
+      // Controleren of window beschikbaar is
+      if (typeof window !== 'undefined') {
+        document.querySelector('body').classList.add('loaded');
+      }
+    }, 100); // Wacht 100 milliseconden voordat de class wordt toegevoegd
   });
 </script>
+
 <div class="preloader">
-<div class="loader-wrapper">
-  <div class="loader"></div>
-  <div class="loader-section section-left"></div>
-   <div class="loader-section section-right"></div>
- </div>
-   </div>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+  </div>
+</div>
  <style>
  
  /* Loader Styles start here */
@@ -133,5 +140,20 @@
    transform:translateY(-100%);
    transition: all .3s 1s ease-out;
  }
- 
+  /* Geladen stijlen */
+  .loaded .loader-wrapper .loader {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .loaded .loader-wrapper .loader-section {
+    transform: translateY(-100%);
+    transition: transform 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+  }
+
+  .loaded .loader-wrapper {
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: visibility 0s 1s, transform 0.3s 1s ease-out;
+  }
  </style> -->
