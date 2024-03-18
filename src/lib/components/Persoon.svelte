@@ -1,4 +1,11 @@
-<!-- Personen component
+<!-- <script>
+    import { onMount } from 'svelte';
+        onMount(() => {
+            const enhancedDescription = document.querySelector("#enhancedDescription");
+
+            enhancedDescription.classList.add("hide");
+    });
+</script>
 <section class="persoon_section">
 	<article class="persoon_artikel">
 		<p class="persoon_naam">Elske Rollema</p>
@@ -17,15 +24,7 @@
 		</p>
 	</article>
 </section>
- <script>
-    import { onMount } from 'svelte';
-        onMount(() => {
-            const enhancedDescription = document.querySelector("#enhancedDescription");
 
-            enhancedDescription.classList.add("hide");
-    });
-word nu niet gebruikt
-</script>
 
 <article class="persoon_beschrijving">
     <h2 class="beschrijving_titel">Mijn werk en hobbies ▼</h2>
@@ -114,4 +113,4 @@ display: block;
 		font-size: 16px;
 		text-align: left;
 	}
-</style> -->
+</style>  -->
