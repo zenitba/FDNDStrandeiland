@@ -26,7 +26,6 @@
         } else {
             roleError = '';
         }
-  
         const reaction = {comment, role, status: currentStatus};
   
         if (reactions.length >= 3) {
