@@ -3,7 +3,7 @@
     import Navbar from '$lib/components/Navbar.svelte';
     import Rollen from '$lib/components/Rollen.svelte';
     import Sdg from '$lib/components/SDG.svelte';  
-    import Status from '$lib/components/status.svelte';
+    import Status from '$lib/components/Status.svelte';
     import Footer from '$lib/components/Footer.svelte';
 
   
