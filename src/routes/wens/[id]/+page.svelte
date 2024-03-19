@@ -41,9 +41,10 @@
             <div class="wrapper">
             <time>
                 <!-- Pictogram voor datum -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-flag-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M5 14h14v-9h-14v16" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-flag" width="26" height="26" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                  <path d="M5 21v-7" />
                 </svg>
                 Geplaatst op: {data.wish.date}
             </time>
@@ -169,15 +170,8 @@
         gap: var(--unit-small);
         padding: 1em 0em 1em 0em;
         margin: 2% 0%;
+        font-weight: 800;
     }
-  
-  /* Focus-stijlen voor interactieve elementen */
-.btn:focus,
-a:focus {
-  outline: 2px solid var(--black); 
-  outline-offset: 4px; 
-  border-radius: 5px;
-}
 
   </style>
   
