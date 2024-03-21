@@ -134,7 +134,7 @@ button {
     gap: var(--unit-micro);
     border: unset;
     border-radius: var(--unit-micro);
-    padding: var(--unit-micro) var(--unit-default) var(--unit-micro) 0.8em;
+    padding: var(--unit-micro) var(--unit-default) var(--unit-micro);
     transition: 0.2s ease-in-out;
 }
 button:is(:hover, :focus) {
