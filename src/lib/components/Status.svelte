@@ -1,90 +1,92 @@
 <script>
-  export let data;
-  let reactions = [];
-  let currentStatus = '';
-  let selectedStatus = null;
-  let commentError = '';
-  let roleError = '';
-  let statusupdate = null; // Declare statusupdate and initialize it to null
-
-  function addReaction(event) {
+    export let data;
+    let reactions = [];
+    let currentStatus = '';
+    let selectedStatus = null;
+    let commentError = '';
+    let roleError = '';
+    let statusupdate = null; // Declare statusupdate and initialize it to null
+  
+    function addReaction(event) {
       event.preventDefault();
       const formData = new FormData(event.target);
       const comment = formData.get('comment');
       const role = formData.get('role');
-
+  
       if (!comment.trim()) {
-          commentError = 'Je moet een reactie invoeren voordat je reageert.';
-          return;
+        commentError = 'Je moet een reactie invoeren voordat je reageert.';
+        return;
       } else {
-          commentError = '';
+        commentError = '';
       }
-
+  
       if (!role) {
-          roleError = 'Selecteer je rol voordat je reageert.';
-          return;
+        roleError = 'Selecteer je rol voordat je reageert.';
+        return;
       } else {
-          roleError = '';
+        roleError = '';
       }
       const reaction = {text: comment, role}; // Modify the reaction object to include 'text' property instead of 'comment'
-      
+  
       if (statusupdate) {
-          if (!statusupdate.reaction) {
-              statusupdate.reaction = []; // Initialize statusupdate.reaction if it's not defined
-          }
-          if (statusupdate.reaction.length >= 3) {
-              statusupdate.reaction.shift();
-          }
-
-          statusupdate.reaction.push(reaction);
+        if (!statusupdate.reaction) {
+          statusupdate.reaction = []; // Initialize statusupdate.reaction if it's not defined
+        }
+        if (statusupdate.reaction.length >= 3) {
+          statusupdate.reaction.shift();
+        }
+  
+        statusupdate.reaction.push(reaction);
       }
-
+  
       commentError = '';
       roleError = '';
       event.target.reset();
       renderReactions(statusupdate.reaction); // Render reactions after adding a new reaction
-  }
-
-  function changeStatus(status) {
+    }
+  
+    function changeStatus(status) {
       if (selectedStatus === status) {
-          selectedStatus = null;
-          document.querySelector('.chat').classList.remove('opened');
-          statusupdate = null; // Reset statusupdate
+        selectedStatus = null;
+        document.querySelector('.chat').classList.remove('opened');
+        statusupdate = null; // Reset statusupdate
       } else {
-          selectedStatus = status;
-          document.querySelector('.chat').classList.add('opened');
-          currentStatus = status;
-          statusupdate = data.statusupdates.find(update => update.comment.text === status); // Find the selected statusupdate
-          if (!statusupdate) {
-              statusupdate = { reaction: [] }; // If statusupdate is not found, create an empty one
-          }
-          renderReactions(statusupdate.reaction); // Render reactions for the selected statusupdate
+        selectedStatus = status;
+        document.querySelector('.chat').classList.add('opened');
+        currentStatus = status;
+        statusupdate = data.statusupdates.find(update => update.comment.text === status); // Find the selected statusupdate
+        if (!statusupdate) {
+          statusupdate = { reaction: [] }; // If statusupdate is not found, create an empty one
+        } else if (!statusupdate.reaction) {
+          statusupdate.reaction = []; // Initialize statusupdate.reaction if it's not defined
+        }
+        renderReactions(statusupdate.reaction); // Render reactions for the selected statusupdate
       }
-  }
-
-  function renderReactions(reactions) {
+    }
+  
+    function renderReactions(reactions) {
       const chatList = document.querySelector('.chat ul');
       chatList.innerHTML = '';
-
+  
       if (reactions && reactions.length > 0) {
-          reactions.forEach(reaction => {
-              const li = document.createElement('li');
-              li.textContent = `${reaction.text} - ${reaction.role}`;
-              chatList.appendChild(li); // Change 'prepend' to 'appendChild' to maintain the order of reactions
-          });
-      } else {
+        reactions.forEach(reaction => {
           const li = document.createElement('li');
-          li.textContent = 'Geen reacties';
-          chatList.appendChild(li);
+          li.textContent = `${reaction.text} - ${reaction.role}`;
+          chatList.appendChild(li); // Change 'prepend' to 'appendChild' to maintain the order of reactions
+        });
+      } else {
+        const li = document.createElement('li');
+        li.textContent = 'Geen reacties';
+        chatList.appendChild(li);
       }
-  }
-</script>
+    }
+  </script>
+  
 
 
 <section>
   <h2 class="status-title">Status wens</h2>
   <noscript>
-      <!-- Instructies voor het inschakelen van JavaScript -->
       Voor volledige functionaliteit van deze site is het nodig JavaScript in te schakelen. Hier zijn de <a href="https://www.enable-javascript.com/">instructies voor het inschakelen van JavaScript in uw webbrowser</a>.
   </noscript>
   <ul class="timeline timeline-vertical">
@@ -96,7 +98,13 @@
             <a href="/" on:click={e => { e.preventDefault(); changeStatus(statusupdate.comment.text); }}>
                 {statusupdate.comment.text}
             </a>
-            <div class="comment-viewer">{statusupdate.reaction.length}Reacties</div>
+            <div class="comment-viewer">
+                {#if statusupdate.reaction}
+                  {statusupdate.reaction.length} Reacties
+                {:else}
+                  0 Reacties
+                {/if}
+              </div>
         </div>
     </li>   
 {/each}
@@ -134,7 +142,7 @@
           <button type="submit">Reageer</button>
       </form>
   </div>
-</section>
+</section> 
 
 <style>
 section {

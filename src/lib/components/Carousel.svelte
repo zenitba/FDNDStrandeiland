@@ -1,5 +1,7 @@
 <script>
   export let data;
+  import { goto } from '$app/navigation';
+
   import { onMount } from 'svelte';
 
   function scrollLeftOrRight(uiEvent) {
@@ -48,17 +50,18 @@
   onMount(() => {
     const carouselElements = document.querySelectorAll('.carousel-link, .carousel-indicator');
     carouselElements.forEach(function(element) {
-      element.style.display = 'block';
+      element.hidden = false;
     });
   });
 </script>
+
 
 <h2>Wensen</h2>
 
 {#if data}
 <section class="carousel-container">
   <!-- Previous button -->
-  <a href="#" class="carousel-link left-arrow" on:click={scrollLeftOrRight} aria-label="Volgende slide">
+  <a href="#" class="carousel-link left-arrow" on:click={scrollLeftOrRight} title="Volgende slide" hidden>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
       <polyline points="15 18 9 12 15 6"></polyline>
     </svg>
@@ -68,11 +71,11 @@
     <div class="carousel-inner">
       {#each data.wishes as wish}
       <div class="carousel-item">
-        <img class="carousel-image" src={wish.image.url} alt={wish.heading} decoding="async" width="150px" height="150px" loading="lazy"/>
+        <img class="carousel-image" src={wish.image.url} alt="" decoding="async" width="150px" height="150px" loading="lazy"/>
         <div class="carousel-text">
-          <a href={`wens/${wish.id}`}>
-            <h3>{wish.heading}</h3>
-          </a>
+          <h3>
+            <a href={`/overzicht/wens/${wish.id}`}>{wish.heading}</a>
+          </h3>
           <p>{wish.description}</p>
           <time>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -94,14 +97,14 @@
   </div>
 
   <!-- Next button -->
-  <a href="#" class="carousel-link right-arrow" on:click={scrollLeftOrRight} aria-label="Volgende slide">
+  <a href="#" class="carousel-link right-arrow" on:click={scrollLeftOrRight} title="Volgende slide" hidden>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
   </a>
 
   <!-- Carrousel indicator -->
-  <div class="carousel-indicator">
+  <div class="carousel-indicator" hidden>
     <span class="carousel-indicator-span">
       {#each data.wishes as wish, index}
       <span class="carousel-indicator-span-span {index === 0 ? 'is-active' : ''}"></span>
@@ -112,6 +115,15 @@
 {:else}
 <p>Loading...</p>
 {/if}
+<div class="btn-back">
+  <a href="/overzicht">
+    Bekijk alle wensen
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-arrow-right-filled" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 2l.324 .005a10 10 0 1 1 -.648 0l.324 -.005zm.613 5.21a1 1 0 0 0 -1.32 1.497l2.291 2.293h-5.584l-.117 .007a1 1 0 0 0 .117 1.993h5.584l-2.291 2.293l-.083 .094a1 1 0 0 0 1.497 1.32l4 -4l.073 -.082l.064 -.089l.062 -.113l.044 -.11l.03 -.112l.017 -.126l.003 -.075l-.007 -.118l-.029 -.148l-.035 -.105l-.054 -.113l-.071 -.111a1.008 1.008 0 0 0 -.097 -.112l-4 -4z" stroke-width="0" fill="currentColor" />
+    </svg>
+  </a>
+</div>
 
 <style>
   h2 {
@@ -121,13 +133,14 @@
   }
 
   .carousel-container {
-    width: 70%;
-    margin: 20px auto;
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
-    background-color: white;
-  }
+  width: 70%;
+  margin: 20px auto;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+}
+
 
   .carousel {
     display: flex;
@@ -135,6 +148,8 @@
     scroll-snap-type: x mandatory;
     justify-content: center;
     position: relative;
+    scrollbar-width:thin;
+
   }
 
   .carousel-inner {
@@ -161,30 +176,25 @@
 
   .carousel-image {
     width: 50%;
-    height: 99%;  
+    height:99%;
   }
 
   .carousel-text {
     flex: 1;
     padding: 20px;
   }
+  .carousel-text h3, a{
+    font-size: 1.1em;
+  }
 
-  .carousel-text h3,
+  .carousel-text h3, a,
   .carousel-text p {
     margin:20px 0 0 0 ;
     color: #333;
     word-wrap: break-word;
   }
 
-  .carousel-link,
-  .carousel-indicator {
-    display: none;
-  }
 
-  .no-js .carousel-link,
-  .no-js .carousel-indicator {
-    display: block;
-  }
 
   time {
       display: flex;
@@ -193,10 +203,35 @@
   }
   
   time .support{
-    font-weight: 800;
+    font-weight: 600;
     margin: 15px 0;
   }
+  .btn-back{
+    padding-left: 0;
+    padding-right: 0;
+    display: inline-flex;
+    align-items: center; 
+    width: 100%;
+    margin-bottom: 20px;
+    }
+    
+  .btn-back a{
+    color: black;
+    font-size: 1.1em;
+  }
 
+  .btn-back svg{
+    margin: -4px 1px;
+  }
+
+  .btn-back {
+    display: inline-block;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
   .carousel-link {
     position: absolute;
     top: 50%;
@@ -261,6 +296,8 @@
     opacity: 1;
   }
 
+
+
   @media only screen and (max-width: 750px) {
     h2 {
       font-size: 1.5em;
@@ -299,4 +336,5 @@
       height: 300px;
     }
   }
+  
 </style>

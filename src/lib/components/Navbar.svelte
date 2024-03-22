@@ -5,11 +5,11 @@
             <a href="https://hallostrandeiland.nl/aanmelden">Inloggen of registreren</a>
         </div>
     </div>
-    <nav aria-label="Hoofdnavigatie">
+    <nav>
         <div class="navbar">
-            <img src="/styles/logo 1.jpg" alt="Logo Strandeiland" width="55px" height="55px" loading="eager">
-            <input class="menu-btn" type="checkbox" id="menu-btn" />
-            <label class="menu-icon" for="menu-btn" ><span class="navicon"></span></label>
+            <img src="/styles/logo 1.jpg"  alt="Logo Strandeiland" width="55" height="55" loading="eager">
+            <input class="menu-btn" type="checkbox" id="menu-btn">
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
             <ul class="menu">
                 <li><a href="https://hallostrandeiland.nl/berichten">Berichten</a></li>
                 <li><a href="https://hallostrandeiland.nl/activiteiten">Activiteiten</a></li>
@@ -179,7 +179,17 @@
       }
   
   }
+  .nav-top a:focus-visible,
+  .navbar li a:focus-visible {
+    outline: 2px solid var(--black); 
+  }
 
+/* Focus-stijlen voor links */
+/* .nav-top a:focus,
+.navbar li a:focus {
+    outline: 2px solid var(--black); 
+    outline-offset: 4px; 
+} */
 
   @media screen and (max-width: 800px) {
       .navbar {

@@ -1,7 +1,11 @@
 
 <!-- Hero -->
 <section class="hero">
-    <img class="hero-bg" src="/styles/hero.jpg" alt="Hero Background" loading="eager" width="2000" height="1000"/>
+    <picture>
+        <source type="image/webp">
+        <img class="hero-bg" src="/styles/hero.jpg" alt="" fetchpriority="high" width="2000" height="1000"/>
+
+    </picture>
      <div class="container">
         <div class="hero-content">
             <div class="hero-text">
@@ -20,7 +24,7 @@
                 <p>
                 Samen kunnen we ervoor zorgen dat Strandeiland een duurzame en leefbare woonwijk wordt!
                 </p>
-                <a href="https://hallostrandeiland.nl/plaatsen" aria-label="Link naar Strandeiland informatie" role="button" class="btn btn-primary">Deel jouw Strandeiland-info</a>
+                <a href="https://hallostrandeiland.nl/plaatsen" class="btn btn-primary">Deel jouw Strandeiland-info</a>
             </div>
         </div>
     </div>
