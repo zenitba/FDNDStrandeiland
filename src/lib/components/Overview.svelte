@@ -46,7 +46,7 @@
             <img src="{wish.image.url}" alt="{wish.heading}" decoding="async" loading="lazy"/>
         </div>
         <div class="text-container">
-            <a href={`wens/${wish.id}`}>
+            <a href={`/overzicht/wens/${wish.id}`}>
                 <h3>
                     {#if wish.heading.split(' ').length > 3}
                         {wish.heading.split(' ').slice(0, 3).join(' ')}...
@@ -136,7 +136,7 @@
     margin-bottom: 50px;
     width: 90%;
     }
-    
+  
     .grid-item {
         background-color: #ffffff;
         border-radius: 5px;
@@ -184,7 +184,7 @@
     }
     
     .text-container .support {
-        font-weight: 800;
+        font-weight: 600;
     }
     
     .susDevGoal {
@@ -226,8 +226,23 @@
         color: var(--beige);
         background-color: var(--black);
     }
+    @media only screen and (max-width: 768px) {
+  button, .list-btn, .grid-btn {
+    margin-left: 10px; /* Correctie: dit was 'margin-left: 20p;' */
+  }
+  .grid-btn{
+    margin-left: 30px;
+  }
+}
+@media only screen and (max-width: 450px) {
+    button, .list-btn, .grid-btn {
+display: block; 
+margin: 20px;
+ }
 
-    /* Lijstweergave */
+
+}
+  /* Lijstweergave */
     .grid-container.list-view {
         display: flex;
         flex-direction: column;
@@ -295,4 +310,6 @@
             width: 100%;
         }
     }
+
+  
 </style>

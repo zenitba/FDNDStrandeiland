@@ -7,9 +7,9 @@
     </div>
     <nav>
         <div class="navbar">
-            <img src="/styles/logo 1.jpg" alt="Logo Strandeiland" width="55px" height="55px" loading="eager">
-            <input class="menu-btn" type="checkbox" id="menu-btn" />
-            <label class="menu-icon" for="menu-btn" ><span class="navicon"></span></label>
+            <img src="/styles/logo 1.jpg"  alt="Logo Strandeiland" width="55" height="55" loading="eager">
+            <input class="menu-btn" type="checkbox" id="menu-btn">
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
             <ul class="menu">
                 <li><a href="https://hallostrandeiland.nl/berichten">Berichten</a></li>
                 <li><a href="https://hallostrandeiland.nl/activiteiten">Activiteiten</a></li>
@@ -179,8 +179,8 @@
       }
   
   }
-  .nav-top a:focus,
-  .navbar li a:focus {
+  .nav-top a:focus-visible,
+  .navbar li a:focus-visible {
     outline: 2px solid var(--black); 
   }
 

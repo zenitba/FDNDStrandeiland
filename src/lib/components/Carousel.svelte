@@ -50,7 +50,7 @@
   onMount(() => {
     const carouselElements = document.querySelectorAll('.carousel-link, .carousel-indicator');
     carouselElements.forEach(function(element) {
-      element.style.display = 'block';
+      element.hidden = false;
     });
   });
 </script>
@@ -61,7 +61,7 @@
 {#if data}
 <section class="carousel-container">
   <!-- Previous button -->
-  <a href="#" class="carousel-link left-arrow" on:click={scrollLeftOrRight} aria-label="Volgende slide">
+  <a href="#" class="carousel-link left-arrow" on:click={scrollLeftOrRight} title="Volgende slide" hidden>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
       <polyline points="15 18 9 12 15 6"></polyline>
     </svg>
@@ -71,11 +71,11 @@
     <div class="carousel-inner">
       {#each data.wishes as wish}
       <div class="carousel-item">
-        <img class="carousel-image" src={wish.image.url} alt={wish.heading} decoding="async" width="150px" height="150px" loading="lazy"/>
+        <img class="carousel-image" src={wish.image.url} alt="" decoding="async" width="150px" height="150px" loading="lazy"/>
         <div class="carousel-text">
-          <a href={`wens/${wish.id}`}>
-            <h3>{wish.heading}</h3>
-          </a>
+          <h3>
+            <a href={`/overzicht/wens/${wish.id}`}>{wish.heading}</a>
+          </h3>
           <p>{wish.description}</p>
           <time>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -97,14 +97,14 @@
   </div>
 
   <!-- Next button -->
-  <a href="#" class="carousel-link right-arrow" on:click={scrollLeftOrRight} aria-label="Volgende slide">
+  <a href="#" class="carousel-link right-arrow" on:click={scrollLeftOrRight} title="Volgende slide" hidden>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
   </a>
 
   <!-- Carrousel indicator -->
-  <div class="carousel-indicator">
+  <div class="carousel-indicator" hidden>
     <span class="carousel-indicator-span">
       {#each data.wishes as wish, index}
       <span class="carousel-indicator-span-span {index === 0 ? 'is-active' : ''}"></span>
@@ -133,13 +133,14 @@
   }
 
   .carousel-container {
-    width: 70%;
-    margin: 20px auto;
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
-    background-color: white;
-  }
+  width: 70%;
+  margin: 20px auto;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+}
+
 
   .carousel {
     display: flex;
@@ -147,6 +148,8 @@
     scroll-snap-type: x mandatory;
     justify-content: center;
     position: relative;
+    scrollbar-width:thin;
+
   }
 
   .carousel-inner {
@@ -180,23 +183,18 @@
     flex: 1;
     padding: 20px;
   }
+  .carousel-text h3, a{
+    font-size: 1.1em;
+  }
 
-  .carousel-text h3,
+  .carousel-text h3, a,
   .carousel-text p {
     margin:20px 0 0 0 ;
     color: #333;
     word-wrap: break-word;
   }
 
-  .carousel-link,
-  .carousel-indicator {
-    display: none;
-  }
 
-  .no-js .carousel-link,
-  .no-js .carousel-indicator {
-    display: block;
-  }
 
   time {
       display: flex;
@@ -205,7 +203,7 @@
   }
   
   time .support{
-    font-weight: 800;
+    font-weight: 600;
     margin: 15px 0;
   }
   .btn-back{
@@ -297,6 +295,8 @@
   .carousel-indicator-span-span.is-active {
     opacity: 1;
   }
+
+
 
   @media only screen and (max-width: 750px) {
     h2 {

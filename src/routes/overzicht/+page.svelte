@@ -1,14 +1,14 @@
 <script>
     export let data;
     import Navbar from '$lib/components/Navbar.svelte';
+    import Overview from '../../lib/components/Overview.svelte';
     import Footer from '$lib/components/Footer.svelte';
-	  import Overzicht from '../../lib/components/Overzicht.svelte';
   </script>
   
   
 
     <Navbar />
-    <Overzicht {data} />
+    <Overview {data} />
     <Footer />
 
   

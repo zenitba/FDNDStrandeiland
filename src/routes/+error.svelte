@@ -68,16 +68,25 @@
   }
 
   .home-button {
-    font-size: 2.1rem;
-    font-weight: 700;
-    padding: 0 0.8rem; 
-    display: flex;
-    margin-bottom: 0.3rem;
-    width: fit-content;
-    cursor: pointer;
-    color: var(--black);
-    background-color: var(--yellow);
-  }
+  font-size: 2.1rem;
+  font-weight: 700;
+  padding: 0 0.8rem;
+  display: flex;
+  margin-bottom: 0.3rem;
+  width: fit-content;
+  cursor: pointer;
+  color: var(--black);
+  background-color: var(--yellow);
+  transition: transform 0.2s, background-color 0.2s; 
+}
+
+.home-button:hover {
+  transform: scale(1.1); 
+  background-color: var(--black); 
+  color: var(--yellow);
+}
+
+
 </style>
 
 

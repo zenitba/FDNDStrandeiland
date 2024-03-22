@@ -1,19 +1,23 @@
 <script>
     export let data;
-    export let selectedSDG = ''; 
-    export const selectedSDGChange = (sdg) => {}; 
+    export let selectedSDGs = []; 
 
     let showPopup = false; 
 
     function selectSDG(sdg) {
-        selectedSDG = selectedSDG === sdg ? '' : sdg; 
-        applyFilter();
+        if (selectedSDGs.includes(sdg)) {
+            // SDG is al geselecteerd, dus verwijder het uit de lijst
+            selectedSDGs = selectedSDGs.filter(selected => selected !== sdg);
+        } else {
+            // SDG is nog niet geselecteerd, dus voeg het toe aan de lijst
+            selectedSDGs = [...selectedSDGs, sdg];
+        }
     }
 
     function applyFilter() {
         console.log('Applying filter in Filter.svelte...');
-        console.log('Selected SDG:', selectedSDG);
-        selectedSDGChange(selectedSDG);
+        console.log('Selected SDGs:', selectedSDGs);
+        togglePopup(); // Sluit het filterscherm nadat de filter is toegepast
     }
 
     function togglePopup() {
@@ -22,35 +26,34 @@
 </script>
 
 <div class="filter-container">
-    <div class="filter-icon" on:click={togglePopup}>
+    <button class="filter-icon" on:click={togglePopup}>
+        <!-- SVG voor de filter-icoon hier, zoals eerder -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-filter" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" />
-          </svg>
-        Open filterscherm
-    </div>
+        </svg>
+        Open Filterscherm
+    </button>
 
     {#if showPopup}
-    <div class="overlay"></div>
-    {/if}
-    
-    {#if showPopup}
+    <button class="overlay" on:click={togglePopup}></button>
     <div class="filter-popup">
         <h3>Filter op SDG</h3>
-        <div class="close-btn" on:click={togglePopup}>
+        <button class="close-btn" on:click={togglePopup}>
+            <!-- SVG voor de sluitknop hier, zoals eerder -->
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <path d="M18 6l-12 12" />
                 <path d="M6 6l12 12" />
-              </svg>
-        </div>
+            </svg>
+        </button>
         
         <div class="sdg-container">
             {#each data.wishes as wish}
-                <div class="sdg-item" on:click={() => selectSDG(wish.sdg)}>
-                    <img src={wish.image.image.url} alt="SDG" />
-                    <input type="checkbox" checked={selectedSDG === wish.sdg} />
-                </div>
+                <label class="sdg-item">
+                    <img src={wish.image.image.url} alt={`SDG ${wish.sdg}`} />
+                    <input type="checkbox" checked={selectedSDGs.includes(wish.sdg)} on:change={() => selectSDG(wish.sdg)} />
+                </label>
             {/each}
         </div>
         
@@ -59,20 +62,23 @@
     {/if}
 </div>
 
+
 <style>
     .filter-container {
-     position: relative;
-    text-align: center;
-    float: inline-end;
-    padding-right: 15px;
-    padding-left: 15px;
-    border-radius: 0;
-    margin-right: 80px;
+        position: relative;
+        text-align: center;
+        float: inline-end;
+        margin-right: 80px;
+        border-bottom: 1px solid black;
+        margin-top: 6px;
+        margin-bottom: 20px;
+
     }
 
     .filter-icon {
     cursor: pointer;
     color: #333;
+    font-size: 15px;
     padding: 0 0 0.2rem 0;
     border-bottom: 1.5px solid;
     border-radius: 0;
@@ -96,8 +102,8 @@
     .filter-popup {
         position: fixed;
         width: 390px;
-        height: 170px;
-        top: 50%;
+        height: 200px;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: var(--beige);
@@ -116,18 +122,18 @@
     }
 
     .sdg-container {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-        margin-bottom: 10px;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
 
-    .sdg-item {
-        display: flex;
-        margin-right: 10px;
-    }
+    margin-bottom: 10px;
+}
+
+.sdg-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
 
     .sdg-item img {
         width: 60px;
@@ -146,8 +152,46 @@
         border: 1px solid;
         color: var(--black);
         border-radius: 0%;
-        margin-left: 20px;
         font-weight: 600;
-        margin-bottom: 20px;
+        transition: transform 0.2s, background-color 0.2s; 
+
     }
-</style>
+    .apply-btn:hover {
+        background: var(--black);
+        color: var(--beige);
+        transform: scale(1.1); 
+
+       
+    }
+    .filter-icon, .close-btn {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        display: inline-block;
+    }
+    @media only screen and (max-width: 450px) {
+  .filter-popup {
+    width: 90%; 
+    height: auto; 
+    top: 15%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+    @media only screen and (max-width: 768px) {
+  .filter-container {
+    margin-right: 20px; 
+    /* float: inline-start; */
+
+  }
+ 
+}
+@media only screen and (max-width: 450px) {
+  .filter-container {
+    float: inline-start;
+    margin: 20px;
+margin-top: 0;
+
+  }
+}
+    </style>

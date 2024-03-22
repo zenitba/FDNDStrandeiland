@@ -5,7 +5,6 @@
     import Navbar from '$lib/components/Navbar.svelte';
     import Hero from '$lib/components/Hero.svelte';
     import Carousel from '$lib/components/Carousel.svelte';
-	import Status from '$lib/components/Status.svelte';
     import Footer from '$lib/components/Footer.svelte';
     
     onMount(() => {});
@@ -14,7 +13,6 @@
 <Navbar />
 <Hero  />
 <Carousel {data}/>
-<Status {data}/>
 <Footer />
 
 
