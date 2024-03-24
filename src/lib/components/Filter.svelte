@@ -108,7 +108,7 @@
         transform: translate(-50%, -50%);
         background-color: var(--beige);
         border: 1px solid #ccc;
-        border-radius: 5px;
+        border-radius: 3px;
         padding: 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         z-index: 1000; 
@@ -151,7 +151,7 @@
         align-items: center;
         border: 1px solid;
         color: var(--black);
-        border-radius: 0%;
+        border-radius: 3px;
         font-weight: 600;
         transition: transform 0.2s, background-color 0.2s; 
 

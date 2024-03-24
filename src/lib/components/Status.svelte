@@ -5,7 +5,7 @@
     let selectedStatus = null;
     let commentError = '';
     let roleError = '';
-    let statusupdate = null; // Declare statusupdate and initialize it to null
+    let statusupdate = null;
   
     function addReaction(event) {
       event.preventDefault();
@@ -26,11 +26,11 @@
       } else {
         roleError = '';
       }
-      const reaction = {text: comment, role}; // Modify the reaction object to include 'text' property instead of 'comment'
+      const reaction = {text: comment, role}; 
   
       if (statusupdate) {
         if (!statusupdate.reaction) {
-          statusupdate.reaction = []; // Initialize statusupdate.reaction if it's not defined
+          statusupdate.reaction = []; 
         }
         if (statusupdate.reaction.length >= 3) {
           statusupdate.reaction.shift();
@@ -71,7 +71,7 @@
       if (reactions && reactions.length > 0) {
         reactions.forEach(reaction => {
           const li = document.createElement('li');
-          li.textContent = `${reaction.text} - ${reaction.role}`;
+          li.textContent = `${reaction.text}`;
           chatList.appendChild(li); // Change 'prepend' to 'appendChild' to maintain the order of reactions
         });
       } else {
@@ -116,7 +116,7 @@
       <ul>
         {#if statusupdate && statusupdate.reaction && statusupdate.reaction.length > 0}
         {#each statusupdate.reaction as reaction}
-            <li>{reaction.text} - {reaction.role}</li>
+            <li>{reaction.text}</li>
         {/each}
     {:else}
         <li>Geen reacties</li>

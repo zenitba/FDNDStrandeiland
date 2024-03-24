@@ -17,7 +17,8 @@
     --black: #000000;
     --white: #ffffff;
     --yellow: #FFE704;
-    --beige:  #e0e0d8;
+    --beige:  #d2d2c7;
+    --beige-2:#e0e0d8;
     --blue: #019CE0;
     --color-primary: #121212;
     --color-primary-50: #495057;
@@ -48,7 +49,9 @@ html {
     font-family: sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color:transparent
+    -webkit-tap-highlight-color:transparent;
+    background-color: var(--beige);
+
 }
 /* Standaard stijl voor body */
 body {
@@ -96,5 +99,9 @@ button {
     border-radius: var(--unit-micro);
     padding: var(--unit-micro) var(--unit-default) var(--unit-micro);
     transition: 0.2s ease-in-out;
+}
+mark {
+   color: var(--black);
+   background-color: var(--white);
 }
 

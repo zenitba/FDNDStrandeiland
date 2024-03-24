@@ -1,7 +1,6 @@
 <script>
   export let data
   import { onMount } from 'svelte';
-	import { element } from 'svelte/internal';
 
   // Functie voor het scrollen naar links of rechts binnen de carousel
   function scrollLeftOrRight(uiEvent) {
@@ -110,7 +109,7 @@
           </time>
           {#if wish.image && wish.image.image && wish.image.image.url}
           <a class="sdgImage" href="https://sdgs.un.org/goals">
-            <img class="susDevGoal" src={wish.image.image.url} alt="Duurzame ontwikkelingsdoelen" width="50" height="50" loading="lazy"/>
+            <img class="susDevGoal" src={wish.image.image.url} alt={wish.image.label} width="50" height="50" loading="lazy"/>
           </a>
           {/if}
         </div>

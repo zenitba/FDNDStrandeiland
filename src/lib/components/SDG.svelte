@@ -8,7 +8,7 @@
 	<img
 	  class="susDevGoal"
 	  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Sustainable_Development_Goal_01NoPoverty.svg/599px-Sustainable_Development_Goal_01NoPoverty.svg.png"
-	  alt="sustainable development goal 1"
+	  alt="SDG 1 no proverty"
 	  width="50"
 	  height="50"
 	  loading="lazy"
@@ -22,7 +22,7 @@
 	  <img
 		class="susDevGoal"
 		src={data.wish.image.image.url}
-		alt="Sustainable development goals"
+		alt={data.wish.label}
 		width="50"
 		height="50"
 		loading="lazy"
