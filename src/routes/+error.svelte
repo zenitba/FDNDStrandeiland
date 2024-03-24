@@ -12,7 +12,7 @@
     <span>iets</span>
     <span>mis.</span>
   </div>
-  <button class="home-button" on:click={() => goto('/')}>Terug naar de homepagina</button>
+  <a href="/" class="home-button" on:click={() => goto('/')}>Terug naar de homepagina</a>
 </div>
 
 <style>

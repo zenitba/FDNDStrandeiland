@@ -15,5 +15,3 @@
 <Carousel {data}/>
 <Footer />
 
-
-
