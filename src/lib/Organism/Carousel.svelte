@@ -76,7 +76,7 @@
 
 
 
-<h2>Wensen</h2>
+<h1>Wensen</h1>
 
 {#if data}
 <section class="carousel-container">
@@ -159,7 +159,11 @@
 
 <style>
   /* General styles */
-  h2 {
+  [hidden] { 
+    display: none !important;
+}
+
+  h1 {
     text-align: center;
     font-size: 2.1em;
     margin: 0.5em 0;

@@ -1,6 +1,6 @@
 <script>
     export let data;
-    import Filter from "./Filter.svelte";
+    import Filter from '$lib/Molecul/Filter.svelte';
 </script>
 
 <!-- Header sectie -->
@@ -201,6 +201,7 @@
     /* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen */
     .susDevGoal {
         width: 50px;
+        height: 50px;
     }
 
     /* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen binnen sdgImage */
@@ -337,7 +338,7 @@
     } 
     
     .list-btn:focus ~ .grid-container .image-container img {
-        height: 200px;
+        height: auto;
     }
     
     .list-btn:focus ~ .grid-container .grid-item {

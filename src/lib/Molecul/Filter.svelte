@@ -108,7 +108,7 @@
         transform: translate(-50%, -50%);
         background-color: var(--beige);
         border: 1px solid #ccc;
-        border-radius: 3px;
+        border-radius: 5px;
         padding: 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         z-index: 1000; 
@@ -125,7 +125,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around; 
-
     margin-bottom: 10px;
 }
 
@@ -151,7 +150,7 @@
         align-items: center;
         border: 1px solid;
         color: var(--black);
-        border-radius: 3px;
+        border-radius: 0%;
         font-weight: 600;
         transition: transform 0.2s, background-color 0.2s; 
 
@@ -190,7 +189,7 @@
   .filter-container {
     float: inline-start;
     margin: 20px;
-margin-top: 0;
+    margin-top: 0;
 
   }
 }

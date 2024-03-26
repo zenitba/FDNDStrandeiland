@@ -241,7 +241,7 @@ button:hover {
 
 .timeline--date {
   flex: 0 0 70px;
-  color: #999;
+  color: #000000;
   font-family: 'Droid Serif', serif;
   font-size: 90%;
   text-align: left;
