@@ -125,7 +125,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around; 
-
     margin-bottom: 10px;
 }
 
@@ -190,7 +189,7 @@
   .filter-container {
     float: inline-start;
     margin: 20px;
-margin-top: 0;
+    margin-top: 0;
 
   }
 }

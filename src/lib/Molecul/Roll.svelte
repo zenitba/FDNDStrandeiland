@@ -272,12 +272,4 @@
     article ul li {
         margin-bottom: 5px;
     }
-/* Focus-stijlen voor meldingen */
-/* #wens:focus,
-#helpen:focus,
-#trekken:focus {
-  outline: 2px solid var(--black);
-  outline-offset: 4px; 
-} */
-
 </style>

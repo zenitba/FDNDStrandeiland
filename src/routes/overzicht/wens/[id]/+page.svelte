@@ -1,18 +1,18 @@
 <script>
-    // Imports van Svelte-componenten
-    import Navbar from '$lib/components/Navbar.svelte';
-    import Roll from '$lib/components/Roll.svelte';
-    import Sdg from '$lib/components/SDG.svelte';  
-    import Status from '$lib/components/Status.svelte';
-    import Footer from '$lib/components/Footer.svelte';
+  // Imports van Svelte-componenten
+  import Navbar from '$lib/Organism/Navbar.svelte';
+  import Roll from '$lib/Molecul/Roll.svelte';
+  import Sdg from '$lib/Molecul/SDG.svelte';  
+  import Status from '$lib/Organism/Status.svelte';
+  import Footer from '$lib/Organism/Footer.svelte';
 
+
+  // Sla de data op in een store
+  import { writable } from 'svelte/store';
+  export let data;
+  export const test = writable(1);
   
-    // Sla de data op in een store
-    import { writable } from 'svelte/store';
-    export let data;
-    export const test = writable(1);
-    
-  </script>
+</script>
   
   <!-- Layout voor Wensen -->
   <Navbar />
