@@ -75,7 +75,6 @@
 </script>
 
 
-
 <h1>Wensen</h1>
 
 {#if data}
@@ -94,10 +93,10 @@
       <div class="carousel-item">
         <img class="carousel-image" src={wish.image.url} alt="" decoding="async" width="150" height="150" loading="lazy"/>
         <div class="carousel-text">
-          <h3>
+          <h2>
             <!-- Link naar de details van het item -->
-            <a href={`/overzicht/wens/${wish.id}`} aria-label="{wish.heading}">{wish.heading}</a>
-          </h3>
+            <a href={`/overzicht/wens/${wish.id}`}>{wish.heading}</a>
+          </h2>
           <p>{wish.description}</p>
           <time>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -109,7 +108,7 @@
           </time>
           {#if wish.image && wish.image.image && wish.image.image.url}
           <a class="sdgImage" href="https://sdgs.un.org/goals">
-            <img class="susDevGoal" src={wish.image.image.url} alt={wish.image.label} width="50" height="50" loading="lazy"/>
+            <img class="susDevGoal" src={wish.image.image.url} alt="{wish.image.label}" width="50" height="50" loading="lazy"/>
           </a>
           {/if}
         </div>
@@ -158,11 +157,6 @@
 </div>
 
 <style>
-  /* General styles */
-  [hidden] { 
-    display: none !important;
-}
-
   h1 {
     text-align: center;
     font-size: 2.1em;
@@ -221,7 +215,7 @@
   }
 
   /* Carousel text headings and links */
-  .carousel-text h3,
+  .carousel-text h2,
   .carousel-text a {
     font-size: 1.1em;
     margin: 20px 0 0 0;
@@ -388,7 +382,7 @@
   }
 
   @media only screen and (max-width: 320px) {
-    h2 {
+    h1 {
       font-size: 1.2em;
     }
 

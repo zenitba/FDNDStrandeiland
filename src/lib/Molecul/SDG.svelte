@@ -22,7 +22,7 @@
 	  <img
 		class="susDevGoal"
 		src={data.wish.image.image.url}
-		alt=""
+		alt="{data.wish.image.label}"
 		width="50"
 		height="50"
 		loading="lazy"

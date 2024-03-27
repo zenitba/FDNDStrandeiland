@@ -66,7 +66,7 @@
             </time>
             {#if wish.image && wish.image.image && wish.image.image.url}
             <a class="sdgImage" href="https://sdgs.un.org/goals">
-                <img class="susDevGoal" src="{wish.image.image.url}" alt={wish.image.label} loading="lazy"/>
+                <img class="susDevGoal" src="{wish.image.image.url}" alt="{wish.image.label} "loading="lazy"/>
             </a>
             {/if}
         </div>
@@ -205,25 +205,25 @@
     .text-container .support {
         font-weight: 600;
     }
+/* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen */
+.susDevGoal {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.2s, background-color 0.2s; 
+}
 
-    /* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen */
-    .susDevGoal {
-        width: 50px;
-        height: 50px;
-        transition: transform 0.2s, background-color 0.2s; 
-    }
+.sdgImage :hover {
+ transform: scale(1.2); 
+}
+/* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen binnen sdgImage */
+.sdgImage {
+    display: block;
+    margin-top: auto;
+    width: 50px;
+    height: 50px;
 
-    .sdgImage :hover {
-     transform: scale(1.2); 
-    }
-    /* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen binnen sdgImage */
-    .sdgImage {
-        display: block;
-        margin-top: auto;
-        width: 50px;
-        height: 50px;
-
-    }
+}
+    
 
     /* Stijlen voor knoppen */
     button,
