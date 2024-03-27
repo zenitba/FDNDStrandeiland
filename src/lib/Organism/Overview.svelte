@@ -20,7 +20,7 @@
 
 <!-- Knoppen voor grid- en lijstweergave -->
 <button class="grid-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-grid" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-grid" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
         <path d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
@@ -31,7 +31,7 @@
 </button>
 
 <button class="list-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-list" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-list" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
         <path d="M4 14m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
@@ -45,6 +45,8 @@
 <!-- Grid container voor de weergave van ideeën -->
 <section class="grid-container">
     {#each data.wishes as wish}
+    <a href={`/overzicht/wens/${wish.id}`}>
+
     <div class="grid-item">
         <!-- Afbeelding container -->
         <div class="image-container">
@@ -52,9 +54,7 @@
         </div>
         <!-- Tekst container -->
         <div class="text-container">
-            <a href={`/overzicht/wens/${wish.id}`}>
                 <h3>{wish.heading}</h3>
-            </a>
             <p>{wish.description}</p>
             <time>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -66,11 +66,13 @@
             </time>
             {#if wish.image && wish.image.image && wish.image.image.url}
             <a class="sdgImage" href="https://sdgs.un.org/goals">
-                <img class="susDevGoal" src="{wish.image.image.url}" alt={wish.image.label} loading="lazy"/>
+                <img class="susDevGoal" src="{wish.image.image.url}" alt="{wish.image.label} "loading="lazy"/>
             </a>
             {/if}
         </div>
     </div>
+</a>
+
     {/each}
 </section>
 
@@ -136,6 +138,7 @@
         margin-left: auto;
         margin-bottom: 50px;
         width: 90%;
+
     }
 
     /* Stijlen voor de grid-item */
@@ -147,6 +150,11 @@
         flex-direction: column;
         justify-content: space-between;
         height: fit-content;
+        transition: transform 0.2s, background-color 0.2s; 
+
+    }
+    .grid-item:hover {
+    transform: scale(1.1); 
     }
 
     /* Stijlen voor afbeeldingen binnen grid-items */
@@ -197,34 +205,40 @@
     .text-container .support {
         font-weight: 600;
     }
+/* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen */
+.susDevGoal {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.2s, background-color 0.2s; 
+}
 
-    /* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen */
-    .susDevGoal {
-        width: 50px;
-        height: 50px;
-    }
+.sdgImage :hover {
+ transform: scale(1.2); 
+}
+/* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen binnen sdgImage */
+.sdgImage {
+    display: block;
+    margin-top: auto;
+    width: 50px;
+    height: 50px;
 
-    /* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen binnen sdgImage */
-    .sdgImage {
-        display: block;
-        margin-top: auto;
-    }
+}
+    
 
     /* Stijlen voor knoppen */
     button,
     .list-btn,
     .grid-btn {
         display: inline-block;
-        background: var(--beige);
-        font-size: 14px;
         cursor: pointer;
-        align-items: center;
-        border: 1px solid;
-        color: var(--black);
-        border-radius: 0%;
-        margin-left: 20px;
-        font-weight: 500;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
         margin-bottom: 20px;
+        color: var(--black);
+        background-color: var(--yellow);
+        transition: transform 0.2s, background-color 0.2s; 
+
     }
 
     /* Specifieke stijlen voor grid-btn */
@@ -240,13 +254,13 @@
 
     /* Stijlen voor SVG's binnen knoppen bij hover */
     button:hover svg path {
-        fill: var(--beige);
+        fill: var(--yellow);
     }
 
     /* Stijlen voor knoppen bij hover */
     button:hover {
-        color: var(--beige);
-        background-color: var(--black);
+    background-color: var(--black); 
+    color: var(--yellow);
     }
 
     /* Media query voor schermformaten tot 768px */
@@ -358,7 +372,11 @@
     .list-btn:focus ~ .grid-container .grid-item .text-container {
         width: 70%;
     }
-    
+    /* Stijlen voor SDG-afbeeldingen binnen grid-items in lijstweergave */
+.grid-container.list-view .grid-item .sdgImage .susDevGoal {
+    width: 30px; /* Aangepaste breedte */
+    height: 30px; /* Aangepaste hoogte */
+}
     @media screen and (max-width: 768px) {
         .list-btn:focus ~ .grid-container .grid-item {
             display: flex;

@@ -21,10 +21,12 @@ export async function load() {
         url
         image {
           url
+          label
+        }
+        label
         }
       }
     }
-  }
   `
 
   const request = await hygraph.request(query)

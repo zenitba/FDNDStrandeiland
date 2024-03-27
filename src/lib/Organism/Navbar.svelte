@@ -10,7 +10,9 @@
     <nav>
         <div class="navbar">
             <!-- Logo -->
-            <img src="/styles/logo 1.jpg" alt="Logo Strandeiland" width="55" height="55" loading="eager">
+            <a href="/">
+            <img src="/styles/logo 1.jpg" alt="Logo Strandeiland" width="55" height="55" loading="eager" >
+            </a>
             <!-- Menu icoon voor mobiel -->
             <input class="menu-btn" type="checkbox" id="menu-btn">
             <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>

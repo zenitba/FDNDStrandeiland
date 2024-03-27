@@ -32,4 +32,3 @@ Welkom bij de README voor **Hallo Strandeiland**!
 5. **Start de server**: Gebruik het commando `npm dev start` om een server te starten en de webapplicatie te draaien.
 6. **Gebruik van .env bestand**: Voor dit project is een `.env` bestand gebruikt om data op te halen uit Hygraph. Zorg ervoor dat je dit bestand configureert voor jouw specifieke omgeving.
 
-
