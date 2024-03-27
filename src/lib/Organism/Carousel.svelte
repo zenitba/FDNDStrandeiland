@@ -96,7 +96,7 @@
         <div class="carousel-text">
           <h3>
             <!-- Link naar de details van het item -->
-            <a href={`/overzicht/wens/${wish.id}`}>{wish.heading}</a>
+            <a href={`/overzicht/wens/${wish.id}`} aria-label="{wish.heading}">{wish.heading}</a>
           </h3>
           <p>{wish.description}</p>
           <time>
@@ -187,13 +187,16 @@
     justify-content: center;
     position: relative;
     scrollbar-width: thin;
+
   }
 
   /* Carousel inner */
   .carousel-inner {
     display: flex;
     width: -webkit-fill-available;
-  }
+}
+
+
 
   /* Carousel item */
   .carousel-item {
@@ -301,8 +304,8 @@
     width: var(--indicator-size);
     height: var(--indicator-size);
     border-radius: 50%;
-    background: #00000087;
-    opacity: 0.5;
+    background: rgb(0, 0, 0);
+    opacity: 0.4;
     transition: 0.2s ease-out opacity;
   }
 
@@ -336,7 +339,14 @@
   /* Button back anchor */
   .btn-back a {
     color: black;
-    font-size: 1.1em;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-bottom: 20px;
+    color: var(--black);
+    background-color: var(--yellow);
+    border-radius: 5px;
+    padding: 5px;
   }
 
   /* Button back svg */
@@ -344,6 +354,10 @@
     margin: -4px 1px;
   }
 
+  .btn-back a:hover{
+    background-color: var(--black); 
+    color: var(--yellow);
+  }
   /* Button back */
   .btn-back {
     display: inline-block;
@@ -355,7 +369,7 @@
 
   /* Media queries */
   @media only screen and (max-width: 750px) {
-    h2 {
+    h1 {
       font-size: 1.5em;
     }
 

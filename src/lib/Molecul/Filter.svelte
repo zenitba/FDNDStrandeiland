@@ -28,7 +28,7 @@
 <div class="filter-container">
     <button class="filter-icon" on:click={togglePopup}>
         <!-- SVG voor de filter-icoon hier, zoals eerder -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-filter" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-filter" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" />
         </svg>
@@ -69,26 +69,41 @@
         text-align: center;
         float: inline-end;
         margin-right: 80px;
-        border-bottom: 1px solid black;
-        margin-top: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
         margin-bottom: 20px;
-
+        color: var(--black);
+        background-color: var(--yellow);
+        border-radius: 5px;
+        transition: transform 0.2s, background-color 0.2s; 
     }
 
     .filter-icon {
-    cursor: pointer;
-    color: #333;
-    font-size: 15px;
-    padding: 0 0 0.2rem 0;
-    border-bottom: 1.5px solid;
-    border-radius: 0;
-    background-color: transparent;
+        font-size: 1rem;
+        font-weight: 600;
+    /* cursor: pointer;
+    color: var(--black);
+    background-color: var(--yellow);
+    transition: transform 0.2s, background-color 0.2s;  */
+
+
+    }
+    .filter-icon:hover svg path {
+        fill: var(--yellow);
+    }
+
+    /* Stijlen voor knoppen bij hover */
+    .filter-icon:hover {
+    background-color: var(--black); 
+    color: var(--yellow);
 
     }
     .filter-icon svg{
-        margin: -4px 1px;
+        margin: -5px 1px;
 
     }
+    
     .overlay {
     position: fixed;
     top: 0;

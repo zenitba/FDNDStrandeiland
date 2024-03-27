@@ -70,6 +70,7 @@ body {
 /* Interactief */
 a {
     text-decoration: none;
+    color: #000000;
 }
 
 a:hover, button:hover, input:hover {
@@ -87,7 +88,7 @@ input[type="search"]:hover {
 
 a:focus-visible, button:focus-visible {
     outline: 2px solid rgb(0, 0, 0);
-    outline-offset: 2px; 
+    outline-offset: 0px; 
 
 }
 
@@ -96,7 +97,7 @@ button {
     align-items: center;
     gap: var(--unit-micro);
     border: unset;
-    border-radius: var(--unit-micro);
+    /* border-radius: var(--unit-micro); */
     padding: var(--unit-micro) var(--unit-default) var(--unit-micro);
     transition: 0.2s ease-in-out;
     cursor: pointer;
