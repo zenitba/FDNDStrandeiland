@@ -75,7 +75,6 @@
         margin-bottom: 20px;
         color: var(--black);
         background-color: var(--yellow);
-        border-radius: 5px;
         transition: transform 0.2s, background-color 0.2s; 
     }
 

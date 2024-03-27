@@ -339,7 +339,7 @@
     margin-bottom: 20px;
     color: var(--black);
     background-color: var(--yellow);
-    border-radius: 5px;
+    /* border-radius: 5px; */
     padding: 5px;
   }
 
