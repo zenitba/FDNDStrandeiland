@@ -1,14 +1,14 @@
-## Hallo Strandeiland
-
-Welkom bij de README voor **Hallo Strandeiland**! Deze webapplicatie biedt een overzicht van alle wensen van toekomstige bewoners van Strandeiland, opgezet door de gemeente met als doel radicale transparantie te creëren en bewoners op de hoogte te houden van diverse ontwikkelingen.
+# Hallo Strandeiland🏝
+<img width="674" alt="Schermafbeelding 2024-03-25 om 10 48 50" src="https://github.com/zenitba/FDNDStrandeiland/assets/112856019/e10b1ae1-6f51-4de9-8dfa-e888e70f7146">
 
 ## Ontwikkeling
+Welkom bij de README voor **Hallo Strandeiland**! 
 
-**Hallo Strandeiland** Dit project omvat een overzicht van alle wensen van de toekomstige bewoners van Strandeiland. De gemeente wilt hiermee radicale transparantie creëren om bewoners op de hoogte te houden van diverse ontwikkelingen en hiermee laten zien dat zij luisteren naar de wensen van de bewoners.
+## Beschrijving
 
-## Gebruik
+**Hallo Strandeiland** is een webapplicatie die een overzicht biedt van alle wensen van toekomstige bewoners van Strandeiland. Het project is opgezet door de gemeente met als doel radicale transparantie te creëren en bewoners op de hoogte te houden van diverse ontwikkelingen. Hiermee wil de gemeente laten zien dat ze luisteren naar de wensen van de bewoners.
 
-Dit platform is bedoelt om wensen op te halen van bewoners.
+
 
 ### Tools
 
