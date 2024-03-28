@@ -158,20 +158,23 @@
 
     .apply-btn {
         display: inline-block;
-        background: var(--beige);
-        font-size: 14px;
+        background: var(--yellow);
         cursor: pointer;
         align-items: center;
-        border: 1px solid;
         color: var(--black);
         border-radius: 0%;
+        font-size: 1rem;
         font-weight: 600;
+        margin-bottom: 0.5rem;
+        margin-bottom: 20px;        
         transition: transform 0.2s, background-color 0.2s; 
+        padding: 5px;
+
 
     }
     .apply-btn:hover {
-        background: var(--black);
-        color: var(--beige);
+        background-color: var(--black); 
+        color: var(--yellow);
         transform: scale(1.1); 
 
        
@@ -199,7 +202,7 @@
   }
  
 }
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 530px) {
   .filter-container {
     float: inline-start;
     margin: 20px;

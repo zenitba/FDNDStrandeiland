@@ -332,14 +332,12 @@
 
   /* Button back anchor */
   .btn-back a {
-    color: black;
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
     margin-bottom: 20px;
     color: var(--black);
     background-color: var(--yellow);
-    /* border-radius: 5px; */
     padding: 5px;
   }
 
