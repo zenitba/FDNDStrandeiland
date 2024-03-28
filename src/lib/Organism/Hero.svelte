@@ -61,9 +61,10 @@
     }
    /* Hero */
    .hero {
-    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.webp");
+    /* background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.webp");
     background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.png");
-    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.avif");
+    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.avif"); */
+    background-image: url("/styles/hero.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

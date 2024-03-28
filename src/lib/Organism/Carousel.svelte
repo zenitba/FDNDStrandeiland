@@ -91,7 +91,7 @@
     <div class="carousel-inner">
       {#each data.wishes as wish}
       <div class="carousel-item">
-        <img class="carousel-image" src={wish.image.url} alt="" decoding="async" width="150" height="150" loading="lazy"/>
+        <img class="carousel-image" src={wish.image.url} alt="" decoding="async" width="150" height="50" loading="lazy"/>
         <div class="carousel-text">
           <h2>
             <!-- Link naar de details van het item -->
