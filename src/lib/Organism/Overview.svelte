@@ -113,7 +113,6 @@
 .header-btn {
     display: inline-flex;
     float: inline-end;
-
     align-items: center;
     background: var(--yellow);
     color: var(--black);
@@ -200,8 +199,8 @@ transform: scale(1.1);
 .text-container time {
     display: flex;
     align-items: center;
-    gap: 5px;
-    margin-bottom: 10px;
+    /* gap: 5px; */
+    margin: 15px -10px;
 }
 
 /* Stijlen voor het aantal supporters binnen tekstcontainer */
@@ -234,7 +233,6 @@ button,
 
 /* Stijlen voor SVG's binnen knoppen */
 button svg {
-    margin-bottom: -5px;
     width: 21px;
 }
 
@@ -272,24 +270,14 @@ color: var(--yellow);
     }
 }
 
-/* Stijlen voor lijstweergave in grid-container */
-.grid-container.list-view {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Stijlen voor grid-items in lijstweergave */
-.grid-container.list-view .grid-item {
-    display: flex;
-    flex-direction: column;
-    /* padding: 0 20px; */
-}
 
 /* Stijlen voor afbeeldingen binnen grid-items in lijstweergave */
 .grid-container.list-view .grid-item img {
     width: 100%;
     height: auto;
 }
+
+
 
 
 /* Stijlen voor afbeeldingscontainers binnen lijstweergave */
@@ -312,17 +300,16 @@ color: var(--yellow);
 .list-btn:focus ~ .grid-container .grid-item {
     display: flex;
     flex-direction: column;
-    /* padding: 0 20px; */
 }
 
 .list-btn:focus ~ .grid-container .grid-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
  
 
 .list-btn:focus ~ .grid-container .image-container img {
-    height: auto;
+    height: 100%;
 }
 
 .list-btn:focus ~ .grid-container .grid-item {
@@ -342,11 +329,20 @@ color: var(--yellow);
 .list-btn:focus ~ .grid-container .grid-item .text-container {
     width: 70%;
 }
-/* Stijlen voor SDG-afbeeldingen binnen grid-items in lijstweergave */
-.grid-container.list-view .grid-item .sdgImage .susDevGoal {
-width: 30px; /* Aangepaste breedte */
-height: 30px; /* Aangepaste hoogte */
+
+.list-btn:focus ~ .grid-container .grid-item .text-container p {
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    word-wrap: normal;
+    white-space: wrap;
 }
+
+
+.grid-container.list-view .grid-item .sdgImage .susDevGoal {
+   width: 30px; 
+   height: 30px;
+}
+
 @media screen and (max-width: 768px) {
     .list-btn:focus ~ .grid-container .grid-item {
         display: flex;

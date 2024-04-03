@@ -73,10 +73,11 @@ h1 {
     text-align: center;
     font-size: 2.1em;
     margin: 0.5em 0;
+    color: var(--black);
 }
 
 /* Stijlen voor titels */
-h2 {
+ h2 {
     font-size: 1.5rem;
     line-height: 1.17;
     font-weight: 800;
@@ -121,7 +122,11 @@ a:focus-visible, button:focus-visible ,li:focus-visible{
     outline-offset: 3px; 
     border-radius: 1px;
 }
-
+a .carousel-items:focus-visible{
+    outline: 2px solid var(--black);
+    outline-offset: 3px; 
+    border-radius: 1px;
+}
 /* Stijlen voor containers */
 .container {
     display: flex;
@@ -160,3 +165,4 @@ svg {
     height: 50px;
 } 
 
+ 
