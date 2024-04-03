@@ -61,10 +61,9 @@
     }
    /* Hero */
    .hero {
-    /* background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.webp");
+    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.webp");
     background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.png");
-    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.avif"); */
-    background-image: url("/styles/hero.jpg");
+    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.avif");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -175,111 +174,17 @@
         cursor: pointer;
     }
  
-    /* Animatie hero text*/
-    @keyframes text_reveal_box {
-        50% {
-            width: 100%;
-            left: 0;
-        }
-        100% {
-            width: 0;
-            left: 100%;
-        }
-    }
-    
-    @keyframes text_reveal_name {
-        100% {
-        }
-    }
-    
-    .hero-text span {
-        position: relative;
-        overflow: hidden;
-        background-color: inherit; 
-    }
-    
-    .hero-text span::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 0;
-        background-color: inherit; 
-        animation: text_reveal_box 2s ease forwards; 
-    }
-    
-    .hero-text span {
-        animation: text_reveal_name 1s ease forwards; 
-    }
-    
-    /* Animatie hero info*/
-    @keyframes info_reveal_box {
-        0% {
-            width: 0;
-            left: 100%;
-        }
-        100% {
-            width: 100%;
-            left: 0;
-        }
-    }
-    
-    @keyframes info_reveal_box {
-        50% {
-            width: 100%;
-            left: 0;
-        }
-        100% {
-            width: 0;
-            left: 100%;
-        }
-    }
-    
-    @keyframes info_reveal_name {
-        100% {
-        
-        }
-    }
-    
-    .hero-info {
-        position: relative;
-        overflow: hidden;
-        background-color: var(--yellow); 
-    }
-    
-    .hero-info::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background-color: inherit; 
-        animation: info_reveal_box 1.8s ease forwards; 
-    }
-    
-    .hero-info {
-        animation: info_reveal_name 1s ease forwards;
-    }
-    @media (max-width: 576px) {
-    .hero-content {
-        padding: 0 10px;
-        flex-direction: column;
-    }
-    
 
-}
-/* Mobile to tablet */
-@media (max-width: 680px) {
+    /* Mobile to tablet */
+   @media (max-width: 680px) {
    
     .hero-content {
         padding: 0 10px;
         flex-direction: column;
     }
-}
-/* Animatie alleen activeren als de gebruiker geen voorkeur heeft voor verminderde beweging */
-@media (prefers-reduced-motion: no-preference) {
+    }
+    /* Animatie alleen activeren als de gebruiker geen voorkeur heeft voor verminderde beweging */
+    @media (prefers-reduced-motion: no-preference) {
     @keyframes text_reveal_box {
         50% {
             width: 100%;
@@ -301,7 +206,7 @@
         overflow: hidden;
         background-color: inherit; 
     }
-    
+
     .hero-text span::before {
         content: "";
         position: absolute;
@@ -345,13 +250,12 @@
         
         }
     }
-    
     .hero-info {
         position: relative;
         overflow: hidden;
         background-color: var(--yellow); 
-    }
-    
+    } 
+
     .hero-info::before {
         content: "";
         position: absolute;
@@ -367,5 +271,4 @@
         animation: info_reveal_name 1s ease forwards;
     }
 }
-
 </style>

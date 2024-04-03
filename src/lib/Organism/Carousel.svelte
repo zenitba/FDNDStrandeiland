@@ -1,6 +1,8 @@
 <script>
   export let data
   import { onMount } from 'svelte';
+  import Sdg from '$lib/Atoms/SDG.svelte';  
+
 
   // Functie voor het scrollen naar links of rechts binnen de carousel
   function scrollLeftOrRight(uiEvent) {
@@ -110,7 +112,7 @@
           <a class="sdgImage" href="https://sdgs.un.org/goals">
             <img class="susDevGoal" src={wish.image.image.url} alt="{wish.image.label}" width="50" height="50" loading="lazy"/>
           </a>
-          {/if}
+          {/if} 
         </div>
       </div>
       {/each}
@@ -157,12 +159,7 @@
 </div>
 
 <style>
-  h1 {
-    text-align: center;
-    font-size: 2.1em;
-    margin: 0.5em 0;
-  }
-
+  
   /* Carousel container */
   .carousel-container {
     width: 70%;
