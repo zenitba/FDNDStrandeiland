@@ -2,7 +2,7 @@
   // Imports van Svelte-componenten
   import Navbar from '$lib/Organism/Navbar.svelte';
   import Roll from '$lib/Molecul/Roll.svelte';
-  import Sdg from '$lib/Molecul/SDG.svelte';  
+  import Sdg from '$lib/Atoms/SDG.svelte';  
   import Status from '$lib/Organism/Status.svelte';
   import Footer from '$lib/Organism/Footer.svelte';
 
@@ -163,7 +163,9 @@
     color: var(--yellow);
     fill: var(--yellow);
   }
-  
+  .description{
+    margin-bottom: 10px;
+  }
     /* Stijl voor tijdselementen */
     time {
         display: flex;
@@ -181,6 +183,7 @@
   }
 
 }
+
 
   </style>
   

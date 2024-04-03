@@ -1,4 +1,4 @@
-
+/* Variabelen */
 :root {
     /* Eenheden */
     --margin-right: 80px;
@@ -40,24 +40,26 @@
     --shadow-default: 0px 2px 8px rgba(135, 135, 135, 0.1), 0px 4px 4px -2px rgba(135, 135, 135, 0.12), 0px 8px 16px -4px rgba(0, 0, 0, 0.2);
 }
 
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Standaard stijl voor HTML */
 html {
-    font-family: sans-serif;
+    font-family: var(--font-family-sans-serif);
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color:transparent;
     background-color: var(--beige);
-
 }
+
 /* Standaard stijl voor body */
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 1rem;
+    font-size: var(--unit-default);
     font-weight: var(--font-weight-400);
     line-height: 1.5;
     color: var(--dark-grey);
@@ -66,69 +68,43 @@ body {
     contain: layout style;
 }
 
+/* Stijlen voor titels */
+h1 {
+    text-align: center;
+    font-size: 2.1em;
+    margin: 0.5em 0;
+}
+
+/* Stijlen voor titels */
+h2 {
+    font-size: 1.5rem;
+    line-height: 1.17;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
 
 /* Interactief */
 a {
     text-decoration: none;
-    color: #000000;
-}
-
-a:hover, button:hover, input:hover {
-    cursor: pointer;
-}
-
-input[type="search"]:hover {
-    cursor: inherit;
+    color: var(--black);
 }
 
 [hidden] { 
     display: none !important;
 }
 
-
-a:focus-visible, button:focus-visible {
-    outline: 2px solid rgb(0, 0, 0);
-    outline-offset: 0px; 
-
-}
-
+/* Standaard stijl voor buttons */
 button {
     display: flex;
     align-items: center;
     gap: var(--unit-micro);
     border: unset;
-    /* border-radius: var(--unit-micro); */
     padding: var(--unit-micro) var(--unit-default) var(--unit-micro);
     transition: 0.2s ease-in-out;
     cursor: pointer;
 }
-mark {
-   color: var(--black);
-   background-color: var(--white);
-}
-
-button {
-    display: flex;
-    align-items: center;
-    gap: var(--unit-micro);
-    border: unset;
-    padding: var(--unit-micro) var(--unit-default) var(--unit-micro) 0.8em;
-    transition: 0.2s ease-in-out;
-    cursor: pointer;
-}
-button:is(:hover, :focus) {
-    background-color: var(--color-blue);
-    color: var(--color-secundary);
-}
-a:focus-visible, button:focus-visible {
-    border: var(--unit-pico) solid var(--color-primary);
-    background-color: inherit;
-    color: var(--color-primary);
-    outline: unset;
-}
 
 /* Typografie */
-
 mark {
     width: fit-content;
     height: fit-content;
@@ -136,11 +112,51 @@ mark {
     gap: var(--unit-small);
     padding: var(--unit-small);
     background-color: var(--color-secundary-pure);
-    /* border: 1px solid var(--color-accent-50); */
     color: var(--color-primary-50);
 }
 
+/* Focus-stijlen */
+a:focus-visible, button:focus-visible ,li:focus-visible{
+    outline: 2px solid var(--black);
+    outline-offset: 3px; 
+    border-radius: 1px;
+}
 
+/* Stijlen voor containers */
+.container {
+    display: flex;
+    align-items: center;
+}
 
+/* Verticale uitlijning voor SVG-afbeeldingen */
+.icon {
+    vertical-align: middle;
+}
 
+/* Verwijder standaardmarges van paragrafen */
+p {
+    margin: 0;
+    font-weight: var(--font-weight-400);
+}
+
+/* Stijlen voor SVG-afbeeldingen */
+svg {
+    width: 38px;
+}
+
+/* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen */
+.susDevGoal {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.2s, background-color 0.2s; 
+}
+.sdgImage:hover {
+    transform: scale(1.2); 
+}
+.sdgImage {
+    display: block;
+    margin-top: auto;
+    width: 50px;
+    height: 50px;
+} 
 

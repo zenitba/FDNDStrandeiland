@@ -1,108 +1,75 @@
+<!-- JavaScript imports en functies -->
 <script>
-	import { onMount } from 'svelte';
-  
-	let activeId;
-	let count = 0;
-	let count2 = 0;
-	let count3 = 0;
-	let output;
-	let output2;
-	let output3;
-	let buttonList;
-  
-	function countClicks() {
-	  count++;
-	  output.innerHTML = count;
-	  document.getElementById('text').style.display = 'flex';
-  
-	  setTimeout(() => {
-		text.remove();
-	  }, 4000);
-	}
-  
-	function countClicks2() {
-	  count2++;
-	  output2.innerHTML = count2;
-	  document.getElementById('text2').style.display = 'flex';
-  
-	  setTimeout(() => {
-		text2.remove();
-	  }, 4000);
-	}
-  
-	function countClicks3() {
-	  count3++;
-	  output3.innerHTML = count3;
-	  document.getElementById('text3').style.display = 'flex';
-  
-	  setTimeout(() => {
-		text3.remove();
-	  }, 4000);
-	}
-  
-	onMount(() => {
-	  output = document.getElementById('output');
-	  output2 = document.getElementById('output2');
-	  output3 = document.getElementById('output3');
-  
-	  buttonList = document.querySelectorAll('.button');
-  
-	  buttonList.forEach((button) => {
-		button.addEventListener('click', () => {
-		  activeId = button.id;
-		});
-	  });
-	});
-  </script>
+    import { onMount } from 'svelte';
+    import RiskLevel from '$lib/Atoms/RiskLevel.svelte';
+    import CostLevel from '$lib/Atoms/CostLevel.svelte';
+    import HeartLevel from '$lib/Atoms/HeartLevel.svelte';
 
+    let activeId;
+    let count = 0;
+    let count2 = 0;
+    let count3 = 0;
+    let output;
+    let output2;
+    let output3;
+    let buttonList;
+
+    function countClicks() {
+        count++;
+        output.innerHTML = count;
+        document.getElementById('text').style.display = 'flex';
+
+        setTimeout(() => {
+            text.remove();
+        }, 4000);
+    }
+
+    function countClicks2() {
+        count2++;
+        output2.innerHTML = count2;
+        document.getElementById('text2').style.display = 'flex';
+
+        setTimeout(() => {
+            text2.remove();
+        }, 4000);
+    }
+
+    function countClicks3() {
+        count3++;
+        output3.innerHTML = count3;
+        document.getElementById('text3').style.display = 'flex';
+
+        setTimeout(() => {
+            text3.remove();
+        }, 4000);
+    }
+
+    onMount(() => {
+        output = document.getElementById('output');
+        output2 = document.getElementById('output2');
+        output3 = document.getElementById('output3');
+
+        buttonList = document.querySelectorAll('.button');
+
+        buttonList.forEach((button) => {
+            button.addEventListener('click', () => {
+                activeId = button.id;
+            });
+        });
+    });
+</script>
+
+<!-- HTML structuur -->
 <br>
 <section>
     <noscript>
         <!-- Instructies voor het inschakelen van JavaScript -->
         Voor volledige functionaliteit van deze site is het nodig JavaScript in te schakelen. Hier zijn de <a href="https://www.enable-javascript.com/">instructies voor het inschakelen van JavaScript in uw webbrowser</a>.
     </noscript>
-
-    <!-- Titel voor de status van de wens -->
-    <h2 class="status-title">Status wens</h2>
-
-    <!-- Container voor risiconiveau -->
-    <div class="container">
-        <p class="risco">Risiconiveau:
-            <!-- SVG-afbeelding voor risiconiveau -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-triangle" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M12 9v4" />
-                <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z" />
-                <path d="M12 16h.01" />
-            </svg>
-        </p>
-    </div>
-
-    <!-- Container voor kostenindicatie -->
-    <div class="container">
-        <p class="kosten">Kostenindicatie:
-            <!-- SVG-afbeelding voor kostenindicatie -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-currency-euro" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M17.2 7a6 7 0 1 0 0 10" />
-                <path d="M13 10h-8m0 4h8" />
-            </svg>
-        </p>
-    </div>
-
-    <!-- Container voor het aantal personen die de wens ondersteunen -->
-    <div class="container">
-        <div class="heart">
-            <!-- SVG-afbeelding voor hartpictogram -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-            </svg>
-        </div>
-        <!-- Tekst voor het aantal personen die de wens ondersteunen -->
-        <p>19 personen vinden dit een goed idee</p>
-    </div>
-    <br>
+    <!-- Componenten -->
+    <RiskLevel />
+    <CostLevel />
+    <HeartLevel />
 
     <!-- Artikel voor rollen -->
     <article class="rollen">
@@ -137,8 +104,9 @@
     <div class="border-line"></div>
 </section>
 
+<!-- CSS-stijlen -->
 <style>
-    /* CSS-stijlen */
+    /* Rollen section */
     .bold {
         font-weight: 700;
     }
@@ -188,10 +156,6 @@
         color: black;
     }
 
-    section {
-        /* margin: 30px; */
-    }
-
     .btn {
         display: flex;
         align-items: center;
@@ -214,49 +178,9 @@
         justify-content: center;
     }
 
-    button.special {
-        background-color: blueviolet;
-    }
-
     /* Stijl voor ongeordende lijst in artikel */
     article ul {
         list-style: none;
-    }
-
-    /* Stijlen voor containers */
-    .container {
-        display: flex;
-        align-items: center;
-    }
-
-    /* Verticale uitlijning voor SVG-afbeeldingen */
-    .icon {
-        vertical-align: middle;
-    }
-
-    /* Stijlen voor hartpictogram */
-    .heart {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    /* Verwijder standaardmarges van paragrafen */
-    p {
-        margin: 0;
-        font-weight: 400;
-    }
-
-    /* Stijlen voor SVG-afbeeldingen */
-    svg {
-        width: 35px;
-    }
-
-    /* Stijlen voor titels */
-    h2 {
-        font-size: 1.5rem;
-        line-height: 1.17;
-        font-weight: 800;
-        margin-bottom: 1rem;
     }
 
     /* Stijl voor scheidslijn */
