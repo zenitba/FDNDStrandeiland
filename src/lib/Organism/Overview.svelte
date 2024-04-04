@@ -46,7 +46,6 @@
 <section class="grid-container">
     {#each data.wishes as wish}
     <a href={`/overzicht/wens/${wish.id}`}>
-
     <div class="grid-item">
         <!-- Afbeelding container -->
         <div class="image-container">
@@ -71,13 +70,13 @@
           {/if}
         </div>
     </div>
-</a>
+   </a>
 {/each}
 </section>
 
 <style>
-    /* CSS-stijlen voor de header */
-    .header {
+   /* CSS-stijlen voor de header */
+.header {
     display: table;
     table-layout: fixed;
     padding-right: 15px;
@@ -121,8 +120,6 @@
     font-weight: bold;
     transition: transform 0.2s, background-color 0.2s; 
     padding: 0.55em 1.6em;
-
-   
 }
 
 .header-btn:hover{
@@ -140,23 +137,20 @@
     margin-left: auto;
     margin-bottom: 50px;
     width: 90%;
-
 }
 
 /* Stijlen voor de grid-item */
 .grid-item {
     background-color: #ffffff;
-    /* border-radius: 5px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: fit-content;
     transition: transform 0.2s, background-color 0.2s; 
-
 }
 .grid-item:hover {
-transform: scale(1.1); 
+    transform: scale(1.1); 
 }
 
 /* Stijlen voor afbeeldingen binnen grid-items */
@@ -181,7 +175,6 @@ transform: scale(1.1);
 /* Stijlen voor de tekstcontainer */
 .text-container {
     padding: 5px 20px;
-    /* flex-grow: 1; */
 }
 
 /* Stijlen voor kopjes en paragrafen binnen tekstcontainer */
@@ -199,7 +192,6 @@ transform: scale(1.1);
 .text-container time {
     display: flex;
     align-items: center;
-    /* gap: 5px; */
     margin: 15px -10px;
 }
 
@@ -207,8 +199,6 @@ transform: scale(1.1);
 .text-container .support {
     font-weight: 600;
 }
-
-
 
 /* Stijlen voor knoppen */
 button,
@@ -223,14 +213,15 @@ button,
     color: var(--black);
     background-color: var(--yellow);
     transition: transform 0.2s, background-color 0.2s; 
-
 }
 
 /* Specifieke stijlen voor grid-btn */
 .grid-btn {
-    margin-left: 80px;
+    margin-left: 70px;
 }
-
+.list-btn{
+    margin-left: 10px;
+}
 /* Stijlen voor SVG's binnen knoppen */
 button svg {
     width: 21px;
@@ -243,72 +234,18 @@ button:hover svg path {
 
 /* Stijlen voor knoppen bij hover */
 button:hover {
-background-color: var(--black); 
-color: var(--yellow);
+    background-color: var(--black); 
+    color: var(--yellow);
 }
 
-/* Media query voor schermformaten tot 768px */
-@media only screen and (max-width: 768px) {
-    button,
-    .list-btn,
-    .grid-btn {
-        margin-left: 20px; 
-    }
-
-    .grid-btn {
-        margin-left: 30px;
-    }
-}
-
-/* Media query voor schermformaten tot 450px */
-@media only screen and (max-width: 450px) {
-    button,
-    .list-btn,
-    .grid-btn {
-        display: block;
-        margin: 20px;
-    }
-}
-
-
-/* Stijlen voor afbeeldingen binnen grid-items in lijstweergave */
-.grid-container.list-view .grid-item img {
-    width: 100%;
-    height: auto;
-}
-
-
-
-
-/* Stijlen voor afbeeldingscontainers binnen lijstweergave */
-.grid-container.list-view .image-container img {
-    height: 200px;
-}
-
-/* Stijlen voor knop om lijstweergave te activeren */
+/* Stijlen voor grid-items bij focus op lijstweergaveknop */
 .list-btn:focus ~ .grid-container {
-    display: flex;
-    flex-direction: column;
-}
-
-  /* Stijlen voor grid-items bij focus op lijstweergaveknop */
-  .list-btn:focus ~ .grid-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.list-btn:focus ~ .grid-container .grid-item {
     display: flex;
     flex-direction: column;
 }
 
 .list-btn:focus ~ .grid-container .grid-item img {
     width: 100%;
-    height: 100%;
-}
- 
-
-.list-btn:focus ~ .grid-container .image-container img {
     height: 100%;
 }
 
@@ -337,26 +274,20 @@ color: var(--yellow);
     white-space: wrap;
 }
 
-
 .grid-container.list-view .grid-item .sdgImage .susDevGoal {
-   width: 30px; 
-   height: 30px;
+    width: 30px; 
+    height: 30px;
 }
 
 @media screen and (max-width: 768px) {
-    .list-btn:focus ~ .grid-container .grid-item {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        margin: 0;
+    .list-btn, .grid-btn{
+        display: none;
     }
-    
-    .list-btn:focus ~ .grid-container .grid-item .image-container {
-        width: 100%;
-    }
-    
-    .list-btn:focus ~ .grid-container .grid-item .text-container {
-        width: 100%;
+}
+
+@media screen and (max-width: 330px) {
+    .grid-container{
+        margin:0 10px ;
     }
 }
 

@@ -211,12 +211,5 @@
           }
       }
   
-      @media only screen and (max-width: 530px) {
-          .filter-container {
-              float: inline-start; 
-              margin: 20px; 
-              margin-top: 0; 
-          }
-      }
   </style>
   

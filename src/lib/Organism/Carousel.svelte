@@ -1,7 +1,7 @@
 <script>
     export let data
     import { onMount } from 'svelte';
-    
+  
     // Functie voor het scrollen naar links of rechts binnen de carousel
     function scrollLeftOrRight(uiEvent) {
       const carouselElement = document.querySelector('.carousel');
@@ -74,8 +74,9 @@
     });
   </script>
   
+  
   <h1>Wensen</h1>
-
+  
   {#if data}
   <section class="carousel-container">
     <!-- Vorige knop -->
@@ -85,12 +86,11 @@
       </svg>
     </a>
   
-    <!-- Carousel container -->
-    <div class="carousel">
-      <div class="carousel-inner">
-        {#each data.wishes as wish}
-        <!-- Volledige carousel-item wordt nu een link -->
-        <a href={`/overzicht/wens/${wish.id}`} class="carousel-item" tabindex="0">
+<!-- Carousel container -->
+<div class="carousel">
+    <div class="carousel-inner">
+      {#each data.wishes as wish}
+      <a href={`/overzicht/wens/${wish.id}`} class="carousel-item">
           <img class="carousel-image" src={wish.image.url} alt="" decoding="async" width="150" height="50" loading="lazy"/>
           <div class="carousel-text">
             <h2>{wish.heading}</h2>
@@ -107,30 +107,31 @@
             <a class="sdgImage" href="https://sdgs.un.org/goals">
               <img class="susDevGoal" src={wish.image.image.url} alt="{wish.image.label}" width="50" height="50" loading="lazy"/>
             </a>
-            {/if} 
+            {/if}
           </div>
-        </a>
-        {/each}
-      </div>
+        </a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+      {/each}
     </div>
+  </div>
   
-    <!-- Volgende knop -->
+  
+<!-- Volgende knop -->
     <a href="#" class="carousel-link right-arrow" on:click={scrollLeftOrRight} title="Volgende slide" hidden>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
     </a>
   
-    <!-- Carrousel indicator -->
-    <div class="carousel-indicator" hidden>
-      <span class="carousel-indicator-span">
-        <!-- Loop over de wensen en toon een indicator voor elk item -->
-        {#each data.wishes as wish, index}
-          <span class="carousel-indicator-span-span {index === 0 ? 'is-active' : ''}"></span>
-        {/each}
-      </span>
-    </div>
-     
+  <!-- Carrousel indicator -->
+  <div class="carousel-indicator" hidden>
+    <span class="carousel-indicator-span">
+      <!-- Loop over de wensen en toon een indicator voor elk item -->
+      {#each data.wishes as wish, index}
+        <span class="carousel-indicator-span-span {index === 0 ? 'is-active' : ''}"></span>
+      {/each}
+    </span>
+  </div>
+   
     <!-- Knop voor informatie over carousel als js uit staat -->
     <button class="carousel-info-button">
       Scroll voor de volgende slide
@@ -152,9 +153,8 @@
       </svg>
     </a>
   </div>
-  
+
   <style>
-    
     /* Carousel container */
     .carousel-container {
         width: 100%;
@@ -174,6 +174,8 @@
       justify-content: center;
       position: relative;
       scrollbar-width: thin;
+      /* animation: slideIn 1s forwards; */
+
   
     }
   
@@ -181,20 +183,33 @@
     .carousel-inner {
       display: flex;
       width: -webkit-fill-available;
-  }
-  
-  
+
+
+    }
   
     /* Carousel item */
     .carousel-item {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      flex: 0 0 100%;
-      scroll-snap-align: center;
-    }
-  
+     width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    animation: slideIn 1s forwards;
+
+
+  }
+  @keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
     /* Carousel image */
     .carousel-image {
       width: 50%;
@@ -223,7 +238,6 @@
    time {
     display: flex;
     align-items: center;
-    /* gap: var(--unit-small); */
     margin: 15px -4px;
     }
 
@@ -246,8 +260,8 @@
       font-size: 20px;
       z-index: 2;
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.299);
       margin: 0 -33px;
     }
   
@@ -308,12 +322,13 @@
     .carousel-info-button {
       display: block;
       position: fixed;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: #fff;
+      background-color: rgb(0, 0, 0);
+      color: var(--yellow);
       border: none;
-      border-radius: 5px;
       cursor: pointer;
       padding: 5px;
+      left:15%;
+      margin-top: -20px;
     }
   
     /* Button back */
@@ -354,7 +369,8 @@
       text-align: center;
       vertical-align: middle;
     }
-  
+
+
     /* Media queries */
     @media only screen and (max-width: 750px) {
       h1 {
