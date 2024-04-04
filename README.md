@@ -1,5 +1,5 @@
 # Hallo Strandeiland🏝
-<img width="674" alt="Schermafbeelding 2024-03-25 om 10 48 50" src="https://github.com/zenitba/FDNDStrandeiland/assets/112856019/e10b1ae1-6f51-4de9-8dfa-e888e70f7146">
+<img width="1069" alt="Schermafbeelding 2024-04-04 om 12 59 26" src="https://github.com/zenitba/FDNDStrandeiland/assets/112856019/353e06df-4415-462e-9b30-5ac251abc1ba">
 
 [Bezoek de website🏝](https://fdnd-strandeiland.vercel.app/)
 ## Ontwikkeling
