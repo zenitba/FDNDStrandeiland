@@ -214,6 +214,8 @@
     .carousel-image {
       width: 50%;
       height: 100%;
+      object-fit: contain;
+      aspect-ratio: 16 / 9;
     }
   
    /* Carousel text */

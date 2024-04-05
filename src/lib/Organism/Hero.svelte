@@ -1,11 +1,7 @@
 
 <!-- Hero -->
 <section class="hero">
-    <picture>
-        <source type="image/webp">
-        <img class="hero-bg" src="/styles/hero.jpg" alt="" fetchpriority="high" width="2000" height="1000"/>
-
-    </picture>
+    <img class="hero-bg" src="/styles/hero.jpg" alt="" fetchpriority="high" width="2000" height="1000"/>
      <div class="container">
         <div class="hero-content">
             <div class="hero-text">
@@ -61,9 +57,7 @@
     }
    /* Hero */
    .hero {
-    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.webp");
-    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.png");
-    background-image: url("https://hallostrandeiland.nl/networks/hallostrandeiland/img/hse_hero-bg.avif");
+    background-image: url("/styles/hero.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -72,9 +66,6 @@
     position: relative;
     overflow: hidden;
     align-items: center;
-
-    /* Containment toegevoegd */
-    contain: layout style;
 }
 
  
