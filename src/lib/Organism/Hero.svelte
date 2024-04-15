@@ -57,7 +57,7 @@
     }
    /* Hero */
    .hero {
-    background-image: url("/styles/hero.jpg");
+    background-image: url("/styles/hero.jpg")!important;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

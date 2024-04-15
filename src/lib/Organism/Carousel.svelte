@@ -1,7 +1,7 @@
 <script>
     export let data
     import { onMount } from 'svelte';
-  
+    
     // Functie voor het scrollen naar links of rechts binnen de carousel
     function scrollLeftOrRight(uiEvent) {
       const carouselElement = document.querySelector('.carousel');
@@ -74,9 +74,8 @@
     });
   </script>
   
-  
   <h1>Wensen</h1>
-  
+
   {#if data}
   <section class="carousel-container">
     <!-- Vorige knop -->
@@ -86,11 +85,12 @@
       </svg>
     </a>
   
-<!-- Carousel container -->
-<div class="carousel">
-    <div class="carousel-inner">
-      {#each data.wishes as wish}
-      <a href={`/overzicht/wens/${wish.id}`} class="carousel-item">
+    <!-- Carousel container -->
+    <div class="carousel">
+      <div class="carousel-inner">
+        {#each data.wishes as wish}
+        <!-- Volledige carousel-item wordt nu een link -->
+        <a href={`/overzicht/wens/${wish.id}`} class="carousel-item" tabindex="0">
           <img class="carousel-image" src={wish.image.url} alt="" decoding="async" width="150" height="50" loading="lazy"/>
           <div class="carousel-text">
             <h2>{wish.heading}</h2>
@@ -107,31 +107,30 @@
             <a class="sdgImage" href="https://sdgs.un.org/goals">
               <img class="susDevGoal" src={wish.image.image.url} alt="{wish.image.label}" width="50" height="50" loading="lazy"/>
             </a>
-            {/if}
+            {/if} 
           </div>
-        </a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-      {/each}
+        </a>
+        {/each}
+      </div>
     </div>
-  </div>
   
-  
-<!-- Volgende knop -->
+    <!-- Volgende knop -->
     <a href="#" class="carousel-link right-arrow" on:click={scrollLeftOrRight} title="Volgende slide" hidden>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
     </a>
   
-  <!-- Carrousel indicator -->
-  <div class="carousel-indicator" hidden>
-    <span class="carousel-indicator-span">
-      <!-- Loop over de wensen en toon een indicator voor elk item -->
-      {#each data.wishes as wish, index}
-        <span class="carousel-indicator-span-span {index === 0 ? 'is-active' : ''}"></span>
-      {/each}
-    </span>
-  </div>
-   
+    <!-- Carrousel indicator -->
+    <div class="carousel-indicator" hidden>
+      <span class="carousel-indicator-span">
+        <!-- Loop over de wensen en toon een indicator voor elk item -->
+        {#each data.wishes as wish, index}
+          <span class="carousel-indicator-span-span {index === 0 ? 'is-active' : ''}"></span>
+        {/each}
+      </span>
+    </div>
+     
     <!-- Knop voor informatie over carousel als js uit staat -->
     <button class="carousel-info-button">
       Scroll voor de volgende slide
@@ -153,69 +152,55 @@
       </svg>
     </a>
   </div>
-
+  
   <style>
-    /* Carousel container */
-    .carousel-container {
-        width: 100%;
+    
+      /* Carousel container */
+      .carousel-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
     }
   
     /* Carousel */
     .carousel {
-        width: 70%;
-      margin: 20px auto;
-      border-radius: 5px;
-      overflow: hidden;
-      position: relative;
-      background-color: rgb(255, 255, 255);
       display: flex;
       overflow-x: auto;
+      width: 70%;
+      margin: 20px auto;
       scroll-snap-type: x mandatory;
       justify-content: center;
       position: relative;
       scrollbar-width: thin;
-      /* animation: slideIn 1s forwards; */
+      background-color: rgb(255, 255, 255);
 
-  
     }
   
     /* Carousel inner */
     .carousel-inner {
       display: flex;
       width: -webkit-fill-available;
-
-
-    }
+  }
+  
+  
   
     /* Carousel item */
     .carousel-item {
-     width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex: 0 0 100%;
-    scroll-snap-align: center;
-    animation: slideIn 1s forwards;
-
-
-  }
-  @keyframes slideIn {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-    /* Carousel image */
-    .carousel-image {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex: 0 0 100%;
+      scroll-snap-align: center;
+    }
+  
+     /* Carousel image */
+     .carousel-image {
       width: 50%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       aspect-ratio: 16 / 9;
+
     }
   
    /* Carousel text */
@@ -229,10 +214,10 @@
     .carousel-text a {
       font-size: 1.1em;
       color: #333;
-      display: -webkit-box;
+      /* display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
-      overflow: hidden;
+      overflow: hidden; */
 
     }
   
@@ -240,6 +225,7 @@
    time {
     display: flex;
     align-items: center;
+    /* gap: var(--unit-small); */
     margin: 15px -4px;
     }
 
@@ -250,7 +236,7 @@
     /* Carousel link */
     .carousel-link {
       position: absolute;
-      top: 67%;
+      top: 50%;
       transform: translateY(-50%);
       width: 40px;
       height: 40px;
@@ -258,23 +244,23 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      color: #333;
+      color: #000000;
       font-size: 20px;
       z-index: 2;
       border-radius: 50%;
       background-color: rgb(255, 255, 255);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.299);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.611);
       margin: 0 -33px;
     }
   
     /* Carousel link - left arrow */
     .carousel-link.left-arrow {
-      left: 13%;
+      left: 11%;
     }
   
     /* Carousel link - right arrow */
     .carousel-link.right-arrow {
-      right: 13%;
+      right: 11%;
     }
   
     /* Carousel link svg */
@@ -311,7 +297,7 @@
       height: var(--indicator-size);
       border-radius: 50%;
       background: rgb(0, 0, 0);
-      opacity: 0.4;
+      opacity: 0.5;
       transition: 0.2s ease-out opacity;
     }
   
@@ -327,10 +313,9 @@
       background-color: rgb(0, 0, 0);
       color: var(--yellow);
       border: none;
+      border-radius: 5px;
       cursor: pointer;
       padding: 5px;
-      left:15%;
-      margin-top: -20px;
     }
   
     /* Button back */
@@ -371,8 +356,7 @@
       text-align: center;
       vertical-align: middle;
     }
-
-
+  
     /* Media queries */
     @media only screen and (max-width: 750px) {
       h1 {
