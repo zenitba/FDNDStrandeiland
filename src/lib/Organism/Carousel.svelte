@@ -183,7 +183,6 @@
   }
   
   
-  
     /* Carousel item */
     .carousel-item {
       width: 100%;
