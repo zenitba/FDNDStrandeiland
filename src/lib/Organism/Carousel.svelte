@@ -1,36 +1,34 @@
 <script>
     export let data
     import { onMount } from 'svelte';
-    
+  
     // Functie voor het scrollen naar links of rechts binnen de carousel
-    function scrollLeftOrRight(uiEvent) {
+    function scrollLeftOrRight(direction) {
       const carouselElement = document.querySelector('.carousel');
-      const scrollWidth = carouselElement.scrollWidth;
       const offsetWidth = carouselElement.offsetWidth;
+      const scrollXBy = (direction === 'left') ? -offsetWidth : offsetWidth;
+    
+      const scrollWidth = carouselElement.scrollWidth;
       const scrollLeft = carouselElement.scrollLeft;
-      const scrollXBy = (uiEvent.target.classList.contains('left-arrow') ? -1 : 1) * offsetWidth;
   
       // Controleer of de carousel helemaal naar links of rechts is gescrold
-      if (scrollXBy < 0 && scrollLeft === 0) {
-        // Als helemaal naar links, scroll dan naar het einde van de carousel
+      if (direction === 'left' && scrollLeft === 0) {
         carouselElement.scrollTo({
           left: scrollWidth - offsetWidth,
           behavior: 'smooth'
         });
-      } else if (scrollXBy > 0 && Math.abs(scrollWidth - (scrollLeft + offsetWidth)) <= 1) {
-        // Als helemaal naar rechts, scroll dan naar het begin van de carousel
+      } else if (direction === 'right' && Math.abs(scrollWidth - (scrollLeft + offsetWidth)) <= 1) {
         carouselElement.scrollTo({
           left: 0,
           behavior: 'smooth'
         });
       } else {
-        // Anders scrollen met de berekende hoeveelheid pixels
         carouselElement.scrollBy({
           left: scrollXBy,
           behavior: 'smooth'
         });
       }
-      uiEvent.preventDefault();
+    
       // Werk de actieve indicator bij
       updateActiveIndicator();
     }
@@ -39,61 +37,70 @@
     function updateActiveIndicator() {
       const carouselElement = document.querySelector('.carousel');
       const scrollLeft = carouselElement.scrollLeft;
-      const scrollWidth = carouselElement.scrollWidth;
       const offsetWidth = carouselElement.offsetWidth;
-      const totalItems = Math.round(scrollWidth / offsetWidth);
-      const activeIndex = Math.round(scrollLeft / scrollWidth * totalItems);
+      const activeIndex = Math.round(scrollLeft / offsetWidth);
   
-      // Vind de indicator voor de actieve items
       const indicator = document.querySelector('.carousel-indicator-span');
-      // Vind alle individuele indicatoren
       const indicators = indicator.querySelectorAll('.carousel-indicator-span-span');
-      // Verwijder de klasse 'is-active' van alle indicatoren
-      indicators.forEach((indicator, index) => {
-        indicator.classList.remove('is-active');
+      indicators.forEach((ind, index) => {
+        if (index === activeIndex) {
+          ind.classList.add('is-active');
+        } else {
+          ind.classList.remove('is-active');
+        }
       });
-      // Voeg de klasse 'is-active' toe aan de indicator van het actieve item
-      indicators[activeIndex].classList.add('is-active');
     }
   
-    // Functie die wordt uitgevoerd wanneer het component wordt gemonteerd
-    onMount(() => {
-      // Zorg ervoor dat de knoppen en indicatoren zichtbaar zijn bij als de browser JS heeft ingeschakeld
-      const carouselElements = document.querySelectorAll('.carousel-link, .carousel-indicator');
-      carouselElements.forEach(function(element) {
-        element.hidden = false;
-      });
-    });
+    function scrollToSlide(index) {
+  console.log('Scrolling to slide:', index);
+  const carouselElement = document.querySelector('.carousel');
+  const offsetWidth = carouselElement.offsetWidth;
+
+  carouselElement.scrollTo({
+    left: offsetWidth * index,
+    behavior: 'smooth'
+  });
+
+  updateActiveIndicator();
+}
+
+
   
-    // Zorg ervoor dat de carousel informatie button niet zichtbaar is waneer JS ingeschakeld is
-    onMount(() => {
-      const carouselElements = document.querySelectorAll('.carousel-info-button');
-      carouselElements.forEach(function(element) {
-        element.style.display = 'none';
-      });
+     // Functie die wordt uitgevoerd wanneer het component wordt gemonteerd
+  onMount(() => {
+    // Zorg ervoor dat de knoppen en indicatoren zichtbaar zijn bij als de browser JS heeft ingeschakeld
+    const carouselElements = document.querySelectorAll('.carousel-link, .carousel-indicator');
+    carouselElements.forEach(function(element) {
+      element.hidden = false;
     });
+  });
+
+  // Zorg ervoor dat de carousel informatie button niet zichtbaar is waneer JS ingeschakeld is
+  onMount(() => {
+    const carouselElements = document.querySelectorAll('.carousel-info-button');
+    carouselElements.forEach(function(element) {
+      element.style.display = 'none';
+    });
+  });
   </script>
   
   <h1>Wensen</h1>
-
+  
   {#if data}
   <section class="carousel-container">
-    <!-- Vorige knop -->
-    <a href="#" class="carousel-link left-arrow" on:click={scrollLeftOrRight} title="Volgende slide" hidden>
+    <a href="#" class="carousel-link left-arrow" on:click={() => scrollLeftOrRight('left')} title="Vorige slide" hidden>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
     </a>
   
-    <!-- Carousel container -->
     <div class="carousel">
       <div class="carousel-inner">
-        {#each data.wishes as wish}
-        <!-- Volledige carousel-item wordt nu een link -->
-        <a href={`/overzicht/wens/${wish.id}`} class="carousel-item" tabindex="0">
+        {#each data.wishes as wish, index}
+        <div class="carousel-item">
           <img class="carousel-image" src={wish.image.url} alt="" decoding="async" width="150" height="50" loading="lazy"/>
           <div class="carousel-text">
-            <h2>{wish.heading}</h2>
+            <h2><a href={`/overzicht/wens/${wish.id}`}>{wish.heading}</a></h2>
             <p>{wish.description}</p>
             <time>
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -109,36 +116,33 @@
             </a>
             {/if} 
           </div>
-        </a>
+        </div>
         {/each}
       </div>
     </div>
   
-    <!-- Volgende knop -->
-    <a href="#" class="carousel-link right-arrow" on:click={scrollLeftOrRight} title="Volgende slide" hidden>
+    <a href="#" class="carousel-link right-arrow" on:click={() => scrollLeftOrRight('right')} title="Volgende slide" hidden>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="carousel-arrow">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
     </a>
   
-    <!-- Carrousel indicator -->
-    <div class="carousel-indicator" hidden>
-      <span class="carousel-indicator-span">
-        <!-- Loop over de wensen en toon een indicator voor elk item -->
-        {#each data.wishes as wish, index}
-          <span class="carousel-indicator-span-span {index === 0 ? 'is-active' : ''}"></span>
-        {/each}
-      </span>
-    </div>
-     
-    <!-- Knop voor informatie over carousel als js uit staat -->
+    <div class="carousel-indicator">
+        <span class="carousel-indicator-span">
+          {#each data.wishes as wish, index}
+          <span class="carousel-indicator-span-span {index === 0 ? 'is-active' : ''}" on:click={() => {console.log('Clicked on index:', index); scrollToSlide(index);}}></span>
+          {/each}
+        </span>
+      </div>
+      
+  
+  <!-- Knop voor informatie over carousel als js uit staat -->
+  <div class="button-container">
     <button class="carousel-info-button">
-      Scroll voor de volgende slide
+        Scroll voor de volgende slide
     </button>
+</div>
   </section>
-  {:else}
-  <!-- Weergave tijdens laden -->
-  <p>Loading...</p>
   {/if}
   
   <!-- Terugknop -->
@@ -154,12 +158,12 @@
   </div>
   
   <style>
-    
-      /* Carousel container */
-      .carousel-container {
+    /* Carousel container */
+    .carousel-container {
       width: 100%;
       overflow: hidden;
       position: relative;
+      scrollbar-width: none; 
     }
   
     /* Carousel */
@@ -171,18 +175,17 @@
       scroll-snap-type: x mandatory;
       justify-content: center;
       position: relative;
-      scrollbar-width: thin;
       background-color: rgb(255, 255, 255);
-
+    }
+    .carousel::-webkit-scrollbar {
+    display: none; 
     }
   
     /* Carousel inner */
     .carousel-inner {
       display: flex;
       width: -webkit-fill-available;
-  }
-  
-  
+    }
   
     /* Carousel item */
     .carousel-item {
@@ -192,25 +195,36 @@
       align-items: center;
       flex: 0 0 100%;
       scroll-snap-align: center;
+      animation: slideIn 1s forwards;  
+    }
+    @keyframes slideIn {
+    0% {
+    transform: translateX(-100%);
+    opacity: 0;
+    } 
+    100% {
+    transform: translateX(0);
+    opacity: 1;
+    }
     }
   
-     /* Carousel image */
-     .carousel-image {
+    /* Carousel image */
+    .carousel-image {
       width: 50%;
       height: 100%;
-      object-fit: cover;
+      object-fit: inherit;
       aspect-ratio: 16 / 9;
 
     }
   
-   /* Carousel text */
-   .carousel-text {
-   flex: 1;
-   padding: 20px; 
-   }
+    /* Carousel text */
+    .carousel-text {
+      flex: 1;
+      padding: 20px;
+    }
   
-    /* Carousel text headings and links */
-    .carousel-text h2,
+     /* Carousel text headings and links */
+     .carousel-text h2,
     .carousel-text a {
       font-size: 1.1em;
       color: #333;
@@ -222,17 +236,20 @@
     }
   
     /* Time */
-   time {
-    display: flex;
-    align-items: center;
-    /* gap: var(--unit-small); */
-    margin: 15px -4px;
-    }
+    time {
+      display: flex;
+      align-items: center;
+      /* gap: var(--unit-small); */
+      margin: 15px -4px;
 
+    }
+  
     /* Time support */
     time .support {
-    font-weight: 600;
+      font-weight: 600;
+      /* margin: 15px 0; */
     }
+  
     /* Carousel link */
     .carousel-link {
       position: absolute;
@@ -249,7 +266,7 @@
       z-index: 2;
       border-radius: 50%;
       background-color: rgb(255, 255, 255);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.611);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.686);
       margin: 0 -33px;
     }
   
@@ -274,7 +291,7 @@
       --indicator-size: 10px;
       --max-indicators: 5;
       position: absolute;
-      margin-bottom: 20px;
+      bottom: 0px;
       left: 50%;
       transform: translateX(-50%);
       max-width: calc(var(--max-indicators) * var(--indicator-size) + (var(--max-indicators) - 1) * var(--indicator-size) / 2);
@@ -296,7 +313,7 @@
       width: var(--indicator-size);
       height: var(--indicator-size);
       border-radius: 50%;
-      background: rgb(0, 0, 0);
+      background: #00000087;
       opacity: 0.5;
       transition: 0.2s ease-out opacity;
     }
@@ -306,26 +323,32 @@
       opacity: 1;
     }
   
-    /* Carousel info button */
-    .carousel-info-button {
-      display: block;
-      position: fixed;
-      background-color: rgb(0, 0, 0);
-      color: var(--yellow);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      padding: 5px;
-    }
-  
-    /* Button back */
+   /* Carousel info button */
+   .button-container{
+    display: flex;
+  justify-content: center; /* Horizontaal centreren */
+  align-items: center;
+   }
+   .carousel-info-button {
+   
+    background-color: rgb(0, 0, 0);
+    color: var(--yellow);
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    font-weight: 600;
+    font-size: 0.9em;
+    /* left: 42.5%; */
+   
+   }
+       /* Button back */
     .btn-back {
       padding-left: 0;
       padding-right: 0;
       display: inline-flex;
       align-items: center;
       width: 100%;
-      margin: 30px 0;
+      margin: 20px 0;
     }
   
     /* Button back anchor */
@@ -343,11 +366,11 @@
     .btn-back svg {
       margin: -4px 1px;
     }
-  
     .btn-back a:hover{
       background-color: var(--black); 
       color: var(--yellow);
     }
+  
     /* Button back */
     .btn-back {
       display: inline-block;
@@ -357,8 +380,8 @@
       vertical-align: middle;
     }
   
-    /* Media queries */
-    @media only screen and (max-width: 750px) {
+     /* Media queries */
+     @media only screen and (max-width: 750px) {
       h1 {
         font-size: 1.5em;
         margin-top: 20px;
@@ -397,5 +420,4 @@
       }
     }
   </style>
-  
   
