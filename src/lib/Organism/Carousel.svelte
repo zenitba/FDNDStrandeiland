@@ -2,12 +2,12 @@
     export let data
     import { onMount } from 'svelte';
   
-  
     // Functie voor het scrollen naar links of rechts binnen de carousel
     function scrollLeftOrRight(direction) {
       const carouselElement = document.querySelector('.carousel');
       const offsetWidth = carouselElement.offsetWidth;
       const scrollXBy = (direction === 'left') ? -offsetWidth : offsetWidth;
+    
       const scrollWidth = carouselElement.scrollWidth;
       const scrollLeft = carouselElement.scrollLeft;
   
@@ -28,7 +28,7 @@
           behavior: 'smooth'
         });
       }
-  
+    
       // Werk de actieve indicator bij
       updateActiveIndicator();
     }
@@ -40,33 +40,49 @@
       const offsetWidth = carouselElement.offsetWidth;
       const activeIndex = Math.round(scrollLeft / offsetWidth);
   
-      const indicators = document.querySelectorAll('.carousel-indicator-span-span');
+      const indicator = document.querySelector('.carousel-indicator-span');
+      const indicators = indicator.querySelectorAll('.carousel-indicator-span-span');
       indicators.forEach((ind, index) => {
-        ind.classList.toggle('is-active', index === activeIndex);
+        if (index === activeIndex) {
+          ind.classList.add('is-active');
+        } else {
+          ind.classList.remove('is-active');
+        }
       });
     }
   
-    // Functie om naar een specifieke dia te scrollen
     function scrollToSlide(index) {
-      const carouselElement = document.querySelector('.carousel');
-      const offsetWidth = carouselElement.offsetWidth;
-      carouselElement.scrollTo({
-        left: offsetWidth * index,
-        behavior: 'smooth'
-      });
-      updateActiveIndicator();
-    }
+  console.log('Scrolling to slide:', index);
+  const carouselElement = document.querySelector('.carousel');
+  const offsetWidth = carouselElement.offsetWidth;
+
+  carouselElement.scrollTo({
+    left: offsetWidth * index,
+    behavior: 'smooth'
+  });
+
+  updateActiveIndicator();
+}
+
+
   
-    // Functie die wordt uitgevoerd wanneer het component wordt gemonteerd
-    onMount(() => {
-      // Zorg ervoor dat de knoppen en indicatoren zichtbaar zijn bij als de browser JS heeft ingeschakeld
-      const carouselElements = document.querySelectorAll('.carousel-link, .carousel-indicator');
-      carouselElements.forEach(element => {
-        element.hidden = false;
-      });
+     // Functie die wordt uitgevoerd wanneer het component wordt gemonteerd
+  onMount(() => {
+    // Zorg ervoor dat de knoppen en indicatoren zichtbaar zijn bij als de browser JS heeft ingeschakeld
+    const carouselElements = document.querySelectorAll('.carousel-link, .carousel-indicator');
+    carouselElements.forEach(function(element) {
+      element.hidden = false;
     });
+  });
+
+  // Zorg ervoor dat de carousel informatie button niet zichtbaar is waneer JS ingeschakeld is
+  onMount(() => {
+    const carouselElements = document.querySelectorAll('.carousel-info-button');
+    carouselElements.forEach(function(element) {
+      element.style.display = 'none';
+    });
+  });
   </script>
-  
   
   <h1>Wensen</h1>
   
@@ -379,37 +395,29 @@
       .carousel-image {
         width: 100%;
         height: 300px;
-        object-fit: cover;
-     aspect-ratio: 16 / 9;
       }
     }
   
     @media only screen and (max-width: 520px) {
-  h1 {
-    font-size: 1.3em;
-    margin-top: 20px;
-    margin-bottom: 0;
-  }
-
-  .carousel-item {
-    flex-direction: column;
-  }
-
-  .carousel-text p {
-    margin: 0;
-    font-weight: 400; 
-    max-height: 9em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* width: 100px; */
-  }
-
-  .carousel-image {
-    width: 100%;
-    height: 200px; 
-    object-fit: cover;
-     aspect-ratio: 16 / 9;
-  }
-}
-
+      h1 {
+        font-size: 1.3em;
+      }
+  
+      .carousel-item {
+        flex-direction: column;
+      }
+      .carousel-text p{   
+      margin: 0;
+      font-weight: 0;
+      max-height: 9em; 
+      overflow: hidden; 
+      text-overflow: ellipsis;  
+       }
+  
+      .carousel-image {
+        width: 100%;
+        height: 200px;
+      }
+    }
   </style>
+  
