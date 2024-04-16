@@ -45,7 +45,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scrollbar-width: none;
 }
+
+  ::-webkit-scrollbar {
+    display: none; 
+  }
 
 /* Standaard stijl voor HTML */
 html {
@@ -71,8 +76,8 @@ body {
 h1 {
     text-align: center;
     font-size: 2.1em;
-    margin: 0.5em 0;
     color: var(--black);
+    margin-top:20px;
 }
 
 /* Stijlen voor titels */
@@ -80,7 +85,7 @@ h1 {
     font-size: 1.5rem;
     line-height: 1.17;
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 /* Interactief */
@@ -116,7 +121,7 @@ mark {
 }
 
 /* Focus-stijlen */
-a:focus-visible, button:focus-visible ,li:focus-visible{
+a:focus-visible, button:focus-visible{
     outline: 2px solid var(--black);
     outline-offset: 3px; 
     border-radius: 1px;
@@ -126,6 +131,7 @@ a .carousel-items:focus-visible{
     outline-offset: 3px; 
     border-radius: 1px;
 }
+
 /* Stijlen voor containers */
 .container {
     display: flex;
