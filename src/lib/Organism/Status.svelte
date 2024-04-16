@@ -151,7 +151,7 @@
     background-color: white; 
     max-width: 610px; 
     border: 1px solid rgba(0, 0, 0, 0.125);
-    margin-bottom: 40px;
+    margin-bottom: 69px;
   }
   /* Stijl voor scheidslijn */
   .border-line {
