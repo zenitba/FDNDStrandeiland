@@ -45,7 +45,6 @@
 <!-- Grid container voor de weergave van ideeën -->
 <section class="grid-container">
     {#each data.wishes as wish}
-    <a href={`/overzicht/wens/${wish.id}`}>
     <div class="grid-item">
         <!-- Afbeelding container -->
         <div class="image-container">
@@ -53,7 +52,7 @@
         </div>
         <!-- Tekst container -->
         <div class="text-container">
-                <h3>{wish.heading}</h3>
+                <h3><a href={`/overzicht/wens/${wish.id}`}>{wish.heading}</a></h3>
             <p>{wish.description}</p>
             <time>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -70,7 +69,6 @@
           {/if}
         </div>
     </div>
-   </a>
 {/each}
 </section>
 
