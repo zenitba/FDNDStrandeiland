@@ -72,6 +72,13 @@
     grid-gap: 20px; /* Gap between the columns */
 }
 
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Display as a single column */
+    }
+}
+
     /* Algemene stijl voor de hoofdinhoud */
     main {
         width: 80vw;

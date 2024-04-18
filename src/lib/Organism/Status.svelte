@@ -151,8 +151,15 @@
     background-color: white; 
     max-width: 610px; 
     border: 1px solid rgba(0, 0, 0, 0.125);
-    margin-bottom: 69px;
+    margin-bottom: 940px;
   }
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    section {
+    margin-bottom: 40px;
+    }
+}
+
   /* Stijl voor scheidslijn */
   .border-line {
       border-top: 1px solid #acaeae;
