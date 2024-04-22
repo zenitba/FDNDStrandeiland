@@ -17,15 +17,12 @@
 		}
 	}
 
-// Functie om de filter toe te passen en de popup te sluiten
-function applyFilter() {
-    console.log('Applying filter in Filter.svelte...');
-    console.log('Selected SDGs:', selectedSDGs);
-
-    data.wishes = data.wishes.filter(wish => selectedSDGs.includes(wish.sdg));
-
-    togglePopup(); // Sluit het filterscherm nadat de filter is toegepast
-}
+	// Functie om de filter toe te passen en de popup te sluiten
+	function applyFilter() {
+		console.log('Applying filter in Filter.svelte...');
+		console.log('Selected SDGs:', selectedSDGs);
+		togglePopup(); // Sluit het filterscherm nadat de filter is toegepast
+	}
 
 	// Functie om de zichtbaarheid van de popup om te keren
 	function togglePopup() {
@@ -94,7 +91,7 @@ function applyFilter() {
 						<!-- Checkbox voor de SDG -->
 						<input
 							type="checkbox"
-							
+							checked={selectedSDGs.includes(wish.sdg)}
 							on:change={() => selectSDG(wish.sdg)}
 						/>
 					</label>
