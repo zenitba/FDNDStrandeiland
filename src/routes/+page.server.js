@@ -1,43 +1,38 @@
-import { gql } from 'graphql-request'
-import { hygraph } from '$lib/utils/hygraph.js'
+import { gql } from 'graphql-request';
+import { hygraph } from '$lib/utils/hygraph.js';
 
-export async function load() {  
+export async function load(filter) {
   let query = gql`
-        query wishes {
-            reactions {
-                id
-                fullname
-                submitField
-                date
-                likeButton
-            }
-            wishes {
-                id
-                heading
-                description
-                date
-                label
-                image {
-                    url
-                    image {
-                        url
-                        label
-                    }
-                    label
-                }
-            }
-            sdgs {
-                id
-                image {
-                    url
-                    id
-                }
-            }
+    query Wishes($filter: String) {
+      wishes(filter: $filter) {
+        id
+        heading
+        description
+        date
+        label
+        image {
+          url
+          image {
+            url
+            label
+          }
+          label
         }
-    `
+      }
+    }
+  `;
 
-    const request = await hygraph.request(query)
+  const sdgLabel = `SDG-${filter}`; // Format SDG label based on your data structure
 
-    return request
-    
+  const variables = {
+    filter: filter ? `wish.image.label:${sdgLabel}` : '', // Filter by SDG label
+  };
+
+  try {
+    const request = await hygraph.request(query, variables);
+    return request;
+  } catch (error) {
+    console.error('Error fetching wishes:', error);
+    throw new Error('Failed to load wishes');
   }
+}
