@@ -75,7 +75,7 @@ body {
 /* Stijlen voor titels */
 h1 {
     text-align: center;
-    font-size: 2.1em;
+    font-size: 1.8em;
     color: var(--black);
     margin-top:20px;
 }
