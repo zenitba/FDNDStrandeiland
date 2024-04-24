@@ -1,6 +1,17 @@
 <script>
 	export let data;
 	import Filter from '$lib/Molecul/Filter.svelte';
+	let filteredWishes = data.wishes;
+
+	function handleFilter(event) {
+		const { label } = event.detail;
+
+		filteredWishes = data.wishes.filter((wish) => {
+			const matchesLabel = wish.label.toLowerCase().includes(label.toLowerCase());
+
+			return matchesLabel;
+		});
+	}
 </script>
 
 <!-- Header sectie -->
@@ -55,7 +66,7 @@
 </button>
 
 <!-- Filter component -->
-<Filter {data} />
+<Filter on:applyFilter={handleFilter} />
 
 <!-- Grid container voor de weergave van ideeën -->
 <section class="grid-container">
