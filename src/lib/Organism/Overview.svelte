@@ -1,6 +1,8 @@
 <script>
-	export let data;
 	import Filter from '$lib/Molecul/Filter.svelte';
+
+	export let data;
+
 	let filteredWishes = data.wishes;
 
 	function handleFilter(event) {
@@ -70,7 +72,7 @@
 
 <!-- Grid container voor de weergave van ideeën -->
 <section class="grid-container">
-	{#each data.wishes as wish}
+    {#each filteredWishes as wish}
 		<div class="grid-item">
 			<!-- Afbeelding container -->
 			<div class="image-container">
