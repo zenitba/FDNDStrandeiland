@@ -48,7 +48,7 @@
       <button class="overlay" on:click={togglePopup}></button>
       <div class="filter-popup">
           <!-- Kop voor de filterpopup -->
-          <h3>Filter op SDG</h3>
+          <h4>Filter op SDG</h4>
           <!-- Sluitknop voor de popup -->
           <button class="close-btn" on:click={togglePopup}>
               <!-- SVG-afbeelding voor de sluitknop -->

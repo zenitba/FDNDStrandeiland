@@ -71,7 +71,7 @@
           reactions.forEach(reaction => {
               const li = document.createElement('li');
               li.textContent = `${reaction.text} - ${reaction.role}`;
-              chatList.appendChild(li); // Change 'prepend' to 'appendChild' to maintain the order of reactions
+              chatList.appendChild(li); 
           });
       } else {
           const li = document.createElement('li');
