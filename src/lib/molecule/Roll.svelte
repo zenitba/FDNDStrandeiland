@@ -1,9 +1,9 @@
 <!-- JavaScript imports en functies -->
 <script>
     import { onMount } from 'svelte';
-    import RiskLevel from '$lib/Atoms/RiskLevel.svelte';
-    import CostLevel from '$lib/Atoms/CostLevel.svelte';
-    import HeartLevel from '$lib/Atoms/HeartLevel.svelte';
+    import RiskLevel from '$lib/atoms/RiskLevel.svelte';
+    import CostLevel from '$lib/atoms/CostLevel.svelte';
+    import HeartLevel from '$lib/atoms/HeartLevel.svelte';
 
     let activeId;
     let count = 0;

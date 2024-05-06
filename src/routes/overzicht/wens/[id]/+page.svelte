@@ -1,10 +1,10 @@
 <script>
   // Imports van Svelte-componenten
-  import Navbar from '$lib/Organism/Navbar.svelte';
-  import Roll from '$lib/Molecul/Roll.svelte';
-  import Sdg from '$lib/Atoms/SDG.svelte';  
-  import Status from '$lib/Organism/Status.svelte';
-  import Footer from '$lib/Organism/Footer.svelte';
+  import Navbar from '$lib/organism/Navbar.svelte';
+  import Roll from '$lib/molecul/Roll.svelte';
+  import Sdg from '$lib/atoms/SDG.svelte';  
+  import Status from '$lib/organism/Status.svelte';
+  import Footer from '$lib/organism/Footer.svelte';
 
 
   // Sla de data op in een store

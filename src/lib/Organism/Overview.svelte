@@ -1,5 +1,5 @@
 <script>
-	import Filter from '$lib/Molecul/Filter.svelte';
+	import Filter from '$lib/molecul/Filter.svelte';
 
 	export let data;
 
