@@ -195,6 +195,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		height: fit-content;
+        width: 22em;
 		transition:
 			transform 0.2s,
 			background-color 0.2s;
