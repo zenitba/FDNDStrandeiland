@@ -80,7 +80,7 @@
 
 .footer-content {
     display: grid;
-    grid-template-columns: 60% 40% 0%;
+    grid-template-columns: 70% 30% 0%;
     align-items: center;
 }
 
