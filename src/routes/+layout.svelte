@@ -1,5 +1,5 @@
 <script>
-	import Viewtransition from ".$lib/Organism/viewtransition.svelte";
+	import Viewtransition from "$lib/Organism/viewtransition.svelte";
 
 </script>
 <Viewtransition />
