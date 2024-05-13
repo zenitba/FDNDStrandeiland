@@ -1,6 +1,6 @@
 <script>
     export let data;
-    import Filter from '$lib/Molecul/Filter.svelte';
+    import Filter from '$lib/Molecul/filter.svelte';
 </script>
 
 <!-- Header sectie -->
