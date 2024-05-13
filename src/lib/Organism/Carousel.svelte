@@ -403,6 +403,7 @@ function scrollToSlide(index) {
       .carousel-item {
         flex-direction: column;
       }
+      
       .carousel-text p{   
       margin: 0;
       font-weight: 0;
