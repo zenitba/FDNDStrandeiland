@@ -1,71 +1,68 @@
 <script>
-	import { onMount } from 'svelte';
-    import Levels from '../Atoms/Levels.svelte';
-
-	let activeId;
+    import { onMount } from 'svelte';
+ 
+    let activeId;
     let count = 0;
     let count2 = 0;
     let count3 = 0;
-    let tellerDeler;
-    let tellerHelper;
-    let tellerTrekker;
+    let output;
+    let output2;
+    let output3;
     let buttonList;
-  
-	function countClicks() {
-	  count++;
-	  tellerDeler.innerHTML = count;
-	  document.getElementById('deler').style.display = 'flex';
-  
-	  setTimeout(() => {
-		text.remove();
-	  }, 4000);
-	}
-  
-	function countClicks2() {
-	  count2++;
-	  tellerHelper.innerHTML = count2;
-	  document.getElementById('helper').style.display = 'flex';
-  
-	  setTimeout(() => {
-		text2.remove();
-	  }, 4000);
-	}
-  
-	function countClicks3() {
-	  count3++;
-	  tellerTrekker.innerHTML = count3;
-	  document.getElementById('trekker').style.display = 'flex';
-  
-	  setTimeout(() => {
-		text3.remove();
-	  }, 4000);
-	}
-  
-	onMount(() => {
-	   tellerDeler = document.getElementById('teller-deler');
-        tellerHelper = document.getElementById('teller-helper');
-        tellerTrekker = document.getElementById('teller-trekker');
-  
-	  buttonList = document.querySelectorAll('.button');
-  
-	  buttonList.forEach((button) => {
-		button.addEventListener('click', () => {
-		  activeId = button.id;
-		});
-	  });
-	});
-  </script>
-
+ 
+    function countClicks() {
+        count++;
+        output.innerHTML = count;
+        document.getElementById('text').style.display = 'flex';
+ 
+        setTimeout(() => {
+            text.remove();
+        }, 4000);
+    }
+ 
+    function countClicks2() {
+        count2++;
+        output2.innerHTML = count2;
+        document.getElementById('text2').style.display = 'flex';
+ 
+        setTimeout(() => {
+            text2.remove();
+        }, 4000);
+    }
+ 
+    function countClicks3() {
+        count3++;
+        output3.innerHTML = count3;
+        document.getElementById('text3').style.display = 'flex';
+ 
+        setTimeout(() => {
+            text3.remove();
+        }, 4000);
+    }
+ 
+    onMount(() => {
+        output = document.getElementById('output');
+        output2 = document.getElementById('output2');
+        output3 = document.getElementById('output3');
+ 
+        buttonList = document.querySelectorAll('.button');
+ 
+        buttonList.forEach((button) => {
+            button.addEventListener('click', () => {
+                activeId = button.id;
+            });
+        });
+    });
+</script>
+ 
+<!-- HTML structuur -->
 <br>
 <section>
     <noscript>
         <!-- Instructies voor het inschakelen van JavaScript -->
         Voor volledige functionaliteit van deze site is het nodig JavaScript in te schakelen. Hier zijn de <a href="https://www.enable-javascript.com/">instructies voor het inschakelen van JavaScript in uw webbrowser</a>.
     </noscript>
-
-    <!-- Component -->
-<Levels />
-
+ 
     <!-- Artikel voor rollen -->
     <article class="rollen">
         <!-- Lijst voor meldingen -->
@@ -73,9 +70,9 @@
         <div class="buttons">
             <div class="test">
                 <!-- Meldingen voor verschillende rollen -->
-                <p id="deler">Jouw rol als deler is opgeslagen!</p>
-                <p id="helper">Jouw rol als helper is opgeslagen!</p>
-                <p id="trekker">Jouw rol als trekker is opgeslagen!</p>
+                <p id="text">Jouw rol als deler is opgeslagen!</p>
+                <p id="text2">Jouw rol als helper is opgeslagen!</p>
+                <p id="text3">Jouw rol als trekker is opgeslagen!</p>
             </div>
             <!-- Knoppen voor het selecteren van rollen -->
             <div class="btn" id="mydiv">
@@ -85,34 +82,43 @@
             </div>
         </div>
     </article>
-
+ 
     <!-- Artikel voor het weergeven van het aantal klikken -->
     <article>
         <ul>
-            <li>Aantal mensen die dit delen: <span class="bold" id="teller-delen">{count}</span></li>
-            <li>Aantal helpers: <span class="bold" id="teller-helper">{count2}</span></li>
-            <li>Aantal trekkers: <span class="bold" id="teller-trekker">{count3}</span></li>
+            <li>Aantal mensen die dit delen: <span class="bold" id="output">{count}</span></li>
+            <li>Aantal helpers: <span class="bold" id="output2">{count2}</span></li>
+            <li>Aantal trekkers: <span class="bold" id="output3">{count3}</span></li>
         </ul>
     </article>
-
+ 
     <!-- Scheidingslijn -->
     <div class="border-line"></div>
 </section>
-
+ 
+<!-- CSS-stijlen -->
 <style>
-    /* CSS-stijlen */
+ 
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    button {
+    height: 61px;
+    }
+}
+ 
+    /* Rollen section */
     .bold {
         font-weight: 700;
     }
-
+ 
     .rollen {
         align-items: 'center';
     }
-
+ 
     /* Stijlen voor meldingsteksten */
-    #deler,
-    #helper,
-    #trekker{
+    #text,
+    #text2,
+    #text3 {
         display: none;
         background-color: lightgreen;
         justify-content: center;
@@ -123,11 +129,11 @@
         height: 75px;
         position: relative;
     }
-
+ 
     /* Animatie voor meldingsteksten */
-    #deler::after,
-    #helper::after,
-    #trekker::after {
+    #text::after,
+    #text2::after,
+    #text3::after {
         content: '';
         position: absolute;
         left: 0;
@@ -137,30 +143,26 @@
         background: green;
         animation: lijn 4s linear forwards;
     }
-
+ 
     @keyframes lijn {
         100% {
             width: 0;
         }
     }
-
+ 
     /* Stijl voor actieve knop */
     .active {
         background-color: lightgreen;
         color: black;
     }
-
-    section {
-        /* margin: 30px; */
-    }
-
+ 
     .btn {
         display: flex;
         align-items: center;
         gap: 1em;
         margin-bottom: 20px;
     }
-
+ 
     /* Stijlen voor knoppen */
     button {
         background-color: black;
@@ -175,52 +177,12 @@
         transition: 0.2s ease-in-out;
         justify-content: center;
     }
-
-    button.special {
-        background-color: blueviolet;
-    }
-
+ 
     /* Stijl voor ongeordende lijst in artikel */
     article ul {
         list-style: none;
     }
-
-    /* Stijlen voor containers */
-    .container {
-        display: flex;
-        align-items: center;
-    }
-
-    /* Verticale uitlijning voor SVG-afbeeldingen */
-    .icon {
-        vertical-align: middle;
-    }
-
-    /* Stijlen voor hartpictogram */
-    .heart {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    /* Verwijder standaardmarges van paragrafen */
-    p {
-        margin: 0;
-        font-weight: 400;
-    }
-
-    /* Stijlen voor SVG-afbeeldingen */
-    svg {
-        width: 35px;
-    }
-
-    /* Stijlen voor titels */
-    h2 {
-        font-size: 1.5rem;
-        line-height: 1.17;
-        font-weight: 800;
-        margin-bottom: 1rem;
-    }
-
+ 
     /* Stijl voor scheidslijn */
     .border-line {
         padding: 1.8rem 8% 1.25rem;
@@ -229,7 +191,7 @@
         background-color: transparent;
         font-size: 89%;
     }
-
+ 
     /* Stijlen voor lijstitems in artikel */
     article ul li {
         margin-bottom: 5px;

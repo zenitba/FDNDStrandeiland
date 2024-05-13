@@ -1,8 +1,8 @@
 <script>
-	import Viewtransition from "../lib/Organism/Viewtransition.svelte";
+	// import Viewtransition from "$lib/Organism/viewtransition.svelte";
 
 </script>
-<Viewtransition />
+<!-- <Viewtransition /> -->
 <slot />
 
 

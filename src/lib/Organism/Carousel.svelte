@@ -1,89 +1,85 @@
 <script>
+    export let data
     import { onMount } from 'svelte';
-    export let data;
-
+  
     // Functie voor het scrollen naar links of rechts binnen de carousel
     function scrollLeftOrRight(direction) {
-        const carouselElement = document.querySelector('.carousel');
-        const offsetWidth = carouselElement.offsetWidth;
-        const scrollXBy = (direction === 'left') ? -offsetWidth : offsetWidth;
-
-        const scrollWidth = carouselElement.scrollWidth;
-        const scrollLeft = carouselElement.scrollLeft;
-
-        // Controleer of de carousel helemaal naar links of rechts is gescrold
-        if (direction === 'left' && scrollLeft === 0) {
-            carouselElement.scrollTo({
-                left: scrollWidth - offsetWidth,
-                behavior: 'smooth'
-            });
-        } else if (direction === 'right' && Math.abs(scrollWidth - (scrollLeft + offsetWidth)) <= 1) {
-            carouselElement.scrollTo({
-                left: 0,
-                behavior: 'smooth'
-            });
-        } else {
-            carouselElement.scrollBy({
-                left: scrollXBy,
-                behavior: 'smooth'
-            });
-        }
-
-        // Werk de actieve indicator bij
-        updateActiveIndicator();
+      const carouselElement = document.querySelector('.carousel');
+      const offsetWidth = carouselElement.offsetWidth;
+      const scrollXBy = (direction === 'left') ? -offsetWidth : offsetWidth;
+    
+      const scrollWidth = carouselElement.scrollWidth;
+      const scrollLeft = carouselElement.scrollLeft;
+  
+      // Controleer of de carousel helemaal naar links of rechts is gescrold
+      if (direction === 'left' && scrollLeft === 0) {
+        carouselElement.scrollTo({
+          left: scrollWidth - offsetWidth,
+          behavior: 'smooth'
+        });
+      } else if (direction === 'right' && Math.abs(scrollWidth - (scrollLeft + offsetWidth)) <= 1) {
+        carouselElement.scrollTo({
+          left: 0,
+          behavior: 'smooth'
+        });
+      } else {
+        carouselElement.scrollBy({
+          left: scrollXBy,
+          behavior: 'smooth'
+        });
+      }
+    
+      // Werk de actieve indicator bij
+      updateActiveIndicator();
     }
-
+  
     // Functie voor het bijwerken van de actieve indicator in de carousel
     function updateActiveIndicator() {
-        const carouselElement = document.querySelector('.carousel');
-        const scrollLeft = carouselElement.scrollLeft;
-        const offsetWidth = carouselElement.offsetWidth;
-        const activeIndex = Math.round(scrollLeft / offsetWidth);
+    const carouselElement = document.querySelector('.carousel');
+    const scrollLeft = carouselElement.scrollLeft;
+    const offsetWidth = carouselElement.offsetWidth;
+    const activeIndex = Math.round(scrollLeft / offsetWidth);
 
-        const indicators = document.querySelectorAll('.carousel-indicator-span-span');
-        indicators.forEach((ind, index) => {
-            if (index === activeIndex) {
-                ind.classList.add('is-active');
-            } else {
-                ind.classList.remove('is-active');
-            }
-        });
-    }
+    const indicators = document.querySelectorAll('.carousel-indicator-span-span');
+    indicators.forEach((ind, index) => {
+        if (index === activeIndex) {
+            ind.classList.add('is-active');
+        } else {
+            ind.classList.remove('is-active');
+        }
+    });
+}
 
-    // Functie voor het scrollen naar een specifieke dia
-    function scrollToSlide(index) {
-        const carouselElement = document.querySelector('.carousel');
-        const offsetWidth = carouselElement.offsetWidth;
+function scrollToSlide(index) {
+    const carouselElement = document.querySelector('.carousel');
+    const offsetWidth = carouselElement.offsetWidth;
 
-        carouselElement.scrollTo({
-            left: offsetWidth * index,
-            behavior: 'smooth'
-        });
-
-        // Roep de updateActiveIndicator-functie aan nadat er is gescrold
-        setTimeout(() => {
-            updateActiveIndicator();
-        }, 500); // Wacht 500 milliseconden na het scrollen om de indicator bij te werken
-    }
-
-    // Functie die wordt uitgevoerd wanneer het component wordt gemonteerd
-    onMount(() => {
-        // Zorg ervoor dat de knoppen en indicatoren zichtbaar zijn als de browser JS heeft ingeschakeld
-        const carouselElements = document.querySelectorAll('.carousel-link, .carousel-indicator');
-        carouselElements.forEach(function(element) {
-            element.hidden = false;
-        });
+    carouselElement.scrollTo({
+        left: offsetWidth * index,
+        behavior: 'smooth'
     });
 
-    // Zorg ervoor dat de carousel informatiebutton niet zichtbaar is wanneer JS ingeschakeld is
-    onMount(() => {
-        const carouselElements = document.querySelectorAll('.carousel-info-button');
-        carouselElements.forEach(function(element) {
-            element.style.display = 'none';
-        });
-    });
-</script>
+    updateActiveIndicator();
+}
 
+     // Functie die wordt uitgevoerd wanneer het component wordt gemonteerd
+  onMount(() => {
+    // Zorg ervoor dat de knoppen en indicatoren zichtbaar zijn bij als de browser JS heeft ingeschakeld
+    const carouselElements = document.querySelectorAll('.carousel-link, .carousel-indicator');
+    carouselElements.forEach(function(element) {
+      element.hidden = false;
+    });
+  });
+
+  // Zorg ervoor dat de carousel informatie button niet zichtbaar is waneer JS ingeschakeld is
+  onMount(() => {
+    const carouselElements = document.querySelectorAll('.carousel-info-button');
+    carouselElements.forEach(function(element) {
+      element.style.display = 'none';
+    });
+  });
+  </script>
+  
   <h1>Wensen</h1>
   
   {#if data}
@@ -185,7 +181,6 @@
     .carousel-inner {
       display: flex;
       width: -webkit-fill-available;
-      width: 100%;
     }
   
     /* Carousel item */
@@ -196,23 +191,32 @@
       align-items: center;
       flex: 0 0 100%;
       scroll-snap-align: center;
-      /* opacity: 0; */
-
-    }    
+      animation: slideIn 1s forwards;  
+    }
+    @keyframes slideIn {
+    0% {
+    transform: translateX(-100%);
+    opacity: 0;
+    } 
+    100% {
+    transform: translateX(0);
+    opacity: 1;
+    }
+    }
   
     /* Carousel image */
     .carousel-image {
       width: 50%;
       height: 100%;
       object-fit: inherit;
-      aspect-ratio: 16 / 9; 
+      aspect-ratio: 16 / 9;
+
     }
   
     /* Carousel text */
     .carousel-text {
       flex: 1;
       padding: 20px;
-      width: auto;
     }
   
      /* Carousel text headings and links */
@@ -224,7 +228,6 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       overflow: hidden; */
-      overflow: hidden;
 
     }
   
@@ -400,6 +403,7 @@
       .carousel-item {
         flex-direction: column;
       }
+      
       .carousel-text p{   
       margin: 0;
       font-weight: 0;
