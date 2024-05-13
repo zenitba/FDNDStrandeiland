@@ -1,9 +1,7 @@
 <!-- JavaScript imports en functies -->
 <script>
     import { onMount } from 'svelte';
-    import RiskLevel from '$lib/atoms/RiskLevel.svelte';
-    import CostLevel from '$lib/atoms/CostLevel.svelte';
-    import HeartLevel from '$lib/atoms/HeartLevel.svelte';
+    import Levels from '$lib/atoms/Levels.svelte';
 
     let activeId;
     let count = 0;
@@ -67,9 +65,7 @@
         Voor volledige functionaliteit van deze site is het nodig JavaScript in te schakelen. Hier zijn de <a href="https://www.enable-javascript.com/">instructies voor het inschakelen van JavaScript in uw webbrowser</a>.
     </noscript>
     <!-- Componenten -->
-    <RiskLevel />
-    <CostLevel />
-    <HeartLevel />
+    <Levels />
 
     <!-- Artikel voor rollen -->
     <article class="rollen">
