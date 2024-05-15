@@ -1,19 +1,6 @@
 <script>
-	import Filter from '$lib/molecule/Filter.svelte';
-
-	export let data;
-
-	let filteredWishes = data.wishes;
-
-	function handleFilter(event) {
-		const { label } = event.detail;
-
-		filteredWishes = data.wishes.filter((wish) => {
-			const matchesLabel = wish.label.toLowerCase().includes(label.toLowerCase());
-
-			return matchesLabel;
-		});
-	}
+    export let data;
+    import Filter from '$lib/Molecul/filter.svelte';
 </script>
 
 <!-- Header sectie -->

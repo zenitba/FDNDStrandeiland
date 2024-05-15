@@ -35,37 +35,33 @@
   
     // Functie voor het bijwerken van de actieve indicator in de carousel
     function updateActiveIndicator() {
-      const carouselElement = document.querySelector('.carousel');
-      const scrollLeft = carouselElement.scrollLeft;
-      const offsetWidth = carouselElement.offsetWidth;
-      const activeIndex = Math.round(scrollLeft / offsetWidth);
-  
-      const indicator = document.querySelector('.carousel-indicator-span');
-      const indicators = indicator.querySelectorAll('.carousel-indicator-span-span');
-      indicators.forEach((ind, index) => {
+    const carouselElement = document.querySelector('.carousel');
+    const scrollLeft = carouselElement.scrollLeft;
+    const offsetWidth = carouselElement.offsetWidth;
+    const activeIndex = Math.round(scrollLeft / offsetWidth);
+
+    const indicators = document.querySelectorAll('.carousel-indicator-span-span');
+    indicators.forEach((ind, index) => {
         if (index === activeIndex) {
-          ind.classList.add('is-active');
+            ind.classList.add('is-active');
         } else {
-          ind.classList.remove('is-active');
+            ind.classList.remove('is-active');
         }
-      });
-    }
-  
-    function scrollToSlide(index) {
-  console.log('Scrolling to slide:', index);
-  const carouselElement = document.querySelector('.carousel');
-  const offsetWidth = carouselElement.offsetWidth;
-
-  carouselElement.scrollTo({
-    left: offsetWidth * index,
-    behavior: 'smooth'
-  });
-
-  updateActiveIndicator();
+    });
 }
 
+function scrollToSlide(index) {
+    const carouselElement = document.querySelector('.carousel');
+    const offsetWidth = carouselElement.offsetWidth;
 
-  
+    carouselElement.scrollTo({
+        left: offsetWidth * index,
+        behavior: 'smooth'
+    });
+
+    updateActiveIndicator();
+}
+
      // Functie die wordt uitgevoerd wanneer het component wordt gemonteerd
   onMount(() => {
     // Zorg ervoor dat de knoppen en indicatoren zichtbaar zijn bij als de browser JS heeft ingeschakeld
@@ -130,7 +126,7 @@
     <div class="carousel-indicator">
         <span class="carousel-indicator-span">
           {#each data.wishes as wish, index}
-          <span class="carousel-indicator-span-span {index === 0 ? 'is-active' : ''}" on:click={() => {console.log('Clicked on index:', index); scrollToSlide(index);}}></span>
+          <span class="carousel-indicator-span-span {index === 0 ? 'is-active' : ''}" on:click={() => scrollToSlide(index)}></span>
           {/each}
         </span>
       </div>
@@ -297,8 +293,8 @@
       max-width: calc(var(--max-indicators) * var(--indicator-size) + (var(--max-indicators) - 1) * var(--indicator-size) / 2);
       overflow: hidden;
       overflow: clip;
-      pointer-events: none;
-    }
+      pointer-events: auto;   
+     }
   
     /* Carousel indicator span */
     .carousel-indicator-span {
@@ -316,6 +312,7 @@
       background: #00000087;
       opacity: 0.5;
       transition: 0.2s ease-out opacity;
+      cursor: pointer;
     }
   
     /* Carousel indicator span span - active */
@@ -406,6 +403,7 @@
       .carousel-item {
         flex-direction: column;
       }
+      
       .carousel-text p{   
       margin: 0;
       font-weight: 0;

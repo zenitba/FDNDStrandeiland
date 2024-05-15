@@ -1,14 +1,19 @@
 # Hallo Strandeiland🏝
-<img width="674" alt="Schermafbeelding 2024-03-25 om 10 48 50" src="https://github.com/zenitba/FDNDStrandeiland/assets/112856019/e10b1ae1-6f51-4de9-8dfa-e888e70f7146">
+<img width="1069" alt="Schermafbeelding 2024-04-04 om 12 59 26" src="https://github.com/zenitba/FDNDStrandeiland/assets/112856019/353e06df-4415-462e-9b30-5ac251abc1ba">
 
+[Bezoek de website🏝](https://fdnd-strandeiland.vercel.app/)
 ## Ontwikkeling
 Welkom bij de README voor **Hallo Strandeiland**! 
 
 ## Beschrijving
 
-**Hallo Strandeiland** is een webapplicatie die een overzicht biedt van alle wensen van toekomstige bewoners van Strandeiland. Het project is opgezet door de gemeente met als doel radicale transparantie te creëren en bewoners op de hoogte te houden van diverse ontwikkelingen. Hiermee wil de gemeente laten zien dat ze luisteren naar de wensen van de bewoners.
+Welkom bij **Hallo Strandeiland**, hét sociale platform waar bewoners zoals jij hun ideeën en wensen kunnen delen. Hier draait alles om het luisteren naar de stem van de gemeenschap en het creëren van een open dialoog tussen bewoners en de gemeente.
 
+Bij Hallo Strandeiland geloven we in de kracht van de gemeenschap. Jouw ideeën en wensen vormen de bouwstenen voor een betere toekomst voor ons eiland. Of het nu gaat om voorstellen voor nieuwe voorzieningen, suggesties voor evenementen, of verbeteringen voor de buurt, hier krijgen al jouw stemmen een plek.
 
+Wij streven naar radicale transparantie in onze communicatie. Dat betekent dat we niet alleen luisteren naar wat je te zeggen hebt, maar ook actief de voortgang delen en open zijn over de besluitvorming van de gemeente. Samen bouwen we aan een gemeenschap waar iedereen gehoord wordt en waar we gezamenlijk streven naar een leefomgeving waarin we trots kunnen zijn.
+
+Dus kom erbij, deel je ideeën en wensen, en laten we samen werken aan een beter Strandeiland!
 
 ### Tools
 

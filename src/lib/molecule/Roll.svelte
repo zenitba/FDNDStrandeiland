@@ -1,10 +1,5 @@
-<!-- JavaScript imports en functies -->
 <script>
     import { onMount } from 'svelte';
-    import RiskLevel from '$lib/atoms/RiskLevel.svelte';
-    import CostLevel from '$lib/atoms/CostLevel.svelte';
-    import HeartLevel from '$lib/atoms/HeartLevel.svelte';
-
     let activeId;
     let count = 0;
     let count2 = 0;
@@ -13,44 +8,44 @@
     let output2;
     let output3;
     let buttonList;
-
+ 
     function countClicks() {
         count++;
         output.innerHTML = count;
         document.getElementById('text').style.display = 'flex';
-
+ 
         setTimeout(() => {
             text.remove();
         }, 4000);
     }
-
+ 
     function countClicks2() {
         count2++;
         output2.innerHTML = count2;
         document.getElementById('text2').style.display = 'flex';
-
+ 
         setTimeout(() => {
             text2.remove();
         }, 4000);
     }
-
+ 
     function countClicks3() {
         count3++;
         output3.innerHTML = count3;
         document.getElementById('text3').style.display = 'flex';
-
+ 
         setTimeout(() => {
             text3.remove();
         }, 4000);
     }
-
+ 
     onMount(() => {
         output = document.getElementById('output');
         output2 = document.getElementById('output2');
         output3 = document.getElementById('output3');
-
+ 
         buttonList = document.querySelectorAll('.button');
-
+ 
         buttonList.forEach((button) => {
             button.addEventListener('click', () => {
                 activeId = button.id;
@@ -58,7 +53,7 @@
         });
     });
 </script>
-
+ 
 <!-- HTML structuur -->
 <br>
 <section>
@@ -66,11 +61,7 @@
         <!-- Instructies voor het inschakelen van JavaScript -->
         Voor volledige functionaliteit van deze site is het nodig JavaScript in te schakelen. Hier zijn de <a href="https://www.enable-javascript.com/">instructies voor het inschakelen van JavaScript in uw webbrowser</a>.
     </noscript>
-    <!-- Componenten -->
-    <RiskLevel />
-    <CostLevel />
-    <HeartLevel />
-
+ 
     <!-- Artikel voor rollen -->
     <article class="rollen">
         <!-- Lijst voor meldingen -->
@@ -90,7 +81,7 @@
             </div>
         </div>
     </article>
-
+ 
     <!-- Artikel voor het weergeven van het aantal klikken -->
     <article>
         <ul>
@@ -99,11 +90,11 @@
             <li>Aantal trekkers: <span class="bold" id="output3">{count3}</span></li>
         </ul>
     </article>
-
+ 
     <!-- Scheidingslijn -->
     <div class="border-line"></div>
 </section>
-
+ 
 <!-- CSS-stijlen -->
 <style>
 
@@ -113,16 +104,15 @@
     height: 61px;
     }
 }
-
     /* Rollen section */
     .bold {
         font-weight: 700;
     }
-
+ 
     .rollen {
         align-items: 'center';
     }
-
+ 
     /* Stijlen voor meldingsteksten */
     #text,
     #text2,
@@ -137,7 +127,7 @@
         height: 75px;
         position: relative;
     }
-
+ 
     /* Animatie voor meldingsteksten */
     #text::after,
     #text2::after,
@@ -151,26 +141,26 @@
         background: green;
         animation: lijn 4s linear forwards;
     }
-
+ 
     @keyframes lijn {
         100% {
             width: 0;
         }
     }
-
+ 
     /* Stijl voor actieve knop */
     .active {
         background-color: lightgreen;
         color: black;
     }
-
+ 
     .btn {
         display: flex;
         align-items: center;
         gap: 1em;
         margin-bottom: 20px;
     }
-
+ 
     /* Stijlen voor knoppen */
     button {
         background-color: black;
@@ -185,12 +175,12 @@
         transition: 0.2s ease-in-out;
         justify-content: center;
     }
-
+ 
     /* Stijl voor ongeordende lijst in artikel */
     article ul {
         list-style: none;
     }
-
+ 
     /* Stijl voor scheidslijn */
     .border-line {
         padding: 1.8rem 8% 1.25rem;
@@ -199,7 +189,7 @@
         background-color: transparent;
         font-size: 89%;
     }
-
+ 
     /* Stijlen voor lijstitems in artikel */
     article ul li {
         margin-bottom: 5px;
