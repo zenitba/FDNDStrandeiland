@@ -1,6 +1,5 @@
 <script>
     import { onMount } from 'svelte';
- 
     let activeId;
     let count = 0;
     let count2 = 0;
@@ -98,14 +97,13 @@
  
 <!-- CSS-stijlen -->
 <style>
- 
+
 /* Media query for responsiveness */
 @media (max-width: 768px) {
     button {
     height: 61px;
     }
 }
- 
     /* Rollen section */
     .bold {
         font-weight: 700;
