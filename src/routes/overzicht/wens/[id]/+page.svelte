@@ -94,7 +94,7 @@
         background-clip: border-box;
         border: 1px solid rgba(0, 0, 0, 0.125);
         border-radius: 0;
-        margin-bottom: 70px;
+        margin-bottom: 145px;
         max-width: 38rem;
   
     }

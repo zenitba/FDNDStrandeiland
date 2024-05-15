@@ -46,19 +46,22 @@
 </div>
  
 <style>
-    .filter-controls {
-        position: relative;
-        text-align: center;
-        float: inline-end;
-        margin-right: 80px;
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: var(--black);
-        transition:
-            transform 0.2s,
-            background-color 0.2s;
+    .filter-controls{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 38px;
+    /* padding: 0 15px; */
+    width: 0%;
+    margin-left: 7.5%;
+    margin-right: auto;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--black);
+    transition: transform 0.2s, background-color 0.2s;
     }
+
  
     /* Stijlen voor de filterknop */
     .filter-controls {

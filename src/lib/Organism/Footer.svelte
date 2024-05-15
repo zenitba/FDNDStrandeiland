@@ -66,8 +66,8 @@
   /* Footer styling */
 .container-footer {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    /* max-width: 1200px; */
+    /* margin: 0 auto; */
 }
 
 .footer {
@@ -80,7 +80,7 @@
 
 .footer-content {
     display: grid;
-    grid-template-columns: 70% 30% 0%;
+    grid-template-columns: 60% 40%;
     align-items: center;
 }
 
