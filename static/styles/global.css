@@ -150,8 +150,9 @@ p {
 }
 
 /* Stijlen voor SVG-afbeeldingen */
-svg {
-    width: 38px;
+svg{
+    width: 30px;
+    margin: -3px -4px;
 }
 
 /* Stijlen voor duurzame ontwikkelingsdoelen afbeeldingen */

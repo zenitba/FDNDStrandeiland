@@ -78,7 +78,7 @@
   
 .footer-content {
     display: grid;
-    grid-template-columns: 15% 70% 15%;
+    grid-template-columns: 60% 40%;
     align-items: center; 
 }
 .footer-menu {
