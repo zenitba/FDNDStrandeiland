@@ -1,6 +1,20 @@
 <script>
-    export let data;
-    import Filter from '$lib/Molecul/filter.svelte';
+
+	import Filter from '$lib/molecule/filter.svelte';
+
+	export let data;
+
+	let filteredWishes = data.wishes;
+
+	function handleFilter(event) {
+		const { label } = event.detail;
+
+		filteredWishes = data.wishes.filter((wish) => {
+			const matchesLabel = wish.label.toLowerCase().includes(label.toLowerCase());
+
+			return matchesLabel;
+		});
+	}
 </script>
 
 <!-- Header sectie -->
@@ -72,7 +86,7 @@
 				<time>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						class="icon icon-tabler icon-tabler-tag"
+						class="support-svg"
 						width="22"
 						height="22"
 						viewBox="0 0 24 24"
