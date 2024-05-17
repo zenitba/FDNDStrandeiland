@@ -1,10 +1,10 @@
 <script>
   // Imports van Svelte-componenten
-  import Navbar from '$lib/Organism/navbar.svelte';
-  import Roll from '$lib/Molecul/roll.svelte';
-  import Sdg from '$lib/Atoms/sdg.svelte';  
-  import Status from '$lib/Organism/status.svelte';
-  import Footer from '$lib/Organism/footer.svelte';
+  import Navbar from '$lib/organism/Navbar.svelte';
+  import Roll from '$lib/molecule/Roll.svelte';
+  import Sdg from '$lib/atoms/SDG.svelte';  
+  import Status from '$lib/organism/Status.svelte';
+  import Footer from '$lib/organism/Footer.svelte';
 
 
   // Sla de data op in een store
@@ -14,7 +14,6 @@
   
 </script>
   
-
   <!-- Layout voor Wensen -->
   <Navbar />
 
@@ -71,6 +70,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two columns with equal width */
     grid-gap: 20px; /* Gap between the columns */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Display as a single column */
+    }
 }
 
     /* Algemene stijl voor de hoofdinhoud */

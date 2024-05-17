@@ -1,8 +1,9 @@
+<!-- JavaScript imports en functies -->
 <script>
-	import { onMount } from 'svelte';
-    import Levels from '../Atoms/levels.svelte';
+    import { onMount } from 'svelte';
+    import Levels from '$lib/atoms/Levels.svelte';
 
-	let activeId;
+    let activeId;
     let count = 0;
     let count2 = 0;
     let count3 = 0;
@@ -10,6 +11,7 @@
     let tellerHelper;
     let tellerTrekker;
     let buttonList;
+
   
 	function countClicks() {
 	  count++;
@@ -56,15 +58,16 @@
 	});
   </script>
 
+<!-- HTML structuur -->
 <br>
 <section>
     <noscript>
         <!-- Instructies voor het inschakelen van JavaScript -->
         Voor volledige functionaliteit van deze site is het nodig JavaScript in te schakelen. Hier zijn de <a href="https://www.enable-javascript.com/">instructies voor het inschakelen van JavaScript in uw webbrowser</a>.
     </noscript>
+    <!-- Componenten -->
 
-    <!-- Component -->
-<Levels />
+    <Levels />
 
     <!-- Artikel voor rollen -->
     <article class="rollen">
@@ -99,8 +102,17 @@
     <div class="border-line"></div>
 </section>
 
+<!-- CSS-stijlen -->
 <style>
-    /* CSS-stijlen */
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    button {
+    height: 61px;
+    }
+}
+
+    /* Rollen section */
     .bold {
         font-weight: 700;
     }
@@ -112,7 +124,7 @@
     /* Stijlen voor meldingsteksten */
     #deler,
     #helper,
-    #trekker{
+    #trekker {
         display: none;
         background-color: lightgreen;
         justify-content: center;
@@ -150,10 +162,6 @@
         color: black;
     }
 
-    section {
-        /* margin: 30px; */
-    }
-
     .btn {
         display: flex;
         align-items: center;
@@ -180,45 +188,41 @@
         background-color: blueviolet;
     }
 
-    /* Stijl voor ongeordende lijst in artikel */
-    article ul {
-        list-style: none;
-    }
-
-    /* Stijlen voor containers */
-    .container {
+        /* Stijlen voor containers */
+        .container {
         display: flex;
         align-items: center;
     }
-
     /* Verticale uitlijning voor SVG-afbeeldingen */
     .icon {
         vertical-align: middle;
     }
-
     /* Stijlen voor hartpictogram */
     .heart {
         display: inline-block;
         vertical-align: middle;
     }
-
     /* Verwijder standaardmarges van paragrafen */
     p {
         margin: 0;
         font-weight: 400;
     }
-
     /* Stijlen voor SVG-afbeeldingen */
     svg {
         width: 35px;
     }
-
     /* Stijlen voor titels */
     h2 {
         font-size: 1.5rem;
         line-height: 1.17;
         font-weight: 800;
         margin-bottom: 1rem;
+    }
+
+
+    /* Stijl voor ongeordende lijst in artikel */
+    article ul {
+        list-style: none;
     }
 
     /* Stijl voor scheidslijn */
