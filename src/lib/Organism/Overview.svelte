@@ -1,6 +1,7 @@
 <script>
 
-	import Filter from '$lib/molecule/filter.svelte';
+	import Filter from '$lib/molecul/filter.svelte';
+    import { SvgSupport } from '$lib';
 
 	export let data;
 
@@ -84,24 +85,7 @@
 				<h3><a href={`/overzicht/wens/${wish.id}`}>{wish.heading}</a></h3>
 				<p>{wish.description}</p>
 				<time>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="support-svg"
-						width="22"
-						height="22"
-						viewBox="0 0 24 24"
-						stroke-width="2"
-						stroke="#000000"
-						fill="none"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					>
-						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-						<path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-						<path
-							d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z"
-						/>
-					</svg>
+                    <SvgSupport  />
 					<span class="support">Supporters: 4</span>
 				</time>
 				{#if wish.image && wish.image.image && wish.image.image.url}

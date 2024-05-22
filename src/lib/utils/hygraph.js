@@ -1,4 +1,4 @@
-import {HYGRAPH_URL,HYGRAPH_KEY} from '$env/static/private';
+import { HYGRAPH_URL, HYGRAPH_KEY } from '$env/static/private';
 
 import { GraphQLClient } from 'graphql-request';
 

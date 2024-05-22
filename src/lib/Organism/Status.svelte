@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     export let data;
     let reactions = [];
     let currentStatus = '';
@@ -379,4 +379,4 @@
             margin: 10px 0;
         }
     }
-    </style>
+    </style> -->
