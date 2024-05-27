@@ -34,7 +34,7 @@
 <style>
     /* Stijlen voor de bovenste navigatiebalk */
     .nav-top {
-      background-color: var(--dark-grey);
+      background-color: var(--dark-grey); 
       display: flex;
       flex-direction: row;
       justify-content: end;
@@ -68,7 +68,7 @@
       align-items: center;
       width: 100%;
       background-color: var(--white);
-      border-bottom: 1px solid rgb(148, 148, 148);
+      border-bottom: 1px solid rgb(148, 148, 148); 
     }
     
     img {
@@ -106,7 +106,7 @@
     nav .menu {
       clear: both;
       max-height: 0;
-      transition: max-height .2s ease-out;
+      transition: max-height .2s ease-out; /* Overgangseffect voor het tonen van het menu */
     }
     
     .navbar .menu-icon {
@@ -118,15 +118,17 @@
       user-select: none;
     }
     
+    /* Stijlen voor het menu-icoon */
     .navbar .menu-icon .navicon {
       background: #333;
       display: block;
       height: 2px;
       position: relative;
-      transition: background .2s ease-out;
+      transition: background .2s ease-out; 
       width: 18px;
     }
     
+    /* Stijlen voor de lijnen van het menu-icoon */
     .navbar .menu-icon .navicon:before,
     .navbar .menu-icon .navicon:after {
       background: #333;
@@ -134,10 +136,11 @@
       display: block;
       height: 100%;
       position: absolute;
-      transition: all .2s ease-out;
+      transition: all .2s ease-out; 
       width: 100%;
     }
     
+    /* Positie van de lijnen van het menu-icoon */
     .navbar .menu-icon .navicon:before {
       top: 5px;
     }
@@ -150,10 +153,12 @@
       display: none;
     }
     
+    /* Tonen van het menu bij het klikken op het menu-icoon */
     .navbar .menu-btn:checked ~ .menu {
       max-height: 480px;
     }
     
+    /* Verandering van het menu-icoon bij activering */
     .navbar .menu-btn:checked ~ .menu-icon .navicon {
       background: transparent;
     }
@@ -170,13 +175,8 @@
     .navbar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
       top: 0;
     }
-    
-    /* Focus-stijlen voor links */
-    .nav-top a:focus-visible,
-    .navbar li a:focus-visible {
-      outline: 2px solid var(--black); 
-    }
   
+    /* Media query voor schermen groter dan 800px */
     @media screen and (min-width: 800px) {
       .navbar li {
         float: left;
@@ -193,12 +193,14 @@
       }
     }
   
+    /* Media query voor schermen kleiner dan 800px */
     @media screen and (max-width: 800px) {
       .navbar {
         width: 100%;
       }
     }
   
+    /* Media query voor schermen kleiner dan 680px */
     @media (max-width: 680px) {
       .nav-top-links {
         width: 100%;
@@ -206,4 +208,5 @@
         justify-content: end;
       }
     }
-  </style>
+</style>
+
