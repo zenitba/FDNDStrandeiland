@@ -8,7 +8,7 @@ export { default as SvgRisk } from './atoms/svg-risk.svelte';
 export { default as SvgSupport } from './atoms/svg-support.svelte';
 
 // Molecul
-export { default as Filter } from './molecul/Filter.svelte';
+export { default as Filter } from './molecul/filter.svelte';
 export { default as Levels } from './molecul/levels.svelte';
 export { default as Roll } from './molecul/roll.svelte';
 
