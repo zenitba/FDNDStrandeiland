@@ -1,7 +1,7 @@
 
 <script>
     // Imports van Svelte-componenten
-    import { Navbar, Roll, Sdg, Footer } from '$lib';
+    import { Navbar, Roll, Footer } from '$lib';
   
     // Sla de data op in een store
     import { writable } from 'svelte/store';
@@ -50,7 +50,7 @@
             <p>{data.wish.description}</p>
           </div>
           <!-- Sdg-component -->
-          <Sdg {data} />
+          <!-- <Sdg {data} /> -->
           <!-- Rollen-component -->
           <Roll />
         </div>

@@ -1,6 +1,6 @@
 
 // Atoms
-export { default as Sdg } from './atoms/sdg.svelte';
+// export { default as Sdg } from './atoms/sdg.svelte';
 export { default as SvgCost } from './atoms/svg-cost.svelte';
 export { default as SvgFilter } from './atoms/svg-filter.svelte';
 export { default as SvgHeart } from './atoms/svg-heart.svelte';
