@@ -95,7 +95,7 @@
     margin-bottom: 10px;
     font-size: 18px;
     color: var(--white);
-    text-align: center;
+    text-align: end;
 }
 
 .footer-menu li {
