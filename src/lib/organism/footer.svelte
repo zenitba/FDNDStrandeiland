@@ -3,6 +3,7 @@
     <div class="container-footer">
         <section class="footer-content">
             <nav class="footer-links">
+                <h2>Contact en Informatie</h2> 
                 <ul class="footer-menu">
                     <li><a href="https://hallostrandeiland.nl/contact">Contact</a></li>
                     <li><a href="https://hallostrandeiland.nl/privacy-local">Privacy</a></li>
@@ -88,6 +89,12 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    text-align: center;
+}
+.footer-links h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: var(--white);
     text-align: center;
 }
 

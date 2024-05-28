@@ -362,7 +362,7 @@ function scrollToSlide(index) {
   
     /* Button back svg */
     .btn-back svg {
-        margin: 0px -7px;
+        margin: 0px -4px;
    }
     .btn-back a:hover{
       background-color: var(--black); 
