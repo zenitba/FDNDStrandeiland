@@ -35,7 +35,6 @@
 </script>
 
 <style>
-    /* View Transition API - Transitie-effect voor pagina-elementen */
     @view-transition {
       .fade-item {
         transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
@@ -83,3 +82,4 @@
       }
     }
 </style>
+
